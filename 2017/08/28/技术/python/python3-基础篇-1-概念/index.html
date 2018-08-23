@@ -1,0 +1,1329 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="python3-基础篇-1.概念">
+<meta property="og:url" content="https://luojieio.github.io/2017/08/28/技术/python/python3-基础篇-1-概念/index.html">
+<meta property="og:site_name" content="luojieio">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://luojieio.github.io/2017/08/28/技术/python/python3-基础篇-1-概念/0.png">
+<meta property="og:updated_time" content="2018-03-14T03:17:59.138Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python3-基础篇-1.概念">
+<meta name="twitter:image" content="https://luojieio.github.io/2017/08/28/技术/python/python3-基础篇-1-概念/0.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://luojieio.github.io/2017/08/28/技术/python/python3-基础篇-1-概念/"/>
+
+
+
+
+
+  <title> python3-基础篇-1.概念 | luojieio </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">luojieio</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">热爱开源、热爱自由</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://luojieio.github.io/2017/08/28/技术/python/python3-基础篇-1-概念/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="luojieio">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/teaser.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="luojieio">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                python3-基础篇-1.概念
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-28T14:59:30+08:00">
+                2017-08-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/python3/" itemprop="url" rel="index">
+                    <span itemprop="name">python3</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/28/技术/python/python3-基础篇-1-概念/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/08/28/技术/python/python3-基础篇-1-概念/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <img src="/2017/08/28/技术/python/python3-基础篇-1-概念/0.png">
+<p><br><br><a id="more"></a></p>
+<h3 id="python的历史"><a href="#python的历史" class="headerlink" title="python的历史"></a>python的历史</h3><p>由<code>Guido van Rossum</code>  （荷兰人） 在<code>1989</code>年在阿姆斯特丹为了打发无聊的圣诞节而开发的“高级、动态、解释型、面向对象的第四代编程语言”,初衷是为了辅助ABC这个语言实现相关功能的一个插件，结果无意发现开发出了一门语言。<br>python名字的由来是因为 Guido 本人是天空马戏团的粉丝，所以取了“monty python”中的python作为这个语言的名称。</p>
+<p>python的发展阶段：</p>
+<ul>
+<li>CNRI时期：CNRI是资助Python发展初期的重要单位，Python 1.5 版之前的成果大部分都在此时期内完成</li>
+<li>BeOpen时期：Guido与BeOpen公司合作，此一期间将python 2.0 推出，甚至python 1.6 也同时问世，但原则上已经分别维护了（之所以要分别维护是因为两个版本互不兼容）</li>
+<li>DC时期：Guido已离开BeOpen公司，将开发团队带到了Digital Creations （DC）公司，该公司以发展zope系统闻名，因此这项合作也颇受关注</li>
+<li>Google时期：Python 3.0 </li>
+</ul>
+<hr>
+<h3 id="python的特点"><a href="#python的特点" class="headerlink" title="python的特点"></a>python的特点</h3><ul>
+<li>简单易学不用过度关注语言本身的语法</li>
+<li>集解释性与编译性于一身</li>
+<li>面向对象、面向过程</li>
+<li>高级语言，无需考虑诸如管理内存一类等底层</li>
+<li>可扩展性及可嵌入性（比如：你可以把部分程序用C或C++编写，然后在Python程序中使用它们。与此相反，可以把Python嵌入C/C++程序，提供脚本功能）</li>
+<li>免费、开源</li>
+<li>可移植性强</li>
+<li>丰富的库帮助你处理各种工作，直接用即可，而不用从头开始写（除了python安装自带的标准库外，还有很多第三方库，如：wxPython、Twisted、Python图像库等等）</li>
+</ul>
+<hr>
+<h3 id="python的应用领域"><a href="#python的应用领域" class="headerlink" title="python的应用领域"></a>python的应用领域</h3><p>python适合的领域：</p>
+<ul>
+<li>web开发（比如：Django/pyramid/tornado/bottle/flask/webpy）</li>
+<li>网络服务（比如：twisted/requests/scrapy/paramiko）<ul>
+<li>系统工具和脚本</li>
+<li>爬虫</li>
+</ul>
+</li>
+<li>科学计算（比如：scipy/pandas/python xy）</li>
+<li>gui图形开发（比如：wxpython/pyqt/kivy）</li>
+<li>运维自动化（比如：openstack/saltstack/ansible/腾讯蓝鲸）</li>
+<li>作为”胶水“语言把其他语言开发的模块包装起来方便使用</li>
+</ul>
+<p>python不适合的领域：</p>
+<ul>
+<li>贴近硬件的代码（首选C）</li>
+<li>移动开发：IOS/Android有各自的开发语言（Object-C，Swift/Java），还有现在的移动开发使用HTML5</li>
+<li>游戏开发：C/C++（因为需要渲染，所以对处理效率要求高）</li>
+</ul>
+<hr>
+<h3 id="python和其他语言的对比"><a href="#python和其他语言的对比" class="headerlink" title="python和其他语言的对比"></a>python和其他语言的对比</h3><table>
+<thead>
+<tr>
+<th>开发语言</th>
+<th>类型</th>
+<th>运行速度</th>
+<th>代码量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C</td>
+<td>编译为机器码</td>
+<td>非常快</td>
+<td>非常多</td>
+</tr>
+<tr>
+<td>    Java</td>
+<td>编译为字节码</td>
+<td>快</td>
+<td>多 </td>
+</tr>
+<tr>
+<td>    python</td>
+<td>解释执行，每次执行就进行编译</td>
+<td>慢</td>
+<td>少 </td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>区别：<br>C/JAVA是将源码编译的。就类似于学会了一门语言，直接来跟机器对话。<br>python是边执行边编译，就类似于中间的一个翻译，（当然python也可以进行编译）另外python源码不能加密。<br>python有一个python的虚拟机做为中介，边解释边执行，这点类似于java的jvm，也正是因为这样，所以它的兼容性很好，因为它是跑在内置虚拟机上的</p>
+</blockquote>
+<hr>
+<h3 id="python利器"><a href="#python利器" class="headerlink" title="python利器"></a>python利器</h3><table>
+<thead>
+<tr>
+<th>python编辑器</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>notepad++</td>
+<td></td>
+</tr>
+<tr>
+<td>sublime</td>
+<td></td>
+</tr>
+<tr>
+<td>atom</td>
+<td></td>
+</tr>
+<tr>
+<td>vim</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>python集成开发环境（IDE）</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>pycharm</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>python解释器</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cpython</td>
+<td>官方标准，C语言的解释器</td>
+</tr>
+<tr>
+<td>jython</td>
+<td>jython是一种完整的语言，而不是一个java翻译器或仅仅是一个python编译器，它是一个python在java中的完全实现，也就是说用java把python重写了一遍。jython也有很多从cpython中中继承的模块库。jython提供了对其实现语言的一切存取，所以jython不仅给你提供了python的库，同时也提供了所有的java类。这使其有一个巨大的资源库</td>
+</tr>
+<tr>
+<td>ironpython</td>
+<td>.net版本            </td>
+</tr>
+<tr>
+<td>pypy</td>
+<td>用python写的解释器，之前都是用C、java、.net写的解释器，现在终于有自己的了。</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>python工具</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ipython</td>
+<td>ipython是一个python的交互式    shell，比默认的python shell好用，支持变量自动补全，自动缩进，支持bash shell。内置了很多功能和函数。在ubuntu下只要<code>sudo apt-get install ipython</code>就安装好了。通过ipython启动即可。        </td>
+</tr>
+<tr>
+<td>portable python</td>
+<td>绿色版python，也就是说你可以不用安装python，也可以执行python程序，只要有这个便携式的python即可</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="python版本"><a href="#python版本" class="headerlink" title="python版本"></a>python版本</h3><p>python当前有两个大版本：<code>2.7</code>与<code>3.3</code><br>这两个大版本之间相互有点<code>不兼容</code>，当前主要的Python的第三方库是基于2.7版本的，3.3版本早于2.7版本发布，这是因为3.3版本的不兼容，所以开发了一个2.7的过渡版本用于逐渐过渡到3.0系的大版本。后续将主要是3.3版本。<br>查看python版本：<code>python -V</code></p>
+<p>python 2.X vs python 3.X：</p>
+<ul>
+<li>python 2.X是遗产，python 3.X是现在和未来的语言。python 2.7是2.X系最后的版本了，不会再有重大的更新了。python 2.X 仅维护到2020年,后续的python 3.X 将不再考虑向下兼容python 2.X    </li>
+<li>pythonn 3.X 全是unicode ，完全支持中文，python 2.X 还是ASCII码</li>
+<li>python 3.X 中的print是函数，python 2.X是命令</li>
+<li>模块名的规范</li>
+<li>1/2终于等于0.5</li>
+<li>raw_input没了，全变成了input</li>
+<li>class Foo:写法不能用了，只能class Foo(object)</li>
+</ul>
+<blockquote>
+<p>twisted 目前还是仅支持2.7版本(<a href="http://twistedmatrix.com/trac/milestone/Python-3.x" target="_blank" rel="noopener">http://twistedmatrix.com/trac/milestone/Python-3.x</a>)</p>
+</blockquote>
+<hr>
+<h3 id="使用模式与运行"><a href="#使用模式与运行" class="headerlink" title="使用模式与运行"></a>使用模式与运行</h3><p>python有两种使用模式：<code>交互模式</code>、<code>文本模式</code></p>
+<p>python的脚本编写、运行<br>脚本编写首行写：<br><code>#!/usr/bin/python</code> 或 <code>/usr/bin/env python</code> （环境变量里配置的python的路径，推荐使用这种方法）</p>
+<p>运行python的脚本方法：(跟shell脚本一样)<br><code>python xxx.py</code><br>或<br><code>chmod a+x xxx.py</code><br><code>./xxx.py</code> </p>
+<p>（如果你想你的程序在任何路径下都可以调用，可以把它放到PATH路径下，或将其软链接到PATH路径下，或将你的程序路径添加到PATH环境中，又或者创建一个别名指向这个程序）</p>
+<blockquote>
+<p>提示：对于python来说，程序、脚本或者软件都是指同一个东西</p>
+</blockquote>
+<hr>
+<h3 id="python生成文件类型"><a href="#python生成文件类型" class="headerlink" title="python生成文件类型"></a>python生成文件类型</h3><ul>
+<li>源代码：python源代码的文件以“<code>.py</code>”为扩展名，由python程序解释，不需要编译即可运行（边解释边编译）</li>
+<li><p>字节码（未优化）：python源文件经编译后生成的扩展名为“<code>.pyc</code>”的文件（这个python.pyc就类似于java的JVM是用于编译C给计算机执行的虚拟机环境，可以删除，下次重新执行就会自动生成）<br>编译方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import py_compile</span><br><span class="line">py_compile.compile(&quot;hello.py&quot;)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>字节码（已优化）：经过优化的源文件，扩展名为“<code>.pyo</code>”<br>优化方法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python -O -m py_compile hello.py</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>以上三种均可以直接运行</p>
+<blockquote>
+<p>提示：<br>2.X的python会在程序的当前目录下生成这些<code>.pyc</code>或<code>.pyo</code>的文件<br>3.X的python会在程序的当前目录下生成一个新的目录<code>__pycache__</code>目录下有生成<code>.pyc</code>的编译后的文件</p>
+</blockquote>
+<hr>
+<h3 id="获取帮助"><a href="#获取帮助" class="headerlink" title="获取帮助"></a>获取帮助</h3><p><code>print help(int)</code> 或 <code>help(int)</code>    </p>
+<p>如果直接在python的交互模式下<code>help(int)</code>，也可以看到显示结果，但是这样是以<code>属性</code>的方式显示，即连带它是如果实现的都显示出来了。而不像打印print这种不将实现原理打印出来，而仅仅只是结果显示出来。</p>
+<blockquote>
+<p>注意：如果你想获取比如print的帮助，需要加上’’引号，那样print就可以理解我是希望获取关于print的帮助而不是想要它打印东西，正确写法：<code>help(&#39;print&#39;)</code></p>
+</blockquote>
+<hr>
+<h3 id="python代码风格"><a href="#python代码风格" class="headerlink" title="python代码风格"></a>python代码风格</h3><ol>
+<li>从上到下执行，所以变量也是从上到下，不像C可以在编译前先将变量导入，所以无论变量写在哪都可以。而python中的变量位置不可以随意写的，否则出来的效果可能就不一样。python在执行操作前只是检查语法是否正确，而没有导入变量</li>
+<li>区分大小写</li>
+<li>跟shell同样的运行方式，交互式和源代码文件式。执行方式也相同，shell脚本是sh或bash之类的，python脚本是python打头的。如果写了#!则可以直接以相对或绝对路径来执行（注意先赋予执行权限）。</li>
+<li>缩进要统一，因为python没有像shell的do done之类的东西作为起始符与结束符，而是通过缩进的层级关系来切分代码的关系。根据缩进格式来确定哪些代码是需要结束的。所以严格管理缩进，左边一定要顶格写。同级的一定要保持对应，不同级的一定要缩进。</li>
+<li>python规定必须使用4或2个空格或tab制表符来表示每级缩进（但是在实际编写中可以自定义空格数，但是要满足每级缩进间空格数相等，即使用了tab就全部都以tab来缩进）。随着缩进深度的增加，代码的层次也在加深，没有缩进的代码块是最高层次的。使用缩进对齐这种方式组织代码，不仅代码风格优雅，也大大提高了代码的可读性。这样一来，你看到的就是一个个优美的代码块，而不是令人费解的“字符流”</li>
+<li>在真正开始执行解释之前,python会对你的代码进行一次全面的浏览一遍，看看是否有语法和缩进和变量定义的错误，才会开始展开解释过程</li>
+</ol>
+<blockquote>
+<p>什么需要通过缩进来书写代码？<br>因为python没有<code>结束符</code>的原因，所以必须通过缩进层次结构来确认哪些代码块隶属于哪一层次，从而执行相应的代码块并结束。另外最上层的代码必须顶格写也是这个原因</p>
+</blockquote>
+<hr>
+<h3 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h3><p>所谓注释，就是写在代码中用于解释下面代码是什么意思的内容。注释是用来说明代码的，给自己或别人看，而程序运行的时候，Python解释器会直接忽略掉注释，所以，有没有注释不影响程序的执行结果，但是影响到别人能不能看懂你的代码。</p>
+<p>python中的注释使用<code>#</code>号进行标记，从#开始，直到这行尾的，之间的部份都是注释，你完全可以把注释写在代码的头部，甚至可以在代码中间加上注释。</p>
+<ul>
+<li>单行注释格式：<code>#注释内容</code></li>
+<li>多行注释格式：<code>&#39;&#39;&#39; 注释内容 &#39;&#39;&#39;</code> （提示：三引号中的引号可以是单引号也可以是双引号）</li>
+</ul>
+<p>三引号的原理<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; a=&apos;&apos;&apos;</span><br><span class="line">		hello</span><br><span class="line">		world</span><br><span class="line">	&apos;&apos;&apos;</span><br><span class="line">&gt;&gt;&gt; a</span><br><span class="line">&apos;\n\thello\n    world\n    &apos;  #如这样其实就是自动添加了换行符而已</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h3 id="运算符与表达式"><a href="#运算符与表达式" class="headerlink" title="运算符与表达式"></a>运算符与表达式</h3><p>运算符：</p>
+<ol>
+<li>赋值运算符</li>
+<li>算术运算符</li>
+<li>关系运算符</li>
+<li>逻辑运算符</li>
+<li>成员运算符与身份运算符</li>
+</ol>
+<p>表达式：将不同数据（包括变量 、函数）用运算符号按一定规则连接起来的一种式子</p>
+<h4 id="赋值运算符"><a href="#赋值运算符" class="headerlink" title="赋值运算符"></a>赋值运算符</h4><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>    =</td>
+<td>赋予变量</td>
+</tr>
+<tr>
+<td>    +=</td>
+<td></td>
+</tr>
+<tr>
+<td>    -=</td>
+<td>如a=a-50就可以为a-=50  ,做一个回马枪，a减去50再赋予回给a</td>
+</tr>
+<tr>
+<td>    *=</td>
+<td></td>
+</tr>
+<tr>
+<td>    /=</td>
+<td></td>
+</tr>
+<tr>
+<td>    %=</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h4><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>    +</td>
+<td></td>
+</tr>
+<tr>
+<td>    -</td>
+<td></td>
+</tr>
+<tr>
+<td>    *</td>
+<td></td>
+</tr>
+<tr>
+<td>    /</td>
+<td></td>
+</tr>
+<tr>
+<td>    //</td>
+<td>整除</td>
+</tr>
+<tr>
+<td>    %</td>
+<td>求余</td>
+</tr>
+<tr>
+<td>    **</td>
+<td>幂的运算，如3的平方就是3**2</td>
+</tr>
+</tbody>
+</table>
+<h4 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h4><p>起到判断的作用</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>    &lt;</td>
+<td></td>
+</tr>
+<tr>
+<td>    &gt;</td>
+<td></td>
+</tr>
+<tr>
+<td>    &lt;=</td>
+<td></td>
+</tr>
+<tr>
+<td>    &gt;=</td>
+<td></td>
+</tr>
+<tr>
+<td>    !=</td>
+<td></td>
+</tr>
+<tr>
+<td>    ==</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h4><p>方便进行多个值的判断，可以避免过多使用嵌套的方式来判断多个值</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>    and</td>
+<td></td>
+</tr>
+<tr>
+<td>    or</td>
+<td></td>
+</tr>
+<tr>
+<td>    not</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="成员运算符与身份运算符"><a href="#成员运算符与身份运算符" class="headerlink" title="成员运算符与身份运算符"></a>成员运算符与身份运算符</h4><h5 id="表示归属关系的成员运算符"><a href="#表示归属关系的成员运算符" class="headerlink" title="表示归属关系的成员运算符"></a>表示归属关系的成员运算符</h5><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>in</td>
+<td>测试前者是否存在于in后面的集合中</td>
+</tr>
+<tr>
+<td>not in</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">‘Black Star’ in list1</span><br></pre></td></tr></table></figure></p>
+<p>用于判断Black Star这个字符串是否存在于list1这个列表中，当然也可以是其它的数据结构，并不是说只能是列表，序列都可以，包括字符串、列表、元组。但不能用于字典，因为字典不是序列，如果存在则会显示True，不存在则会显示False</p>
+<h5 id="表示身份鉴定的身份运算符"><a href="#表示身份鉴定的身份运算符" class="headerlink" title="表示身份鉴定的身份运算符"></a>表示身份鉴定的身份运算符</h5><table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>is</td>
+<td></td>
+</tr>
+<tr>
+<td>is not</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>示例：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">the_Eddie=&apos;Eddie&apos;</span><br><span class="line">name=&apos;Eddie&apos;</span><br><span class="line">the_Eddie==name</span><br><span class="line">print(the_Eddie is name)</span><br></pre></td></tr></table></figure></p>
+<p>两个变量一致时，经过is 对比后会返回True</p>
+<hr>
+<h3 id="运算符的优先级"><a href="#运算符的优先级" class="headerlink" title="运算符的优先级"></a>运算符的优先级</h3><p>运算符存在高低级别，在同一个表达式中，高优先级的先运算，对于同级别的运算符，按从左到右处理。</p>
+<p>运算符优先级由低到高是：<br>Lambda<br>逻辑运算：or<br>逻辑运算：and<br>逻辑运算：not<br>成员测试：in,not in<br>同一性测试：is ,is not<br>比较：&lt;,&lt;=,&gt;,&gt;=,!=,==<br>按位或：|<br>按位异或:^<br>按位与：&amp;<br>移位：&lt;&lt; ，&gt;&gt;   （对二进制数字的移位）<br>加法与减法：+,-<br>乘法、除法与取余：<em>，/，%<br>正负号：+x， -x<br>按位翻转：~x<br>指数：*</em>    </p>
+<blockquote>
+<p>总结：</p>
+<ul>
+<li>运算符通常由左向右结合，具有相同优先级的运算符按照从左向右的顺序计算。例如：2+3+4被计算成（2+3）+4 。具有高优先级的，先计算高优先级的，再计算低优先级的，就如同先计算()括号里的，再计算()括号外的。</li>
+<li>而赋值运算符则是由右向左结合的，即a=b=c被处理为a=(b=c)</li>
+</ul>
+</blockquote>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/" rel="next" title="docker-2.实战篇-2.apache镜像">
+                <i class="fa fa-chevron-left"></i> docker-2.实战篇-2.apache镜像
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/30/技术/python/python3-基础篇-2-类与对象/" rel="prev" title="python3-基础篇-2.类与对象">
+                python3-基础篇-2.类与对象 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/08/28/技术/python/python3-基础篇-1-概念/"
+           data-title="python3-基础篇-1.概念" data-url="https://luojieio.github.io/2017/08/28/技术/python/python3-基础篇-1-概念/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/teaser.png"
+               alt="luojieio" />
+          <p class="site-author-name" itemprop="name">luojieio</p>
+           
+              <p class="site-description motion-element" itemprop="description">热爱开源、热爱自由</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/luojieio" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/alex3714/category/770733.html" title="金角大王" target="_blank">金角大王</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.runoob.com/" title="菜鸟教程" target="_blank">菜鸟教程</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://python.jobbole.com/" title="伯乐在线" target="_blank">伯乐在线</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://docs.docker.com/" title="Docker" target="_blank">Docker</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://hexo.io/zh-cn/" title="Hexo" target="_blank">Hexo</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://theme-next.iissnan.com/" title="NexT" target="_blank">NexT</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://fontawesome.io" title="Font Awesome" target="_blank">Font Awesome</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://duoshuo.com/" title="多说" target="_blank">多说</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#python的历史"><span class="nav-number">1.</span> <span class="nav-text">python的历史</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python的特点"><span class="nav-number">2.</span> <span class="nav-text">python的特点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python的应用领域"><span class="nav-number">3.</span> <span class="nav-text">python的应用领域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python和其他语言的对比"><span class="nav-number">4.</span> <span class="nav-text">python和其他语言的对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python利器"><span class="nav-number">5.</span> <span class="nav-text">python利器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python版本"><span class="nav-number">6.</span> <span class="nav-text">python版本</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用模式与运行"><span class="nav-number">7.</span> <span class="nav-text">使用模式与运行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python生成文件类型"><span class="nav-number">8.</span> <span class="nav-text">python生成文件类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取帮助"><span class="nav-number">9.</span> <span class="nav-text">获取帮助</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#python代码风格"><span class="nav-number">10.</span> <span class="nav-text">python代码风格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#注释"><span class="nav-number">11.</span> <span class="nav-text">注释</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运算符与表达式"><span class="nav-number">12.</span> <span class="nav-text">运算符与表达式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#赋值运算符"><span class="nav-number">12.1.</span> <span class="nav-text">赋值运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#算术运算符"><span class="nav-number">12.2.</span> <span class="nav-text">算术运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#关系运算符"><span class="nav-number">12.3.</span> <span class="nav-text">关系运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#逻辑运算符"><span class="nav-number">12.4.</span> <span class="nav-text">逻辑运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#成员运算符与身份运算符"><span class="nav-number">12.5.</span> <span class="nav-text">成员运算符与身份运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#表示归属关系的成员运算符"><span class="nav-number">12.5.1.</span> <span class="nav-text">表示归属关系的成员运算符</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#表示身份鉴定的身份运算符"><span class="nav-number">12.5.2.</span> <span class="nav-text">表示身份鉴定的身份运算符</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#运算符的优先级"><span class="nav-number">13.</span> <span class="nav-text">运算符的优先级</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">luojieio</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"luojieio-note"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

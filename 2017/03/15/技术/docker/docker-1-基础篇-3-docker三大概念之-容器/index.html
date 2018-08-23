@@ -1,0 +1,1139 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker-1.基础篇-3.docker三大概念之-容器">
+<meta property="og:url" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/index.html">
+<meta property="og:site_name" content="luojieio">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/0.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/1.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/2.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/3.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/4.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/5.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/6.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/7.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/8.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/9.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/10.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/11.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/12.png">
+<meta property="og:updated_time" content="2018-03-14T03:09:06.316Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="docker-1.基础篇-3.docker三大概念之-容器">
+<meta name="twitter:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/0.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/"/>
+
+
+
+
+
+  <title> docker-1.基础篇-3.docker三大概念之-容器 | luojieio </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">luojieio</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">热爱开源、热爱自由</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="luojieio">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/teaser.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="luojieio">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                docker-1.基础篇-3.docker三大概念之-容器
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-15T11:59:17+08:00">
+                2017-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <img src="/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/0.png">
+<p><br><br><a id="more"></a></p>
+<blockquote>
+<p>基于docker 1.12版本</p>
+</blockquote>
+<p><a href="https://docs.docker.com" target="_blank" rel="noopener">官方参考文档</a></p>
+<p>docker三大概念：<code>镜像</code>（Image）、<code>容器</code>（Container）、<code>仓库</code>（Repository）</p>
+<p>docker命令的格式：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker [OPTIONS] subCOMMAND [OPTIONS] [arg...] [CMD] [OPTIONS] [arg...]</span><br></pre></td></tr></table></figure></p>
+<p>如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -ti 192.168.10.1/centos/centos:latest /bin/<span class="built_in">echo</span> -n <span class="string">'hello world'</span></span><br></pre></td></tr></table></figure></p>
+<img src="/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/1.png" title="docker命令的执行图解">
+<hr>
+<h2 id="容器（Container）"><a href="#容器（Container）" class="headerlink" title="容器（Container）"></a>容器（Container）</h2><p>类似于一个轻量级的沙箱，docker利用容器来运行和隔离应用</p>
+<p>基于同一个镜像可以创建多个容器<br>容器是从镜像创建的应用运行实例，所不同的是它带有额外的可写文件系统层。可以将其启动、开始、停止、删除，而这些容器都是相互隔离、互不可见的。</p>
+<p>可以把容器看成一个简易版本的linux系统环境（包括了root用户权限、进程空间、用户空间和网络空间等），以及运行在其中的应用程序<code>打包而成的应用盒子</code></p>
+<p>镜像自身是只读的，容器从镜像启动的时候，docker会在镜像的最上层创建一个可写文件系统层，镜像本身将保持不变。</p>
+<hr>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><table>
+<thead>
+<tr>
+<th>含义</th>
+<th>命令</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>创建容器</td>
+<td><code>docker create -ti ubuntu:latest</code></td>
+<td>新建的容器处于停止状态,如果该镜像CMD有默认值，<br>如：<br>/bin/bash，则会自带/bin/bash与-ti相呼应</td>
+</tr>
+<tr>
+<td>创建并启动容器</td>
+<td><code>docker run ubuntu /bin/echo &#39;hello world&#39;</code></td>
+<td>run也就是集成create和start于一身的命令,<br><code>echo</code>输出命令的执行后容器自动终止<br>需要重点注意：<br>1. 起单个进程的情况，CMD中的命令只要执行完，停止了，容器也就自动停止EXIT了<br>2. 多个服务进程时，将多个服务进程放在一个脚本中，然后,CMD 带这个脚本即可。<br>，只要脚本中的内容（即进程）没有停止，脚本就会一直运行下去<br>不会说脚本执行完了，应该停止了，为什么容器不会自动停止EXIT的情况。<br>即：说白了就是，都以<code>进程</code>为准。没有放在脚本里执行时，<code>进程停--&gt;容器停</code>，放在脚本里执行时，<code>进程停--&gt;脚本停--&gt;容器停</code><br>可以查看后面的“扩展1”分析</td>
+</tr>
+<tr>
+<td>启动一个bash终端，允许用户进行交互</td>
+<td><code>docker run -ti ubuntu /bin/bash</code></td>
+<td>在容器内用ps从查看进程，可以看到，<br>只运行了bash应用，并没有运行其他不需要的进程。<br>用户可以按ctrl+d或输入exit命令来退出容器<br>当使用exit命令退出之后，该容器就自动处于终止状态了。<br>这是因为对于docker容器来说，当运行的应用（如bash）退出后，<br>容器也就没有继续运行的必要了，否则只会浪费系统资源。<br><br>run的标准操作：<br>1.检查本地是否存在指定的镜像，不存在就从公有仓库下载<br>2.利用镜像创建并启动一个容器<br>3.分配一个文件系统，并在只读的镜像层外面挂载一层可读写层<br>4.从宿主主机配置的网桥接口中桥接一个虚拟接口到容器中去<br>5.从地址池配置一个IP地址给容器<br>6.执行用户指定的应用程序<br>7.执行完毕后容器被终止</td>
+</tr>
+<tr>
+<td>以守护进程状态后台运行</td>
+<td>需要让docker容器在后台以守护进程状态（daemonized）形式运行。<br>用户可以通过添加-d参数来实现<br><code>docker run -d ubuntu /bin/bash -c &quot;while true; do echo hello world; sleep 1; done&quot;</code></td>
+<td>容器启动后会返回一个唯一的ID，也可以通过docker ps命令来查看容器信息<br>想查看后台运行进程的信息可以通过<code>docker logs ID</code>或是进入到容器中<code>docker attach</code> 和<code>exec</code>和<code>nsenter</code>来实现</td>
+</tr>
+<tr>
+<td>查看本机上存在的所有容器</td>
+<td><code>docker ps -a</code></td>
+<td></td>
+</tr>
+<tr>
+<td>查看本机上运行中的容器</td>
+<td><code>docker ps</code></td>
+<td></td>
+</tr>
+<tr>
+<td>查看容器ID</td>
+<td>查看所有容器的ID（包括up和exit）<br><code>docker ps -qa</code><br><br>查看运行中的容器的ID（只包括up）<br><code>docker ps -q</code></td>
+<td></td>
+</tr>
+<tr>
+<td>启动容器</td>
+<td><code>docker start ID</code></td>
+<td></td>
+</tr>
+<tr>
+<td>重启容器</td>
+<td><code>docker restart ID</code></td>
+<td></td>
+</tr>
+<tr>
+<td>停止容器</td>
+<td><code>docker stop [-t 或 --time[=10]] ID</code></td>
+<td>它会首先向容器发送SIGTERM信号，等待一段时间后（默认为10秒），<br>再发送SIGKILL信号终止容器<br>另外，当docker容器中指定的应用终结时，容器也会自动终止。</td>
+</tr>
+<tr>
+<td>杀死容器</td>
+<td><code>docker kill ID</code></td>
+<td>docker kill 命令会直接发送SIGKILL信号来强行终止容器</td>
+</tr>
+<tr>
+<td>获取容器的输出信息</td>
+<td><code>docker logs ID</code></td>
+<td></td>
+</tr>
+<tr>
+<td>进入容器</td>
+<td><em>参考下面的单独说明</em></td>
+<td></td>
+</tr>
+<tr>
+<td>删除容器</td>
+<td><code>docker rm [OPTIONS] CONTAINER  [CONTAINER...]</code><br>即：<br><code>docker rm 容器名称或容器ID</code></td>
+<td>删除处于终止状态的容器。<br>支持的选项包括：<br><code>-f,--force=false</code> 强行终止并删除一个运行中的容器,docker会发送SIGKILL信号给容器，终止其中的应用<br><code>-l,--link=false</code>  删除容器的连接，但保留容器<br><code>-v,--volumes=false</code> 删除容器挂载的数据卷</td>
+</tr>
+<tr>
+<td>导出容器<br>（用于容器的迁移）–快照级</td>
+<td><code>docker export 容器名称或ID &gt; filename.tar</code></td>
+<td>导出容器是指导出一个已经创建的容器到一个文件，<br>不管此时这个容器是否处于运行状态，可以使用<code>docker export</code>命令</td>
+</tr>
+<tr>
+<td>导入容器<br>（用于容器的迁移）–快照级</td>
+<td><code>cat filename.tar 或 docker import - luojie/centos6:latest</code><br>（跟以导入方式创建镜像操作相同）</td>
+<td>导出的文件又可以使用docker import 命令导入，成为镜像<br><br>此前曾介绍过使用docker load 命令来导入一个镜像文件<br>实际上，既可以使用docker load命令来导入镜像存储文件到本地的镜像库，<br>也可以使用docker import命令来导入一个容器快照到本地镜像库<br><br>这两者的区别在于容器快照文件将丢弃所有的历史记录<br>和元数据信息（即仅保存容器当时的快照状态），而镜像存储文件将保存完整记录，体积也更大。<br>此外从容器快照文件导入时可以重新指定标签等元数据信息。</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="进入容器"><a href="#进入容器" class="headerlink" title="进入容器"></a>进入容器</h3><p>首先需要清楚的是进入容器只有<code>-ti</code> 后接CMD为<code>/bin/bash</code>这种提供终端的才可以进入容器，<code>没有提供终端的是无法进入容器的</code>。</p>
+<p>在使用<code>-d</code>参数时，容器启动后会进入后台，用户无法看到容器中的信息。</p>
+<p>进入容器操作的方法：</p>
+<h4 id="attach"><a href="#attach" class="headerlink" title="attach"></a>attach</h4><p><code>docker attach ID或容器名称</code>（名称是随机名称）<br>但是使用attach命令有时候并不方便。当多个窗口同时attach到同一个容器时，所有窗口都会同步显示，当某个窗口因命令阻塞时，其他窗口也无法执行操作了。</p>
+<h4 id="exec"><a href="#exec" class="headerlink" title="exec"></a>exec</h4><p><code>docker exec -ti ID或容器名称 /bin/bash</code><br>docker自1.3版本起，提供了一个更加方便的工具exec，可以直接在容器内运行命令，而且如同上面的/bin/bash这个命令，当你执行完成命令后exit退出，也不会导致容器关闭</p>
+<h4 id="nsenter工具（跟进中完整例子）"><a href="#nsenter工具（跟进中完整例子）" class="headerlink" title="nsenter工具（跟进中完整例子）"></a>nsenter工具（<strong>跟进中完整例子</strong>）</h4><p>nsenter工具在util-linux包2.23版本后包含。如果系统中util-linux包没有该命令，可以按照下面的方法从源码安装：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /tmp</span><br><span class="line">curl https://www.kernel.org/pub/linux/utils/util-linux/v2.24/util-linux-2.24.tar.gz|tar -zxf -</span><br><span class="line"><span class="built_in">cd</span> util-linux-2.24</span><br><span class="line">./configure --without-ncurses</span><br><span class="line">make nsenter &amp;&amp; cp nsenter /usr/<span class="built_in">local</span>/bin</span><br></pre></td></tr></table></figure></p>
+<p>为使用nsenter连接到容器，还需要找到容器的进程的PID，可以通过下面的命令获取：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">PID=$(docker inspect --format <span class="string">"&#123;&#123; . State.Pid&#125;"</span> &lt;container&gt;)</span><br></pre></td></tr></table></figure></p>
+<p>通过这个PID，就可以连接到容器：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nsenter --target <span class="variable">$PID</span> --mount --uts --ipc --net --pid</span><br></pre></td></tr></table></figure></p>
+<h4 id="ssh（推荐方式，后续实例篇专门说明）"><a href="#ssh（推荐方式，后续实例篇专门说明）" class="headerlink" title="ssh（推荐方式，后续实例篇专门说明）"></a>ssh（推荐方式，后续实例篇专门说明）</h4><hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Docker exec与Docker attach 的比较<br>不论是开发者还是运维人员，都经常有需要进入容器的诉求。<br>目前看，主要的方法不外乎以下几种：</p>
+<ol>
+<li>使用ssh可以远程或从近程（宿主机）登录进容器</li>
+<li>使用nsenter、nsinit等第三方工具</li>
+<li>使用docker本身提供的工具：attach、exec</li>
+</ol>
+<p>方法1：需要在容器中启动sshd，存在开销和攻击面增大的问题，同时也违反了docker所倡导的一个容器一个进程的原则<br>方法2：需要额外学习使用第三方工具<br>方法3：基于上两种方法的情况，所以大多数情况最好还是使用docker原生方法，docker目前主要提供了dokcer attach和 docker exec 两个命令。</p>
+<ul>
+<li>attach是docker 1.3版本之前所提供的，功能较弱，登录后需要按一下回车，并且所登录的会话是公用的，意思就是说无论你attach多少个会话，显示的内容都是同步的，而且exit退出登录，容器也会停止</li>
+<li><p>exec 是docker 1.3版本之后推出的新一代执行命令方式，推荐有近程登录需求的使用这种方式，它所登录所使用的会话是独立的，而且从容器中退出时，容器不会停止。</p>
+</li>
+<li><p>关于<code>重连容器</code>中<code>attach</code>与<code>exec</code>有很大的不同</p>
+<ul>
+<li>首先，请知道一点的是，容器是可以重连的，并不是说只有带run -ti 后接/bin/bash这种带终端接口的才可以重新连接进入容器内部。</li>
+<li>其次，我们需要知道的是无论是普通应用，如apache，nginx，ssh等等，还是/bin/bash这种虚拟控制台应用，它们在容器里都只是一个普通的应用，都是平等的，归结到底都只是一个<code>进程</code>这个概念很重要。</li>
+</ul>
+</li>
+</ul>
+<p>区别在于：</p>
+<table>
+<thead>
+<tr>
+<th>工具</th>
+<th>可否重连</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>attach</td>
+<td>不可以重连</td>
+</tr>
+<tr>
+<td>exec</td>
+<td>可以重连</td>
+</tr>
+<tr>
+<td>ssh</td>
+<td>可以重连    </td>
+</tr>
+</tbody>
+</table>
+<p>当使用attach时，如果容器里只运行了一个非/bin/bash这种对外提供访问接口的应用进程，这时由于没有可供接入的接口程序，所以attach也就无法进入容器里</p>
+<p>而当使用exec时，exec的作用是在容器里执行命令，也就是说哪怕容器里原本运行着一个非/bin/bash这种应用进程，我们也可以使用exec再在容器里执行一个/bin/bash的命令，这样容器里就会新增<code>加了</code>一个进程，而这个进程如果恰好又是/bin/bash这种对外提供接入的应用进程时，它也就可以实现为我们进入容器内部提供接口，所以说exec也就是实现了重连的需要。这也是为什么当使用exec进入容器时，当我们退出容器，容器依然不会EXIT，这是因为容器原本运行着的应用进程并没有退出，也就不会导致容器EXIT退出了。</p>
+<hr>
+<h2 id="扩展1：关于容器中COMMAND的退出机制的分析"><a href="#扩展1：关于容器中COMMAND的退出机制的分析" class="headerlink" title="扩展1：关于容器中COMMAND的退出机制的分析"></a>扩展1：关于容器中COMMAND的退出机制的分析</h2><h3 id="情况一：直接在CMD后接命令"><a href="#情况一：直接在CMD后接命令" class="headerlink" title="情况一：直接在CMD后接命令"></a>情况一：直接在CMD后接命令</h3><p>命令执行完毕，echo进程退出，随之容器也EXIT退出<br>如:<br><img src="/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/2.png"></p>
+<p>另外如果以<code>docker run -d</code>这种以后台守护进程形式执行，其实它也是有执行过的，我们可以通过<code>logs</code>查看容器日志情况<br>如：<br><img src="/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/3.png"></p>
+<p><strong>说明：单进程情况，只要进程执行完毕退出，容器也会自动退出</strong></p>
+<ul>
+<li>单个进程如果是短暂执行完的，如<code>echo</code>当它执行完，进程退出，容器也退出</li>
+<li>单个进程如果是长期执行的，如<code>httpd</code>当它执行完，进程退出，容器也退出 </li>
+</ul>
+<hr>
+<h3 id="情况二：直接在CMD后接脚本"><a href="#情况二：直接在CMD后接脚本" class="headerlink" title="情况二：直接在CMD后接脚本"></a>情况二：直接在CMD后接脚本</h3><p>由情况一引申出两个问题？</p>
+<ol>
+<li>如何启动多进程？<br>我们CMD只能启动一个进程，而写多个CMD时只认最后一个。<br>解决思路：将多个启动进程写在一个脚本里，然后CMD执行这个shell脚本不就行了</li>
+<li>但是用CMD执行shell脚本，脚本执行完了，退出，不也就导致容器也自动退出了吗？<br>实际情况：脚本执行完后，按理说应该随之也就退出了，但是实际情况在docker中却并不会导致容器退出，这是为什么呢？</li>
+</ol>
+<p>针对于shell脚本执行完了为什么容器不退出，两个猜想：</p>
+<p><strong>猜想一</strong>：是否只要是写在脚本中，脚本执行完退出，不会导致容器退出？<br>我们上面情况一时是直接在CMD处写命令的，所以这没什么可疑惑的，进程执行完，进程退出，容器退出。现在摆在我们面前的是shell脚本按理说也是用CMD处执行的，为什么脚本就有特例，脚本完了，容器可以不退出。</p>
+<p>于是连想到是不是docker内部定义了，COMMAND处是循环执行的？只要是脚本执行的都不会导致容器退出？为了验证这个，我们将原来的<code>echo</code>直接写在脚本中，然后启动。<br>脚本内容：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@nginx-01-node build_centos_apache]<span class="comment"># cat test_echo.sh</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'hello,luojie'</span></span><br></pre></td></tr></table></figure></p>
+<p>Dockerfile内容：<br><img src="/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/4.png"></p>
+<p>构建镜像用于测试并启动<br><img src="/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/5.png"></p>
+<p>查看日志：<br><img src="/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/6.png"></p>
+<p>结果告诉我们：</p>
+<ol>
+<li>从logs中可以看到，只echo出了一个，所以COMMAND处不是循环执行的</li>
+<li>从容器状态EXITed可以看出，并不是说只要是脚本，容器就不会退出，因此docker对任何进程都是一视同仁的，并没有说脚本就区别对待</li>
+</ol>
+<p><strong>猜想二</strong>：基于猜想一的结果，COMMAND不是循环的，也并不是只要是脚本，容器就不会退出，那为什么我们还可以将我们需要启动的多个进程放在一个脚本中执行呢？这不应该啊，为什么它不会退出，于是引申出第二个猜想，是否只要脚本内容中启动的进程没有退出，脚本就不会退出，从而容器也就不会退出呢？</p>
+<p>为了验证这一点，我们启动两个进程，一个是有限制时间运行的短暂echo ，另一个是长时间运行的httpd</p>
+<p>短暂运行的echo 为间隔1秒，返回10 个输出，另一个Dockerfile中原本就有定义<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> `seq 10`</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">  sleep 1</span><br><span class="line">  <span class="built_in">echo</span> <span class="string">'hello,luojie'</span></span><br><span class="line"><span class="keyword">done</span></span><br></pre></td></tr></table></figure></p>
+<p>将这个脚本放在构建目录里，通过Dockerfile重新构建出一个新镜像用于执行这个脚本<br>Dockerfile文件内容：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">FROM centos6</span><br><span class="line">MAINTAINER luojie</span><br><span class="line">RUN yum install httpd -y</span><br><span class="line">RUN yum install openssh-server -y</span><br><span class="line">RUN sed -i <span class="string">'s/#ServerName www.example.com:80/ServerName www.example.com:80/g'</span> /etc/httpd/conf/httpd.conf</span><br><span class="line">COPY test.sh /test.sh   <span class="comment">#重点在这里，加入了test.sh ，用于手动输入CMD处时替换httpd使用</span></span><br><span class="line">EXPOSE 80 </span><br><span class="line">CMD /usr/sbin/httpd -D FOREGROUND</span><br></pre></td></tr></table></figure></p>
+<p>开始构建：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t <span class="built_in">test</span>:1.0 .</span><br></pre></td></tr></table></figure></p>
+<p>基于新镜像<code>test:1.0</code>启动容器，在CMD处手动接我们需要的执行脚本命令，替换原Dockerfile中CMD指定的apache启动命令<br><img src="/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/7.png"></p>
+<p>可以看到test.sh脚本目前处于运行状态，容器也处于<code>UP</code>状态，我们稍等10秒（因为脚本中设置了循环10次），再看容器状态，发现容器已经自动退出了<br><img src="/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/8.png"></p>
+<p>查看执行logs，输出了10次，也就是说当脚本中的echo进程只要还处于运行输出状态，脚本也就没有退出，从而容器也没有退出，当输出10次完了，脚本退了，容器也就自动退出了。<br><img src="/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/9.png"></p>
+<p>那是短期的程序测试，我们再看看httpd这个长时间运行的情况，同样容器也是<code>UP</code>不会退出<br><img src="/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/10.png"></p>
+<p><strong>说明</strong></p>
+<ol>
+<li>可以看到无论是短期的，还是长期的，<strong>只要脚本内进程没有退出，脚本也就不会退出，从而容器也就不会退出的结论</strong></li>
+<li>执行脚本中可以有单个进程，也可以有多个启动进程，因此，当你有多个服务进程需要启动时，建议将其放在同一个脚本中，然后CMD 后接脚本的方式来实现</li>
+</ol>
+<hr>
+<h2 id="扩展2：关于COMMAND的说明"><a href="#扩展2：关于COMMAND的说明" class="headerlink" title="扩展2：关于COMMAND的说明"></a>扩展2：关于COMMAND的说明</h2><p>我们查看容器时可以看到COMMAND</p>
+<ol>
+<li><p>当手动写CMD命令时，你写的是什么COMMAND处显示的就是什么</p>
+<img src="/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/11.png">
+</li>
+<li><p>当你是使用Dockerfile中写的CMD关键字写的命令时，它会在COMMAND处显示成这样</p>
+<img src="/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/12.png">
+</li>
+</ol>
+<p>会发现它会在你写的命令前面加下<code>/bin/sh -c</code>后接你的命令，其实这也就说明了Dockerfile中写的<code>CMD</code>和<code>ENTRYPOINT</code>后接的命令，它们会根据它所允许使用的定义格式，用相对应的解析程序进行执行。<br>即：<br><code>CMD command param1 param2</code>  对应的前面会加<code>/bin/sh -c</code> 来解析执行后面的命令<br><code>CMD [ &quot;execute&quot;,&quot;param1&quot;,&quot;param2&quot; ]</code> 对应的前面加<code>exec</code> 来解析执行后面的命令</p>
+<p>所以通过<code>docker ps -a</code>查看到COMMAND处显示内容，就可以知道Dockerfile它真正底层运行的命令是什么</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/15/技术/docker/docker-1-基础篇-2-docker三大概念之-镜像/" rel="next" title="docker-1.基础篇-2.docker三大概念之-镜像">
+                <i class="fa fa-chevron-left"></i> docker-1.基础篇-2.docker三大概念之-镜像
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/15/技术/docker/docker-1-基础篇-4-docker三大概念之-仓库/" rel="prev" title="docker-1.基础篇-4.docker三大概念之-仓库">
+                docker-1.基础篇-4.docker三大概念之-仓库 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/"
+           data-title="docker-1.基础篇-3.docker三大概念之-容器" data-url="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/teaser.png"
+               alt="luojieio" />
+          <p class="site-author-name" itemprop="name">luojieio</p>
+           
+              <p class="site-description motion-element" itemprop="description">热爱开源、热爱自由</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/luojieio" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/alex3714/category/770733.html" title="金角大王" target="_blank">金角大王</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.runoob.com/" title="菜鸟教程" target="_blank">菜鸟教程</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://python.jobbole.com/" title="伯乐在线" target="_blank">伯乐在线</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://docs.docker.com/" title="Docker" target="_blank">Docker</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://hexo.io/zh-cn/" title="Hexo" target="_blank">Hexo</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://theme-next.iissnan.com/" title="NexT" target="_blank">NexT</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://fontawesome.io" title="Font Awesome" target="_blank">Font Awesome</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://duoshuo.com/" title="多说" target="_blank">多说</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#容器（Container）"><span class="nav-number">1.</span> <span class="nav-text">容器（Container）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令"><span class="nav-number">2.</span> <span class="nav-text">命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#进入容器"><span class="nav-number">2.1.</span> <span class="nav-text">进入容器</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#attach"><span class="nav-number">2.1.1.</span> <span class="nav-text">attach</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#exec"><span class="nav-number">2.1.2.</span> <span class="nav-text">exec</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nsenter工具（跟进中完整例子）"><span class="nav-number">2.1.3.</span> <span class="nav-text">nsenter工具（跟进中完整例子）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ssh（推荐方式，后续实例篇专门说明）"><span class="nav-number">2.1.4.</span> <span class="nav-text">ssh（推荐方式，后续实例篇专门说明）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展1：关于容器中COMMAND的退出机制的分析"><span class="nav-number">4.</span> <span class="nav-text">扩展1：关于容器中COMMAND的退出机制的分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#情况一：直接在CMD后接命令"><span class="nav-number">4.1.</span> <span class="nav-text">情况一：直接在CMD后接命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#情况二：直接在CMD后接脚本"><span class="nav-number">4.2.</span> <span class="nav-text">情况二：直接在CMD后接脚本</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#扩展2：关于COMMAND的说明"><span class="nav-number">5.</span> <span class="nav-text">扩展2：关于COMMAND的说明</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">luojieio</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"luojieio-note"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

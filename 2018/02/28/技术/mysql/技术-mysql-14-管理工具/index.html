@@ -1,0 +1,969 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="技术-mysql-14.管理工具">
+<meta property="og:url" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-14-管理工具/index.html">
+<meta property="og:site_name" content="luojieio">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-14-管理工具/mysql.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-14-管理工具/1.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-14-管理工具/2.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-14-管理工具/3.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-14-管理工具/4.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-14-管理工具/5.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-14-管理工具/6.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-14-管理工具/7.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-14-管理工具/8.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-14-管理工具/9.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-14-管理工具/10.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-14-管理工具/11.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-14-管理工具/12.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-14-管理工具/13.png">
+<meta property="og:updated_time" content="2018-03-02T09:50:08.547Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="技术-mysql-14.管理工具">
+<meta name="twitter:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-14-管理工具/mysql.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-14-管理工具/"/>
+
+
+
+
+
+  <title> 技术-mysql-14.管理工具 | luojieio </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">luojieio</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">热爱开源、热爱自由</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-14-管理工具/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="luojieio">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/teaser.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="luojieio">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                技术-mysql-14.管理工具
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-28T20:49:01+08:00">
+                2018-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/02/28/技术/mysql/技术-mysql-14-管理工具/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/02/28/技术/mysql/技术-mysql-14-管理工具/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <img src="/2018/02/28/技术/mysql/技术-mysql-14-管理工具/mysql.png">
+<p><br><br><a id="more"></a></p>
+<hr>
+<p>MySQL 有许多图形化的管理工具，我们在此介绍二个官方的工具「<code>MySQL Administrator</code>」及「<code>MySQL Query Browser</code>」和额外提个网页版管理工具<code>phpMyadmin</code></p>
+<ul>
+<li>MySQL Administrator：mysql 5.5版本及之前，是用来管理 MySQL Server 用的，您可以查看目前系统状态、新增使用者等。</li>
+<li>MySQL Query Browser：mysql 5.5 版本及之前，可以用来查看数据库内容。</li>
+<li>phpMyadmin：用于管理mysql的网页版工具</li>
+<li>MySQL Workbench：mysql 5.6版本后，提供DBAs和developers一个集成工具环境，可用于数据库设计和建模，SQL开发（取代原来的MySQL Query Browser），数据库管理（取代原来的MySQL Administrator）</li>
+<li>MySQLDumper</li>
+<li>Navicat</li>
+</ul>
+<p>我们通过工具管理mysql数据库服务器时，可以从本地连接进行管理，也可以从远程连接进行管理。不过从远程连接进行管理时，必须先设置具有远程连接权限的用户。<br>如：<br>赋予root用户可以从192.168.0.2远程连接mysql数据库，且设置密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRANT ALL on *.* to &apos;root&apos;@&apos;192.168.0.2&apos; IDENTIFIED BY &apos;mypasswd&apos;;</span><br></pre></td></tr></table></figure>
+<p>刷新系统权限表</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="1-MySQL-Administrator"><a href="#1-MySQL-Administrator" class="headerlink" title="1.MySQL Administrator"></a>1.MySQL Administrator</h3><p>先到 MySQL 网站下载 MySQL Administrator，并执行安装，安装后请执行 MySQL Administrator。执行后，您会看到下列画面：<br><img src="/2018/02/28/技术/mysql/技术-mysql-14-管理工具/1.png"></p>
+<p>请在 Server Host 字段中输入 MySQL Server 的 IP，并输入使用者名称及密码。登入后的第一页，您可以看到目前 MySQL 的状态。如果您的 Server 和 MySQL Administrator 是在同一台机器上，则可以对 MySQL 进行更多的控制，例如停用 MySQL 等。</p>
+<p>MySQL Administrator 的管理界面使用上很容易，您可以自已点点看有什么功能，这里我们只介绍如何使用它来新增使用者。首先，请在右边选单中选取「User Administration」，接着在下图标示 2 的地方按鼠标右键，然后选择「Add new User」。<br><img src="/2018/02/28/技术/mysql/技术-mysql-14-管理工具/2.png"></p>
+<p>然后您就可以在 MySQL User 字段中输入使用者名称，并输入密码。输入完后请按「Apply changes」以套用设定。</p>
+<p>接下来我们可以再进一步设定使用者 john 设定权限。假设我们希望设使用者 john 只可以对数据库 www 进行 SELECT、INSERT、UPDATE、及 DELETE 的指令，则可以点选「Schema Privileges」标签，并选取好权限后，按下图 3 的按钮以新增权限。最后请点选「Apply changes」以套用设定。<br><img src="/2018/02/28/技术/mysql/技术-mysql-14-管理工具/3.png"></p>
+<p>最后，我们要设定使用者可以从什么地方联机到 MySQL Server，请对着该使用者按右键，并选择「Add Host From Which The User Can Connect」，接着输入 IP 即可。<br><img src="/2018/02/28/技术/mysql/技术-mysql-14-管理工具/4.png"></p>
+<p>如果您要删除使用者，只要对着使用者按右键，并选取「Delete User」即可。</p>
+<hr>
+<h3 id="2-MySQL-Query-Browser"><a href="#2-MySQL-Query-Browser" class="headerlink" title="2.MySQL Query Browser"></a>2.MySQL Query Browser</h3><p>MySQL Query Browser 一样可以从 MySQL 官方网站下载。下载并安装后，就可以执行 MySQL Query Browser 了。执行 Query Browser 后，会出现一个要求登入的窗口，同样的，您必须输入账号、密码及所要联机的主机。</p>
+<p>如果您已经安装了 MySQL Administrator，您可以直接从 MySQL Administrator 中执行 Query Browser，而且不必再输入账号密码：<br><img src="/2018/02/28/技术/mysql/技术-mysql-14-管理工具/5.png"></p>
+<p>在 MySQL Query Browser 中，我们可以建立删除数据库、数据表、查询数据库中的数据。如果您要建立一个新的数据库，请对着下图中 1 的位置按鼠标右键，再点选「Create New Schema」，最后输入数据库名称即可<br><img src="/2018/02/28/技术/mysql/技术-mysql-14-管理工具/6.png"></p>
+<p>建立了数据库后，我们可以再建资料表。请对着我们刚建立的数据库按鼠标右键，再点选「Create New Table」即出现下列窗口：<br><img src="/2018/02/28/技术/mysql/技术-mysql-14-管理工具/7.png"></p>
+<p>请在「Table Name」中输入表格名称，并在上图 2 的部份输入每一个字段的类别，最后按「Apply Changes」即可。建立数据库后，您就可以在 Query Browser 中输入、检视数据库中的数据。只要对着刚才建立的表格点二下，并点选「Execute」即可查看数据库中的数据。如果您要新增一笔数据，请点选下图中 3 的位置，并选择「Edit」即可进行编辑。<br><img src="/2018/02/28/技术/mysql/技术-mysql-14-管理工具/8.png"></p>
+<hr>
+<h3 id="3-phpMyAdmin"><a href="#3-phpMyAdmin" class="headerlink" title="3.phpMyAdmin"></a>3.phpMyAdmin</h3><p>如果您想要使用网页接口的 MySQL 管理工具，您可以到 <a href="http://www.phpmyadmin.net/" target="_blank" rel="noopener">http://www.phpmyadmin.net/</a> 下载 phpMyAdmin。phpMyAdmin 的设定十分简单，您可以在网络上搜寻到很多相关文件<br>下载：<a href="http://www.phpmyadmin.net/" target="_blank" rel="noopener">http://www.phpmyadmin.net/</a><br><img src="/2018/02/28/技术/mysql/技术-mysql-14-管理工具/9.png"></p>
+<hr>
+<h3 id="4-MySQL-Workbench（推荐）"><a href="#4-MySQL-Workbench（推荐）" class="headerlink" title="4.MySQL Workbench（推荐）"></a>4.MySQL Workbench（推荐）</h3><p>1.下载：<a href="http://www.mysql.com/downloads/workbench/" target="_blank" rel="noopener">http://www.mysql.com/downloads/workbench/</a><br>2.安装<br><img src="/2018/02/28/技术/mysql/技术-mysql-14-管理工具/10.png"><br>3.入门数据库实例 （sakila-db）<br>下载：<a href="http://mysql-tools.com/en/downloads/mysql-databases/4-sakila-db.html" target="_blank" rel="noopener">http://mysql-tools.com/en/downloads/mysql-databases/4-sakila-db.html</a><br><img src="/2018/02/28/技术/mysql/技术-mysql-14-管理工具/11.png"></p>
+<hr>
+<h3 id="5-MySQLDumper"><a href="#5-MySQLDumper" class="headerlink" title="5.MySQLDumper"></a>5.MySQLDumper</h3><p>下载：<a href="http://www.mysqldumper.de/en/" target="_blank" rel="noopener">http://www.mysqldumper.de/en/</a></p>
+<p>MySQLDumper使用PHP开发的MySQL数据库备份恢复程序，解决了使用PHP进行大数据库备份和恢复的问题，数百兆的数据库都可以方便的备份恢复，不用担心网速太慢导致中间中断的问题，非常方便易用。这个软件是德国人开发的，还没有中文语言包。<br><img src="/2018/02/28/技术/mysql/技术-mysql-14-管理工具/12.png"></p>
+<hr>
+<h3 id="6-Navicat（推荐）"><a href="#6-Navicat（推荐）" class="headerlink" title="6.Navicat（推荐）"></a>6.Navicat（推荐）</h3><p>下载：<a href="http://www.navicat.com/" target="_blank" rel="noopener">http://www.navicat.com/</a></p>
+<p>Navicat是一个桌面版MySQL数据库管理和开发工具。和微软SQLServer的管理器很像，易学易用。Navicat使用图形化的用户界面，可以让用户使用和管理更为轻松。支持中文，有免费版本提供。<br><img src="/2018/02/28/技术/mysql/技术-mysql-14-管理工具/13.png"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/28/技术/mysql/技术-mysql-13-集群（负载均衡与高可用）/" rel="next" title="技术-mysql-13.集群（负载均衡与高可用）">
+                <i class="fa fa-chevron-left"></i> 技术-mysql-13.集群（负载均衡与高可用）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/28/技术/nginx/技术-nginx-1-说明/" rel="prev" title="技术-nginx-1.说明">
+                技术-nginx-1.说明 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/02/28/技术/mysql/技术-mysql-14-管理工具/"
+           data-title="技术-mysql-14.管理工具" data-url="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-14-管理工具/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/teaser.png"
+               alt="luojieio" />
+          <p class="site-author-name" itemprop="name">luojieio</p>
+           
+              <p class="site-description motion-element" itemprop="description">热爱开源、热爱自由</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/luojieio" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/alex3714/category/770733.html" title="金角大王" target="_blank">金角大王</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.runoob.com/" title="菜鸟教程" target="_blank">菜鸟教程</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://python.jobbole.com/" title="伯乐在线" target="_blank">伯乐在线</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://docs.docker.com/" title="Docker" target="_blank">Docker</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://hexo.io/zh-cn/" title="Hexo" target="_blank">Hexo</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://theme-next.iissnan.com/" title="NexT" target="_blank">NexT</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://fontawesome.io" title="Font Awesome" target="_blank">Font Awesome</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://duoshuo.com/" title="多说" target="_blank">多说</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-MySQL-Administrator"><span class="nav-number">1.</span> <span class="nav-text">1.MySQL Administrator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-MySQL-Query-Browser"><span class="nav-number">2.</span> <span class="nav-text">2.MySQL Query Browser</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-phpMyAdmin"><span class="nav-number">3.</span> <span class="nav-text">3.phpMyAdmin</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-MySQL-Workbench（推荐）"><span class="nav-number">4.</span> <span class="nav-text">4.MySQL Workbench（推荐）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-MySQLDumper"><span class="nav-number">5.</span> <span class="nav-text">5.MySQLDumper</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Navicat（推荐）"><span class="nav-number">6.</span> <span class="nav-text">6.Navicat（推荐）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">luojieio</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"luojieio-note"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

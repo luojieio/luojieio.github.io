@@ -1,0 +1,1000 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker-2.实战篇-2.apache镜像">
+<meta property="og:url" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/index.html">
+<meta property="og:site_name" content="luojieio">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/0.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/1.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/2.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/3.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/4.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/5.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/6.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/7.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/8.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/9.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/10.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/11.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/12.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/13.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/14.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/15.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/16.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/17.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/18.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/19.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/20.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/21.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/22.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/23.png">
+<meta property="og:updated_time" content="2018-03-14T03:08:49.289Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="docker-2.实战篇-2.apache镜像">
+<meta name="twitter:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/0.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/"/>
+
+
+
+
+
+  <title> docker-2.实战篇-2.apache镜像 | luojieio </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">luojieio</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">热爱开源、热爱自由</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="luojieio">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/teaser.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="luojieio">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                docker-2.实战篇-2.apache镜像
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-15T16:30:42+08:00">
+                2017-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <img src="/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/0.png">
+<p><br><br><a id="more"></a></p>
+<blockquote>
+<p>基于docker 1.12版本</p>
+</blockquote>
+<p><a href="https://docs.docker.com" target="_blank" rel="noopener">官方参考文档</a></p>
+<p>web服务（web service）和web应用（web app）是目前互联网领域的热门技术</p>
+<p>docker来运行：</p>
+<ul>
+<li>常用web服务，包括：Apache、Nginx、Tomcat、Weblogic</li>
+<li>常用web应用，包括：LAMP、CMS</li>
+</ul>
+<p>Apache是目前世界上使用排名第一的Web服务器软件，由于其良好的跨平台、安全性、模块化，Apache被广泛用在多种平台和操作系统上。Apache（阿帕奇）的名字源自美国的西南部一个印第安人部落：阿帕奇族</p>
+<hr>
+<p>构建带有Apache服务的docker镜像，请记住，任何docker中的服务程序都要放在<code>前台运行</code>。</p>
+<p><code>docker中运行的程序放在前台运行，这是因为docker本身就是放在后台运行的，当docker内的程序也放在后台运行时，投射到linux底层时就进程就会变成如:httpd&amp;&amp;，这种形式，导致linux无法识别，从而EXIT退出，所以这也就是为什么httpd -D FOREGROUND 来启动apache的原因，为的就是将apache的进程在容器中放在前台来运行，通过docker的封装，放到了linux的后台，从而进程就变成了httpd &amp;这种可被linux识别的形式，从而httpd进程才能成功运行起来</code></p>
+<h2 id="基于ubuntu-16-04-构建"><a href="#基于ubuntu-16-04-构建" class="headerlink" title="基于ubuntu 16.04 构建"></a>基于ubuntu 16.04 构建</h2><h3 id="方式一：commit方式构建"><a href="#方式一：commit方式构建" class="headerlink" title="方式一：commit方式构建"></a>方式一：commit方式构建</h3><p>步骤：<br>1.创建并启动基于父镜像的容器<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/1.png"></p>
+<p>2.安装apache，默认情况下ubuntu的软件源中是不包括apache安装包的，所以需要先更新软件源<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/2.png"></p>
+<p>3.更新好apt-get源后，开始安装apache<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/3.png"></p>
+<p>4.安装好后，看看启动程序在哪，再尝试启动一下，发现报了一大堆的缺少变量的错，这些环境变量我们可以在启动容器的时通过<code>-e</code>另外指定。因为在容器里指定，当你<code>commit</code>成镜像，进行<code>run</code>时，这些环境变量会重新读取，导致这些变量依然无效。<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/4.png"></p>
+<p>当然如果你只想在当前容器进行测试一下apache是否安装成功，测试是否可以正常启动，可以执行一下，来重新生成一次环境变量<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> /etc/apache2/envvars</span><br></pre></td></tr></table></figure></p>
+<p>5.再尝试启动一下，又报错误了，会提示说缺少指定的运行目录，所以我们根据错误信息创建好目录<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /var/lock/apache2</span><br><span class="line">mkdir -p /var/run/apache2</span><br></pre></td></tr></table></figure></p>
+<p>6.如果启动还报<code>ServerName</code>的问题，这个可以写在<code>/etc/apache2/apache2.conf</code>配置文件中，也可以在<code>run</code>时，通过<code>-e</code>另外指定变量</p>
+<p>7.这些都处理好后，接下来，我们创建一个测试用的页面<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">'this is ubuntu apache web container'</span> &gt; /var/www/html/index.html</span><br></pre></td></tr></table></figure></p>
+<p>8.启动apache，进程已经有了<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/5.png"></p>
+<p>9.在容器内测试一下，如果没有curl，安装一下curl，页面测试成功<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/6.png"></p>
+<p>10.接下来，可以exit退出容器，开始commit提交构建镜像了<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/7.png"></p>
+<p>11.基于新构建的镜像，创建容器并运行，特别需要注意的就是，启动时需要使用<code>-e</code>来专门指定环境变量<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 8080:80 -e <span class="string">"APACHE_RUN_USER=www-data"</span> -e <span class="string">"APACHE_RUN_GROUP=www-data"</span> -e <span class="string">"APACHE_LOG_DIR=/var/log/apache2"</span> -e <span class="string">"APACHE_PID_FILE=/var/run/apache2.pid"</span> -e <span class="string">"APACHE_RUN_DIR=/var/run/apache2"</span> -e <span class="string">"APACHE_LOCK_DIR=/var/lock/apache2"</span> -e <span class="string">"APACHE_SERVERADMIN=admin@localhost"</span> -e <span class="string">"APACHE_SERVERNAME=localhost"</span> -e <span class="string">"APACHE_SERVERALIAS=docker.localhost"</span> -e <span class="string">"APACHE_DOCUMENTROOT=/var/www"</span> ubuntu1604_apache_commit:1.0 /usr/sbin/apache2 -D FOREGROUND</span><br></pre></td></tr></table></figure></p>
+<p>12.查看容器情况，端口已成功映射，curl测试成功<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/8.png"></p>
+<hr>
+<h3 id="方式二：Dockerfile方式构建"><a href="#方式二：Dockerfile方式构建" class="headerlink" title="方式二：Dockerfile方式构建"></a>方式二：Dockerfile方式构建</h3><p>步骤：<br>1.首先，创建一个用于构建Apache服务镜像的构建工作目录<code>build_ubuntu_apache</code>，方便将所有涉及的文件归置好，便于管理与调用。并在其中创建<code>Dockerfile</code>文件。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#设置基于的父镜像</span></span><br><span class="line">FROM ubuntu1604</span><br><span class="line"><span class="comment">#维护者</span></span><br><span class="line">MAINTAINER luojie</span><br><span class="line"></span><br><span class="line"><span class="comment">#开始安装apache</span></span><br><span class="line">RUN apt-get update</span><br><span class="line">RUN apt-get install apache2 -y</span><br><span class="line"></span><br><span class="line"><span class="comment">#创建apache服务运行涉及目录</span></span><br><span class="line">RUN mkdir -p /var/lock/apache2</span><br><span class="line">RUN mkdir -p /var/run/apache2</span><br><span class="line"></span><br><span class="line"><span class="comment">#设置apache相关的一些变量，在容器启动run的时候可以使用-e参数替代</span></span><br><span class="line">ENV APACHE_RUN_USER www-data</span><br><span class="line">ENV APACHE_RUN_GROUP www-data</span><br><span class="line">ENV APACHE_LOG_DIR /var/<span class="built_in">log</span>/apache2</span><br><span class="line">ENV APACHE_PID_FILE /var/run/apache2.pid</span><br><span class="line">ENV APACHE_RUN_DIR /var/run/apache2</span><br><span class="line">ENV APACHE_LOCK_DIR /var/lock/apache2</span><br><span class="line">ENV APACHE_SERVERADMIN admin@localhost</span><br><span class="line">ENV APACHE_SERVERNAME localhost</span><br><span class="line">ENV APACHE_SERVERALIAS docker.localhost</span><br><span class="line">ENV APACHE_DOCUMENTROOT /var/www</span><br><span class="line"></span><br><span class="line"><span class="comment">#添加一个示例页面</span></span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">'this is ubuntu apache web container'</span> &gt; /var/www/html/index.html </span><br><span class="line"></span><br><span class="line"><span class="comment">#开放对外端口</span></span><br><span class="line">EXPOSE 80</span><br><span class="line"></span><br><span class="line"><span class="comment">#容器启动时运行</span></span><br><span class="line">CMD /usr/sbin/apache2 -D FOREGROUND</span><br></pre></td></tr></table></figure></p>
+<p>2.在构建目录中，基于Dockerfile构建出新镜像<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> build_ubuntu_apache</span><br><span class="line">docker build -t ubuntu_apache_file:1.0 .</span><br></pre></td></tr></table></figure></p>
+<p>3.构建完成后，查看新构建完成的镜像<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure></p>
+<p>4.基于新构建的镜像创建容器<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -p 8080:80 ubuntu_apache_file:1.0</span><br></pre></td></tr></table></figure></p>
+<p>5.查看容器端口映射情况<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -l</span><br></pre></td></tr></table></figure></p>
+<p>6.宿主机测试<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl 127.0.0.1:8080</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="基于centos-6-构建"><a href="#基于centos-6-构建" class="headerlink" title="基于centos 6 构建"></a>基于centos 6 构建</h2><h3 id="方式一：commit方式构建-1"><a href="#方式一：commit方式构建-1" class="headerlink" title="方式一：commit方式构建"></a>方式一：commit方式构建</h3><p>1.启动一父镜像<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/9.png"></p>
+<p>2.基于此父镜像安装apache（即httpd）<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/10.png"></p>
+<p>3.在容器内测试httpd是否可以正常启动，报了一点小错<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/11.png"></p>
+<p>4.到httpd的配置文件中改一下<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/12.png"></p>
+<p>在配置文件中查找<code>ServerName</code><br><img src="/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/13.png"></p>
+<p>找到后把前面的<code>#</code>注释去掉，保存即可</p>
+<p>5.再来启动一下看看，没有报错了，进程正常启动了<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/14.png"></p>
+<p>再看看侦听端口<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/15.png"></p>
+<p>6.容器中apache的配置项完成，exit退出容器</p>
+<p>7.开始commit提交容器为镜像并查看构建出的新镜像<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/16.png"></p>
+<p>8.基于新构建的镜像创建容器运行，并挂载一个本地的页面到/var/www/html上测试<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/17.png"></p>
+<p>9.宿主机上测试<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/18.png"></p>
+<hr>
+<h3 id="方式二：Dockerfile方式构建-1"><a href="#方式二：Dockerfile方式构建-1" class="headerlink" title="方式二：Dockerfile方式构建"></a>方式二：Dockerfile方式构建</h3><p>1.创建用于构建的工作目录<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/19.png"></p>
+<p>2.在工作目录中创建Dockerfile构建文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#基于的父镜像</span></span><br><span class="line">FROM centos6</span><br><span class="line"><span class="comment">#维护者</span></span><br><span class="line">MAINTAINER luojie</span><br><span class="line"><span class="comment">#运行命令安装httpd</span></span><br><span class="line">RUN yum install httpd -y</span><br><span class="line"><span class="comment">#修改apache配置文件</span></span><br><span class="line">RUN sed -i <span class="string">'s/#ServerName www.example.com:80/ServerName www.example.com:80/g'</span> /etc/httpd/conf/httpd.conf</span><br><span class="line"><span class="comment">#容器对外开放端口</span></span><br><span class="line">EXPOSE 80 </span><br><span class="line"><span class="comment">#容器启动时运行命令，只能以这种方式运行，不可以使用service的方式运行</span></span><br><span class="line">CMD /usr/sbin/httpd -D FOREGROUND</span><br></pre></td></tr></table></figure></p>
+<p>3.在此构建工作目录中开始构建<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t centos6_apache_file:1.0 .</span><br></pre></td></tr></table></figure></p>
+<p>4.构建成功，查看生成的镜像文件<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/20.png"></p>
+<p>5.基于新构建的镜像创建容器，<code>-P</code>以本地宿主机上的随机端口映射到容器中的80端口，并且为了方便后续测试挂载一个本地数据卷到容器的/var/www/html中作为主页</p>
+<p>注意：使用Dockerfile构建镜像因为已有EXPOSE和CMD，所以可以使用<code>-P</code>，后面也可以不接CMD，直接使用默认的Dockerfile中的CMD，而如果是使用commit方式构建的，必须使用<code>-p</code>指定特定遇到到容器80端口的本地宿主机端口，和需要手动填写CMD启动命令</p>
+<p>在构建目录中创建一个测试主页index.html<br>内容如下：<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/21.png"></p>
+<p>启动容器：<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/22.png"></p>
+<p>6.宿主机测试成功<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/23.png"></p>
+<hr>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>apache的启动后面带的<code>-D</code>是指定用于Apache使用的参数，而不是daemon的意思，Apache默认启动就是后台运行的，这一点不能混淆，另外，<code>-D FOREGROUND</code> 是必须同时有的，指传入<code>FOREGROUND</code>参数到Apache进程，即前端运行 </p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/" rel="next" title="docker-2.实战篇-1.ssh镜像">
+                <i class="fa fa-chevron-left"></i> docker-2.实战篇-1.ssh镜像
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/28/技术/python/python3-基础篇-1-概念/" rel="prev" title="python3-基础篇-1.概念">
+                python3-基础篇-1.概念 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/"
+           data-title="docker-2.实战篇-2.apache镜像" data-url="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/teaser.png"
+               alt="luojieio" />
+          <p class="site-author-name" itemprop="name">luojieio</p>
+           
+              <p class="site-description motion-element" itemprop="description">热爱开源、热爱自由</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/luojieio" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/alex3714/category/770733.html" title="金角大王" target="_blank">金角大王</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.runoob.com/" title="菜鸟教程" target="_blank">菜鸟教程</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://python.jobbole.com/" title="伯乐在线" target="_blank">伯乐在线</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://docs.docker.com/" title="Docker" target="_blank">Docker</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://hexo.io/zh-cn/" title="Hexo" target="_blank">Hexo</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://theme-next.iissnan.com/" title="NexT" target="_blank">NexT</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://fontawesome.io" title="Font Awesome" target="_blank">Font Awesome</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://duoshuo.com/" title="多说" target="_blank">多说</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#基于ubuntu-16-04-构建"><span class="nav-number">1.</span> <span class="nav-text">基于ubuntu 16.04 构建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方式一：commit方式构建"><span class="nav-number">1.1.</span> <span class="nav-text">方式一：commit方式构建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方式二：Dockerfile方式构建"><span class="nav-number">1.2.</span> <span class="nav-text">方式二：Dockerfile方式构建</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基于centos-6-构建"><span class="nav-number">2.</span> <span class="nav-text">基于centos 6 构建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方式一：commit方式构建-1"><span class="nav-number">2.1.</span> <span class="nav-text">方式一：commit方式构建</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方式二：Dockerfile方式构建-1"><span class="nav-number">2.2.</span> <span class="nav-text">方式二：Dockerfile方式构建</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">luojieio</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"luojieio-note"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

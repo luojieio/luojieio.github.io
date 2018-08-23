@@ -1,0 +1,1025 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="python3-基础篇-11.问题集">
+<meta property="og:url" content="https://luojieio.github.io/2017/08/30/技术/python/python3-基础篇-11-问题集/index.html">
+<meta property="og:site_name" content="luojieio">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://luojieio.github.io/2017/08/30/技术/python/python3-基础篇-11-问题集/0.png">
+<meta property="og:updated_time" content="2018-03-14T03:17:30.569Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python3-基础篇-11.问题集">
+<meta name="twitter:image" content="https://luojieio.github.io/2017/08/30/技术/python/python3-基础篇-11-问题集/0.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://luojieio.github.io/2017/08/30/技术/python/python3-基础篇-11-问题集/"/>
+
+
+
+
+
+  <title> python3-基础篇-11.问题集 | luojieio </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">luojieio</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">热爱开源、热爱自由</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://luojieio.github.io/2017/08/30/技术/python/python3-基础篇-11-问题集/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="luojieio">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/teaser.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="luojieio">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                python3-基础篇-11.问题集
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-30T17:53:17+08:00">
+                2017-08-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/python3/" itemprop="url" rel="index">
+                    <span itemprop="name">python3</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/30/技术/python/python3-基础篇-11-问题集/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/08/30/技术/python/python3-基础篇-11-问题集/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <img src="/2017/08/30/技术/python/python3-基础篇-11-问题集/0.png">
+<p><br><br><a id="more"></a></p>
+<h3 id="1-usr-bin-env-python与-usr-bin-python的区别？"><a href="#1-usr-bin-env-python与-usr-bin-python的区别？" class="headerlink" title="1.#!/usr/bin/env python与#!/usr/bin/python的区别？"></a>1.<code>#!/usr/bin/env python</code>与<code>#!/usr/bin/python</code>的区别？</h3><blockquote>
+<p>脚本语言的第一行，目的就是指出，你想这个文件中的代码通过什么可执行程序去运行它，就这么简单</p>
+<p>#!/usr/bin/Python是告诉操作系统执行这个脚本的时候，调用/usr/bin下的python解释器；</p>
+<p>#!/usr/bin/env python这种用法是为了防止操作系统用户没有将python装在默认的/usr/bin路径里。<br>当系统看到这一行的时候，首先会到env设置里查找python的安装路径，再调用对应路径下的解释器程序完成操作。</p>
+<p>#!/usr/bin/python相当于写死了python路径;</p>
+<p>#!/usr/bin/env python会去环境设置寻找python目录,推荐这种写法</p>
+</blockquote>
+<h3 id="2-查看python已经安装的模块？"><a href="#2-查看python已经安装的模块？" class="headerlink" title="2.查看python已经安装的模块？"></a>2.查看python已经安装的模块？</h3><blockquote>
+<p>help(‘modules’) 就能列出所有已经安装的模块</p>
+</blockquote>
+<h3 id="3-模块提供了哪些函数？"><a href="#3-模块提供了哪些函数？" class="headerlink" title="3.模块提供了哪些函数？"></a>3.模块提供了哪些函数？</h3><blockquote>
+<p>进入python控制台，然后导入模块，再使用help(模块名)来查看这个模块的功能有哪些<br>如：string模块<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; import string</span><br><span class="line">&gt;&gt;&gt; help(string)</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="4-python模块的安装方式有哪些？"><a href="#4-python模块的安装方式有哪些？" class="headerlink" title="4.python模块的安装方式有哪些？"></a>4.python模块的安装方式有哪些？</h3><blockquote>
+<p>1.单文件模块<br>直接把文件拷贝到 $python_dir/Lib<br>2.多文件模块，带setup.py<br>python setup.py install<br>3.egg文件</p>
+<ul>
+<li>1.下载ez_setup.py,运行python ez_setup</li>
+<li>2.easy_install *.egg<br>注：虽然Python的模块可以拷贝安装，但是一般情况下推荐制作一个安装包，即写一个setup.py文件来安装。<br>setup.py文件的使用如下:<br>% python setup.py build #编译<br>% python setup.py install #安装<br>% python setup.py sdist #制作分发包<br>% python setup.py bdist_wininst #制作windows下的分发包<br>% python setup.py bdist_rpm<br>setup.py文件的编写<br>setup.py中主要执行一个 setup函数，该函数中大部分是描述性东西，最主要的是packages参数，列出所有的package，可以用自带的find_packages来动态获取package。所以setup.py文件的编写实际是很简单的。<br>简单的例子:<br>setup.py文件：<br>  from setuptools import setup, find_packages<br>  setup(<pre><code>name = &quot; mytest &quot; ,
+version = &quot; 0.10 &quot; ,
+description = &quot; My test module &quot; ,
+author = &quot; Robin Hood &quot; ,
+url = &quot; http://www.csdn.net &quot; ,
+license = &quot; LGPL &quot; ,
+packages = find_packages(),
+scripts = [ &quot; scripts/test.py &quot; ],
+)
+</code></pre>  mytest.py<br>  import sys<br>  def get():<pre><code>return sys.path
+</code></pre>  scripts/test.py<br>  import os<br>  print os.environ.keys()<br>  setup中的scripts表示将该文件放到 Python的Scripts目录下，可以直接用。OK，简单的安装成功，可以运行所列举的命令生成安装包，或者安装该python包。本机测试成功(win32-python25)！<br>  4.setuptools工具安装<pre><code>a. 使用ez_setup.py安装setuptools
+</code></pre>  　　这是 setuptools 自豪的一种安装方式，只需要一个大约 8K 作为的脚本ez_setup。py，就能自动为用户安装包括 setuptools 自身在内的许多 Python 包。 　　使用这种方式，用户只需要下载 ez_setup。py 并运行，就可以自动下载和安装适合用户当前 Python 版本的适当的 setuptools egg 文件(当然，用户需要 Python 2.3.5 以上的版本，64 位操作系统的用户则需要 Python 2.4 以上的版本)。此外，这段脚本还会将可执行的 easy_install 脚本安装到用户所有的操作系统 Python 可执行脚本正常应该安装的位置(例如，Windows 用户会安装到 Python 安装目录下的 Scripts 目录中)。关于这种安装方法的更详细说明和注意事项，请参考其官方说明（见扩展阅读）。简单的安装命令如下： 　　wget -q ez_setup。py下载地址（见扩展阅读） 安装完后，最好确保<pre><code>b. 使用完整的安装包安装setuptools
+　　当然，用户也可以直接使用 setuptools发布版本来安装。对于使用 Windows 的用户，这也是挺方便的方法，许多 Linux 发行版的官方包管理仓库都包含 setuptools 的某个版本。例如，如果你跟我一样使用 Ubuntu ，那安装 setuptools 只是简单的进行如下操作：
+# apt-get install python-setuptools
+安装模块
+　　easy_install package-name，比如 easy_install pylab
+模块卸载
+　　 easy_install -m package-name， 比如easy_install -m pylab　　
+       easy_install -m 包名，可以卸载软件包，但是卸载后还要手动删除遗留文件。
+setuptools它可以自动的安装模块，只需要你提供给它一个模块名字就可以，并且自动帮你解决模块的依赖问题。一般情况下用setuptools给安装的模块会自动放到一个后缀是.egg的目录里。
+在Windows里，easy_install这个命令在python安装目录下的scripts里面，所以需要把scripts加到环境变量的PATH里，这样用起来就更方便，linux下不需要注意这个问题。
+</code></pre></li>
+</ul>
+</blockquote>
+<h3 id="5-怎样在Python中查询相关函数的源代码？"><a href="#5-怎样在Python中查询相关函数的源代码？" class="headerlink" title="5.怎样在Python中查询相关函数的源代码？"></a>5.怎样在Python中查询相关函数的源代码？</h3><blockquote>
+<pre><code>方法一：比如os模块
+help(os)查看file中显示的文件路径，如果是py就可以查看源码，如果是.c结尾的文件则是用C写的，就看不到源码了
+方法二：
+import os
+print(os.__file__)
+</code></pre></blockquote>
+<h3 id="6-python-列表转换成字符串"><a href="#6-python-列表转换成字符串" class="headerlink" title="6.python 列表转换成字符串"></a>6.python 列表转换成字符串</h3><blockquote>
+<p>python中的列表list = [‘1’,’2’,’3’,’4’]转成str型’1,2,3,4’<br>    ‘,’.join(list)</p>
+</blockquote>
+<h3 id="7-windows和linux环境中中文不乱码的处理方式"><a href="#7-windows和linux环境中中文不乱码的处理方式" class="headerlink" title="7.windows和linux环境中中文不乱码的处理方式"></a>7.windows和linux环境中中文不乱码的处理方式</h3><blockquote>
+<p>windows环境：（因为windows（中文版本）的cmd的默认编码是gbk的）<br>        解决办法是将文件保存为gbk或者gb18030或者cp936<br>        或在文件开头加上#_<em><em>encoding:cp936</em></em>_就可以了。<br>    linux环境：</p>
+<pre><code>#encoding:utf-8
+#encoding:utf8
+</code></pre></blockquote>
+<h3 id="8-python-格式化字符串-s和-r-区别"><a href="#8-python-格式化字符串-s和-r-区别" class="headerlink" title="8.python 格式化字符串 %s和%r 区别"></a>8.python 格式化字符串 %s和%r 区别</h3><blockquote>
+<p>示例：<br>     test = “””hello,\nworld”””<br>     print “this is test1: %s” %test<br>     print “this is test2: %r” %test<br>    输出：<br>     this is test1: hello,<br>     world<br>     this is test2: ‘hello,\nworld’<br>    由此可见，在python中格式化字符%r，表示打印的是对象，什么都打印</p>
+</blockquote>
+<h3 id="9-CentOS-6-4升级Python后yum不可用的解决方案"><a href="#9-CentOS-6-4升级Python后yum不可用的解决方案" class="headerlink" title="9.CentOS 6.4升级Python后yum不可用的解决方案"></a>9.CentOS 6.4升级Python后yum不可用的解决方案</h3><blockquote>
+<p>#修改yum文件<br>    vi /usr/bin/yum<br>    将文件头部的</p>
+<pre><code>#!/usr/bin/python
+改为如下内容
+#!/usr/bin/python2.6.6
+整个升级过程完成了。    
+</code></pre></blockquote>
+<h3 id="10-python与shell的差异点"><a href="#10-python与shell的差异点" class="headerlink" title="10.python与shell的差异点"></a>10.python与shell的差异点</h3><table>
+<thead>
+<tr>
+<th>区别点</th>
+<th>shell</th>
+<th>python</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>‘’</td>
+<td>纯文本</td>
+<td>两者功能一样，仅用于区分</td>
+</tr>
+<tr>
+<td>“”</td>
+<td>可用于变量调用</td>
+<td>两者功能一样，仅用于区分</td>
+</tr>
+<tr>
+<td>调用变量</td>
+<td>$变量名    <br>“$变量名”<br>${变量名}</td>
+<td>直接变量名（数字和变量不用带引号，字符串要带引号，为的是区别它到底是字符串还是变量）</td>
+</tr>
+<tr>
+<td>代入变量</td>
+<td>$变量名<br>“$变量名”<br>${变量名}</td>
+<td>方法有三种：1.直接变量名或通过+号连接符来连接多个 2.通过格式定位符，%s、%d、%f  3.通过str.format()方法来引用变量，而format()方法又有多种形式，有直接{}，或{0}或{var}的形式（shell中引用变量内容就像直接使用变量一样，因为有$符号可区分，所以省去了麻烦的区分问题。python中因为调用变量是直接变量名的，所以在引用变量内容时，需要先使用<code>%</code>格式占位符来占位</td>
+</tr>
+<tr>
+<td>true或false大小写</td>
+<td>不区分大小写</td>
+<td>首字母必须大写，True或False</td>
+</tr>
+<tr>
+<td>0或1</td>
+<td>0为True，1为False</td>
+<td>0为False，1为True</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/30/技术/python/python3-基础篇-10-内置模块与第三方模块/" rel="next" title="python3-基础篇-10.内置模块与第三方模块">
+                <i class="fa fa-chevron-left"></i> python3-基础篇-10.内置模块与第三方模块
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/30/技术/python/python3-基础篇-12-考题/" rel="prev" title="python3-基础篇-12.考题">
+                python3-基础篇-12.考题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/08/30/技术/python/python3-基础篇-11-问题集/"
+           data-title="python3-基础篇-11.问题集" data-url="https://luojieio.github.io/2017/08/30/技术/python/python3-基础篇-11-问题集/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/teaser.png"
+               alt="luojieio" />
+          <p class="site-author-name" itemprop="name">luojieio</p>
+           
+              <p class="site-description motion-element" itemprop="description">热爱开源、热爱自由</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/luojieio" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/alex3714/category/770733.html" title="金角大王" target="_blank">金角大王</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.runoob.com/" title="菜鸟教程" target="_blank">菜鸟教程</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://python.jobbole.com/" title="伯乐在线" target="_blank">伯乐在线</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://docs.docker.com/" title="Docker" target="_blank">Docker</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://hexo.io/zh-cn/" title="Hexo" target="_blank">Hexo</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://theme-next.iissnan.com/" title="NexT" target="_blank">NexT</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://fontawesome.io" title="Font Awesome" target="_blank">Font Awesome</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://duoshuo.com/" title="多说" target="_blank">多说</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-usr-bin-env-python与-usr-bin-python的区别？"><span class="nav-number">1.</span> <span class="nav-text">1.#!/usr/bin/env python与#!/usr/bin/python的区别？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-查看python已经安装的模块？"><span class="nav-number">2.</span> <span class="nav-text">2.查看python已经安装的模块？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-模块提供了哪些函数？"><span class="nav-number">3.</span> <span class="nav-text">3.模块提供了哪些函数？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-python模块的安装方式有哪些？"><span class="nav-number">4.</span> <span class="nav-text">4.python模块的安装方式有哪些？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-怎样在Python中查询相关函数的源代码？"><span class="nav-number">5.</span> <span class="nav-text">5.怎样在Python中查询相关函数的源代码？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-python-列表转换成字符串"><span class="nav-number">6.</span> <span class="nav-text">6.python 列表转换成字符串</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-windows和linux环境中中文不乱码的处理方式"><span class="nav-number">7.</span> <span class="nav-text">7.windows和linux环境中中文不乱码的处理方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-python-格式化字符串-s和-r-区别"><span class="nav-number">8.</span> <span class="nav-text">8.python 格式化字符串 %s和%r 区别</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-CentOS-6-4升级Python后yum不可用的解决方案"><span class="nav-number">9.</span> <span class="nav-text">9.CentOS 6.4升级Python后yum不可用的解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-python与shell的差异点"><span class="nav-number">10.</span> <span class="nav-text">10.python与shell的差异点</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">luojieio</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"luojieio-note"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

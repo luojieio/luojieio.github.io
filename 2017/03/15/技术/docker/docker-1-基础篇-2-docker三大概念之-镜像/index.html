@@ -1,0 +1,1151 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker-1.基础篇-2.docker三大概念之-镜像">
+<meta property="og:url" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-2-docker三大概念之-镜像/index.html">
+<meta property="og:site_name" content="luojieio">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-2-docker三大概念之-镜像/0.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-2-docker三大概念之-镜像/1.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-2-docker三大概念之-镜像/2.png">
+<meta property="og:updated_time" content="2018-03-14T03:09:02.627Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="docker-1.基础篇-2.docker三大概念之-镜像">
+<meta name="twitter:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-2-docker三大概念之-镜像/0.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-2-docker三大概念之-镜像/"/>
+
+
+
+
+
+  <title> docker-1.基础篇-2.docker三大概念之-镜像 | luojieio </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">luojieio</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">热爱开源、热爱自由</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-2-docker三大概念之-镜像/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="luojieio">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/teaser.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="luojieio">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                docker-1.基础篇-2.docker三大概念之-镜像
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-15T10:55:39+08:00">
+                2017-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/15/技术/docker/docker-1-基础篇-2-docker三大概念之-镜像/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/15/技术/docker/docker-1-基础篇-2-docker三大概念之-镜像/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <img src="/2017/03/15/技术/docker/docker-1-基础篇-2-docker三大概念之-镜像/0.png">
+<p><br><br><a id="more"></a></p>
+<blockquote>
+<p>基于docker 1.12版本</p>
+</blockquote>
+<p><a href="https://docs.docker.com" target="_blank" rel="noopener">官方参考文档</a></p>
+<p>docker三大概念：<code>镜像</code>（Image）、<code>容器</code>（Container）、<code>仓库</code>（Repository）</p>
+<p>docker命令的格式：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker [OPTIONS] subCOMMAND [OPTIONS] [arg...] [CMD] [OPTIONS] [arg...]</span><br></pre></td></tr></table></figure></p>
+<p>如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -ti 192.168.10.1/centos/centos:latest /bin/<span class="built_in">echo</span> -n <span class="string">'hello world'</span></span><br></pre></td></tr></table></figure></p>
+<img src="/2017/03/15/技术/docker/docker-1-基础篇-2-docker三大概念之-镜像/1.png" title="docker命令的执行图解">
+<hr>
+<h2 id="镜像（Image）"><a href="#镜像（Image）" class="headerlink" title="镜像（Image）"></a>镜像（Image）</h2><p>类似于虚拟机镜像，可以将它理解为一个<code>面向docker引擎的只读模板</code>，包含了<code>文件系统</code>。（如果不能理解，就把它理解为DVD光盘，只读的，不可重复擦写的光盘）</p>
+<p>镜像可以是ubuntu操作系统环境，称为ubuntu镜像，也可以安装了apache应用程序，称为apache镜像</p>
+<p>镜像是创建docker容器的<code>基础</code>。docker运行容器前需要本地存在对应的镜像，如果镜像不存在本地，docker会尝试先从默认镜像仓库下载（默认使用<code>docker hub</code>公共注册服务器中的仓库），用户也可以通过配置，使用自定义的镜像仓库</p>
+<p>通过<code>pull</code>命令拉取下载过程可知，镜像文件一般由<code>若干层</code>组成，行首的<code>fd74137ff5ae</code>这样的字串代表了<code>各层的ID</code>，下载过程会获取并输出镜像的各层信息。<code>层</code>（layer）其实是<code>AUFS（Advanced Union File System，高级单元文件系统）</code>一种<code>联合文件系统</code>中的重要概念，是实现<code>增量保存与更新的基础</code>。（这里埋下伏笔，建议我们将不变动的内容写入镜像的各个分层，这样更新时就不用更新底层，也节约的镜像的构建时间与容量）</p>
+<hr>
+<h2 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h2><table>
+<thead>
+<tr>
+<th>含义</th>
+<th>命令</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>获取镜像</td>
+<td><code>docker pull NAME[:TAG]</code></td>
+<td>TAG相当于版本号， 如果不显式的指定TAG，则默认会<br>选择latest标签，即下载仓库中最新版本的镜像</td>
+</tr>
+<tr>
+<td>创建并运行容器</td>
+<td><code>docker run -ti ubuntu /bin/bash</code></td>
+<td>利用镜像创建并运行一个容器，并且以分配tty有交互的<br>连接容器，在容器中运行bash应用</td>
+</tr>
+<tr>
+<td>列出本地主机上已有的镜像</td>
+<td><code>docker images</code></td>
+<td></td>
+</tr>
+<tr>
+<td>为镜像添加新标签</td>
+<td><code>docker tag oldimage newimage</code></td>
+<td>相当于一个别名</td>
+</tr>
+<tr>
+<td>获取镜像的详细信息</td>
+<td><code>docker inspect 镜像ID或名称</code></td>
+<td>通常使用该ID有前若干个字符组成的可区分字串<br>来替代完整的ID，只要可以唯一区分出来就行。<br>inspect命令返回的是一个JSON格式的消息，<br>如果我们只要其中一项内容时，可以说使用<code>-f</code>参数来指定，<br>如：<br><code>docker inspect -f .Os docker/whalesay）</code></td>
+</tr>
+<tr>
+<td>搜寻镜像</td>
+<td><code>docker search TERM</code></td>
+<td>使用docker search命令可以搜索远端仓库中”共享“的镜像，<br>默认搜索docker hub官方仓库中的镜像。<br>支持的参数有:<br> <code>--automated=false</code>    仅显示自动创建的镜像<br><code>--no-trunc=false</code>     输出信息不截断显示<br><code>-s,--stars=0</code>    指定仅显示评价为指定星级(收藏)以上的镜像<br><br>返回带有包含关键字的镜像，其中包括：<br>镜像名字、描述、星级（表示该镜像的受欢迎程度）、<br>是否官方创建、是否自动创建等。<br><br>默认的输出结果将按星级评价进行排序。<br>官方镜像说明是官方项目组创建和维护的<br>automated资源则允许用户验证镜像的来源和内容</td>
+</tr>
+<tr>
+<td>删除镜像</td>
+<td><code>docker rmi IMAGE [IMAGE...]</code></td>
+<td>其中IMAGE可以为标签或ID<br>当同一个镜像拥有多个标签的时候，<br><code>docker rmi</code>命令只是删除了该镜像多个标签中的指定标签,<br>并不影响镜像文件。<br><br>当你使用ID（也可以是ID能进行区分的部分前缀）<br>进行删除时，会先尝试删除所有指向该镜像的标签，<br>然后删除该镜像文件本身。<br><br>注意：<br>当有该镜像创建的容器存在时，镜像文件默认是无法被删除的。<br>如果想强行删除镜像，可以使用<code>-f</code>参数。<br>即:<code>docker rmi -f IMAGE</code><br><br>不推荐使用<code>-f</code>参数来强制删除一个存在容器依赖的镜像，<br>因为这样往往会造成一些遗留问题。<br>在docker 1.3时强制删除一个有在运行的容器的镜像时，<br>容器会显示为none的镜像状态，<br>而在1.6版本后，不会再显示<code>none</code>状态，<br>镜像名中依然使用原镜像ID。并且，容器关闭后哪怕镜像已删除，<br>依然可以重新启动，这应该是docker 新增加的状态保存机制，<br>避免数据丢失做的一个处理。<br>因此，正确的做法是，先删除依赖该镜像的所有容器，再来<br>删除镜像。但是当镜像只剩下一个标签的时候就要小心了，<br>此时再使用<code>docker rmi</code>命令会彻底删除该镜像，<br>执行删除操作的过程其实就是删除这个镜像文件的所有AUFS层</td>
+</tr>
+<tr>
+<td>创建镜像</td>
+<td><em>下面的单独表格</em></td>
+<td></td>
+</tr>
+<tr>
+<td>存出镜像到本地文件（文件级）</td>
+<td><code>docker save -o 目标命名 镜像文件名</code></td>
+<td>类似于tar包归档的格式。<br>即：<br><code>docker save -o ubuntu.tar ubuntu:latest</code></td>
+</tr>
+<tr>
+<td>从存出的本地文件中再导入<br>（载入）到本地镜像库（文件级）</td>
+<td><code>docker load -i ubuntu.tar</code><br> 或<br> <code>docker load &lt; ubuntu.tar</code></td>
+<td>类似于tar包解包的格式。<br>这将导入镜像以及相关的元数据信息（包括标签等），<br>可以使用docker images命令来进行查看，注意如果<br>本地镜像列表中本来就已经有了此镜像，<br>则再次导入时还是跟原来镜像一样的信息，<br>即版本和标签等元数据都是一样的，<br>所以它不会报错，只是不会重复再次导入相同<br>的内容而已。当你把原来的镜像删除了，<br>再次导入就可以看到新导入的镜像文件了。</td>
+</tr>
+<tr>
+<td>上传镜像到仓库，默认上传到<br>dockerhub官方仓库（需要登录）</td>
+<td>1.先根据你所要上传的仓库（目录）为镜像创建标签<br><code>docker tag test:latest luojie/test:latest</code><br><br>2.上传<br><code>docker push luojie/test:latest</code></td>
+<td>第一次使用时，会提示输入登录信息（用户名、密码、邮箱）<br>或进行注册也可以提前先登录上去，再push<br>即：<br><code>docker login -u luojie</code> </td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h3 id="创建镜像"><a href="#创建镜像" class="headerlink" title="创建镜像"></a>创建镜像</h3><p>创建镜像的方法有三种：</p>
+<ul>
+<li>基于commit对已有镜像的容器创建</li>
+<li>基于本地模板导入</li>
+<li>基于Dockerfile创建</li>
+</ul>
+<h4 id="基于commit对已有镜像的容器创建"><a href="#基于commit对已有镜像的容器创建" class="headerlink" title="基于commit对已有镜像的容器创建"></a>基于commit对已有镜像的容器创建</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>主要选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-a,–author=””</td>
+<td>作者信息</td>
+</tr>
+<tr>
+<td>-m,–message=””</td>
+<td>提交消息</td>
+</tr>
+<tr>
+<td>-p,–pause=true</td>
+<td>提交时暂停容器运行</td>
+</tr>
+</tbody>
+</table>
+<p>步骤：<br>1.启动一个镜像，并在其中进行修改操作，例如创建一个test文件后退出<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker run -ti ubuntu /bin/bash</span><br><span class="line">touch test</span><br><span class="line">exit</span><br></pre></td></tr></table></figure></p>
+<p>2.查看容器（记住容器ID ）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure></p>
+<p>3.使用<code>docker commit</code>命令来提交为一个新的镜像，提交时可以使用<code>ID</code>或<code>名称</code>来指定容器。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker commit -m <span class="string">"提交消息"</span> -a <span class="string">"作者信息"</span> 容器ID  新镜像名称</span><br><span class="line">即：</span><br><span class="line">docker commit -m <span class="string">"new image"</span> -a <span class="string">"luojie"</span> e274eb116c6c newimage</span><br></pre></td></tr></table></figure></p>
+<h4 id="基于本地模板导入"><a href="#基于本地模板导入" class="headerlink" title="基于本地模板导入"></a>基于本地模板导入</h4><p>也可以直接从一个操作系统模板文件导入一个镜像。<br>比如：使用OPENVZ提供的模板来创建。<br>OPENVZ模板的下载地址为：<a href="https://openvz.org/Download/template/precreated" target="_blank" rel="noopener">https://openvz.org/Download/template/precreated</a></p>
+<p>步骤：<br>1.下载一个模板压缩包后，使用命令导入模板<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat centos-6-x86-minimal.tar.gz |docker import - centos:6.0</span><br></pre></td></tr></table></figure></p>
+<p>2.查看新导入的镜像，已经在本地存在了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bash</span><br><span class="line">docker images</span><br></pre></td></tr></table></figure></p>
+<h4 id="基于Dockerfile创建"><a href="#基于Dockerfile创建" class="headerlink" title="基于Dockerfile创建"></a>基于Dockerfile创建</h4><p>Dockerfile是一个文本格式的配置文件，用户可以使用Dockerfile快速创建出自定义的镜像</p>
+<blockquote>
+<p>Dockfile方式构建镜像的实践步骤：</p>
+<ol>
+<li>使用commit对所搭建应用的具体步骤进行实际测试，总结每条语句的顺序</li>
+<li>切记commit语句中没有EXPOSE和CMD可以通过配置获取，所以在实际使用commit构建的镜像进行run时，只能通过<code>-p</code>指定端口，而不能用<code>-P</code>，CMD命令也必须手敲，而这两个值通过Dockfile构建时可以直接写在配置文件中</li>
+<li>以上两点总结完成后，再开始编写Dockerfile的构建文件</li>
+</ol>
+</blockquote>
+<h5 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h5><p>Dockerfile由一行行命令语句组成，并且支持以<code>#</code>开头的注释行，执行也是由上至下执行，类似于shell脚本，只要把一条条语句由前到后写好即可</p>
+<p>Dockerfile分为四个部分：</p>
+<ul>
+<li>基于的基础镜像信息</li>
+<li>维护者信息</li>
+<li>镜像操作指令</li>
+<li>容器启动时执行指令</li>
+</ul>
+<p>如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#第一行必须指定基于的基础镜像</span></span><br><span class="line">FROM centos:latest</span><br><span class="line"><span class="comment">#维护者信息 </span></span><br><span class="line">MAINTAINER docker_user docker_user@email.com </span><br><span class="line"><span class="comment">#镜像的操作指令(可以写多个)，RUN指令将对镜像执行跟随的命令，每运行一条RUN指令，镜像添加新的一层，并提交</span></span><br><span class="line">RUN yum update &amp;&amp; yum -y install lrzsz</span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">'lrzsz installed success'</span></span><br><span class="line"><span class="comment">#容器启动时执行指令</span></span><br><span class="line">CMD /bin/bash</span><br></pre></td></tr></table></figure></p>
+<p>Dockerfile构建镜像的原理<br><img src="/2017/03/15/技术/docker/docker-1-基础篇-2-docker三大概念之-镜像/2.png" title="Dockerfile构建镜像的原理"></p>
+<p><strong>两个示例</strong><br>示例一：基于ubuntu父镜像基础上安装inotify-tools、nginx、apache2、openssh-server等软件，从而创建一个新的nginx镜像<br>如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Nginx</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#VERSION 0.0.1</span></span><br><span class="line">FROM ubuntu </span><br><span class="line">MAINTAINER Victor Vieus &lt;victor@docker.com&gt;</span><br><span class="line">RUN apt-get update &amp;&amp; apt-get install -y inotify-tools nginx apache2 openssh-server</span><br></pre></td></tr></table></figure></p>
+<p>示例二：基于ubuntu父镜像基础上安装firefox和vnc软件，启动后，用户可以通过5900端口通过vnc方式使用firefox<br>如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#Firefox over VNC</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment">#VERSION 0.3 </span></span><br><span class="line">FROM ubuntu</span><br><span class="line">RUN apt-get update &amp;&amp; apt-get install -y x11vnc xvfb firefox </span><br><span class="line">RUN mkdir /.vnc </span><br><span class="line">RUN x11vnc -storepasswd 1234 ~/.vnc/passwd </span><br><span class="line">RUN bash -c <span class="string">'echo "firefox" &gt;&gt; /.bashrc'</span></span><br><span class="line">EXPOSE 5900</span><br><span class="line">CMD [<span class="string">"x11vnc"</span>,<span class="string">"-forever"</span>,<span class="string">"-usepw"</span>,<span class="string">"-create"</span>]</span><br></pre></td></tr></table></figure></p>
+<h5 id="指令"><a href="#指令" class="headerlink" title="指令"></a>指令</h5><p>指令的一般格式为<code>INSTRUCTION</code> <code>arguments</code></p>
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>格式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>FROM</td>
+<td><code>FROM &lt;image&gt;或FROM &lt;image&gt;:&lt;tag&gt;</code></td>
+<td>第一条指令必须为FROM指令。<br>并且，如果在同一个Dockerfile中创建多个镜像时，<br>可以使用多个FROM指令（每个镜像一次）</td>
+</tr>
+<tr>
+<td>MAINTAINER</td>
+<td><code>MAINTAINER &lt;name&gt;</code></td>
+<td>用于指定维护者信息</td>
+</tr>
+<tr>
+<td>RUN</td>
+<td><code>RUN &lt;command&gt;或 RUN [&quot;executable&quot;,&quot;param1&quot;,&quot;param2&quot;]</code></td>
+<td>前者将在shell终端中运行命令，即/bin/sh -c ‘command’<br>后者则使用exec执行，指定使用其他终端可以通过第二<br>种方式实现，<br>例如：<br><code>RUN [&quot;/bin/bash&quot;,&quot;-c&quot;,&quot;echo hello&quot;]</code><br>每条RUN指令将在当前镜像基础上执行指定命令，<br>并提交为新的镜像，当命令较长时，可以使用\转义符来换行</td>
+</tr>
+<tr>
+<td>CMD</td>
+<td>支持三种格式：<br><code>CMD [&quot;executable&quot;,&quot;param1&quot;,&quot;param2&quot;]</code>  <br>（用<code>exec</code>执行，<code>可执行程序</code>加<code>参数</code>。推荐方式）<br><code>CMD [&quot;param1&quot;,&quot;param2&quot;]</code><br>（提供给ENTRYPOINT的默认参数）<br><code>CMD command param1 param2</code> <br>（用<code>sh -c</code> 执行，<code>命令</code>加<code>参数</code>）</td>
+<td>指定启动容器时的执行命令，每个Dockerfile只能<br>有一条CMD命令，如果指定多条命令，只有最后一条会被执行。<br>如果用户启动容器时指定了运行的命令，<br>则会覆盖CMD指定的命令</td>
+</tr>
+<tr>
+<td>EXPOSE</td>
+<td><code>EXPOSE &lt;port&gt; [&lt;port&gt;...]</code><br>如：<br> <code>EXPOSE 22 80 8443</code></td>
+<td>用于告诉docker服务端容器“暴露的端口号”，供互联系统使用。<br>在启动容器时需要通过<code>-P</code> ，docker会自动分配一个<br>本地主机端口转发到指定的端口<br>使用<code>-p</code> 则可以具体指定哪个本地主机端口映射到容器暴露的端口</td>
+</tr>
+<tr>
+<td>ENV</td>
+<td><code>ENV &lt;key&gt; &lt;value&gt;</code></td>
+<td>就像定义变量一下，变量名与变量的内容。<br>用于指定一个环境变量，会被后续的<br>RUN指令使用，并在容器运行时保持。</td>
+</tr>
+<tr>
+<td>ADD</td>
+<td><code>ADD &lt;src&gt; &lt;dest&gt;</code></td>
+<td>用于将复制指定的<code>&lt;src&gt;</code>到容器中的<code>&lt;dest&gt;</code>，<br>比如将宿主主机上的文件或目录复制到容器中去<br>其中<code>&lt;src&gt;</code>可以是Dockerfile所在目录的一个相对路径（文件或目录），<br>也可以是一个<code>URL</code>，还可以是一个<code>tar</code>文件（自动解压为目录）,<br><code>除了多了URL和解压功能外，其余与COPY相同</code>，<br>ADD会把权限也拷贝进镜像</td>
+</tr>
+<tr>
+<td>COPY</td>
+<td><code>COPY &lt;src&gt; &lt;dest&gt;</code></td>
+<td>复制本地主机的<code>&lt;src&gt;</code>（为Dockerfile所在目录的相对路径，<br> 文件或目录）<br>到容器中的<code>&lt;dest&gt;</code>。目标路径不存在时，会自动创建当使用本地目录<br>为源目录时，推荐使用COPY，<br>COPY会把权限也拷贝进镜像</td>
+</tr>
+<tr>
+<td>ENTRYPOINT</td>
+<td>有两种格式：<br><code>ENTRYPOINT [&quot;executable&quot;,&quot;param1&quot;,&quot;param2&quot;]</code> <br>（用<code>exec</code>执行， <code>可执行程序</code>加<code>参数</code>）<br><code>ENTRYPOINT command param1 param2</code>  <br>（用<code>sh -c</code>执行 <code>命令</code>加<code>参数</code>）</td>
+<td>用于配置容器启动后执行的命令，并且不可被<br><code>docker run</code> 提供的参数覆盖<br>每个Dockerfile中只能有一个ENTRYPOINT（入口点），<br>当指定多个ENTRYPOINT时，只有最后一个生效<br>（跟CMD类似，只不过CMD是容器启动时执行，<br> ENTRYPOINT是启动后执行）</td>
+</tr>
+<tr>
+<td>VOLUME</td>
+<td><code>VOLUME [&quot;/data&quot;]</code></td>
+<td>创建一个可以从本地主机或其他容器挂载的挂载点，<br>一般用来存放数据库和需要保持的数据等</td>
+</tr>
+<tr>
+<td>USER</td>
+<td><code>USER daemon</code></td>
+<td>指定运行容器时的用户名或UID，后续的RUN也会使用指定用户<br>当服务不需要管理员权限时，可以通过该命令指定运行的用户，<br>因为用户对应的就是用户所拥有的权限，所以对用户的控制，<br>就是对权限的控制。<br>并且可以在之前创建所需要的用户。<br>如：<br> <code>RUN groupadd -r postgres &amp;&amp; useradd -r -g postgres postgres</code><br>要临时获取管理员权限可以使用<code>gosu</code>，而不推荐<code>sudo</code></td>
+</tr>
+<tr>
+<td>WORKDIR</td>
+<td><code>WORKDIR /path/to/workdir</code></td>
+<td>相当于<code>cd</code>命令，用于为后续的RUN、CMD、ENTRYPOINT指令<br>配置工作目录<br>可以多个WORKDIR指令，后续命令如果参数是相对路径，<br>则会基于之前命令指定的路径。<br>如：<br> <code>WORKDIR /a</code> <br><code>WORKDIR b</code><br> <code>WORKDIR c</code><br><code>RUN pwd</code> <br>则最终路径为/a/b/c </td>
+</tr>
+<tr>
+<td>ONBUILD</td>
+<td><code>ONBUILD [INSTRUCTION]</code></td>
+<td>用于配置当所创建的镜像作为其他新创建镜像的基本镜像时，<br>所执行的操作指令说明。<br>如： Dockerfile使用如下的内容创建了镜像image-A <br><code>ONBUILD ADD . /app/src</code><br><code>ONBUILD RUN /usr/local/bin/python-build --dir /app/src</code> <br><br>如果基于image-A 创建新的镜像时，新的Dockerfile中使用<br>FROM image-A指定基础镜像时，<br>会自动执行ONBUILD指令内容，等价于在后面添加了两条指令，<br>其实从名字也可以看出来，ONBUILD，<br>不就是在构建时执行的命令嘛<br>如： <br><code>FROM image-A</code> <br>#自动运行接下来的命令<br><code>ADD . /app/src</code><br><code>RUN /usr/local/bin/python-build --dir /app/src</code><br>如果使用了ONBUILD的指令的镜像，推荐在标签中注明，例如：<code>ruby:1.9-onbuild</code>  </td>
+</tr>
+</tbody>
+</table>
+<h5 id="创建镜像-1"><a href="#创建镜像-1" class="headerlink" title="创建镜像"></a>创建镜像</h5><p>编写好Dockerfile之后，可以通过docker build命令来创建镜像<br>基本格式：<code>docker build [选项] 路径</code><br>该命令将读取指定路径下（包括子目录）的Dockerfile，并将该路径下“所有内容”（包括构建镜像所需要的所有内容，如脚本），发送给Docker服务端，由服务端来创建镜像。因此一般建议放置Dockerfile的目录为空目录</p>
+<p>另外，可以通过.dockerignore文件（每一行添加一条匹配模式）来让Docker忽略路径下的目录和文件</p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-t</td>
+<td>指定镜像的标签信息</td>
+</tr>
+</tbody>
+</table>
+<p>如完整构建命令：<br>指定<code>Dockerfile</code>所在路径为<code>/tmp/docker_builder/</code>，并且希望生成镜像标签（镜像名称）为<code>build_repo/first_image</code><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build  -t  build_repo/first_image   /tmp/docker_builder/</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/14/技术/docker/docker-1-基础篇-1-dokcer概念/" rel="next" title="docker-1.基础篇-1.dokcer概念">
+                <i class="fa fa-chevron-left"></i> docker-1.基础篇-1.dokcer概念
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/15/技术/docker/docker-1-基础篇-3-docker三大概念之-容器/" rel="prev" title="docker-1.基础篇-3.docker三大概念之-容器">
+                docker-1.基础篇-3.docker三大概念之-容器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/15/技术/docker/docker-1-基础篇-2-docker三大概念之-镜像/"
+           data-title="docker-1.基础篇-2.docker三大概念之-镜像" data-url="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-2-docker三大概念之-镜像/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/teaser.png"
+               alt="luojieio" />
+          <p class="site-author-name" itemprop="name">luojieio</p>
+           
+              <p class="site-description motion-element" itemprop="description">热爱开源、热爱自由</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/luojieio" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/alex3714/category/770733.html" title="金角大王" target="_blank">金角大王</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.runoob.com/" title="菜鸟教程" target="_blank">菜鸟教程</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://python.jobbole.com/" title="伯乐在线" target="_blank">伯乐在线</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://docs.docker.com/" title="Docker" target="_blank">Docker</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://hexo.io/zh-cn/" title="Hexo" target="_blank">Hexo</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://theme-next.iissnan.com/" title="NexT" target="_blank">NexT</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://fontawesome.io" title="Font Awesome" target="_blank">Font Awesome</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://duoshuo.com/" title="多说" target="_blank">多说</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#镜像（Image）"><span class="nav-number">1.</span> <span class="nav-text">镜像（Image）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令"><span class="nav-number">2.</span> <span class="nav-text">命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建镜像"><span class="nav-number">2.1.</span> <span class="nav-text">创建镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#基于commit对已有镜像的容器创建"><span class="nav-number">2.1.1.</span> <span class="nav-text">基于commit对已有镜像的容器创建</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于本地模板导入"><span class="nav-number">2.1.2.</span> <span class="nav-text">基于本地模板导入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#基于Dockerfile创建"><span class="nav-number">2.1.3.</span> <span class="nav-text">基于Dockerfile创建</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#基本结构"><span class="nav-number">2.1.3.1.</span> <span class="nav-text">基本结构</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#指令"><span class="nav-number">2.1.3.2.</span> <span class="nav-text">指令</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#创建镜像-1"><span class="nav-number">2.1.3.3.</span> <span class="nav-text">创建镜像</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">luojieio</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"luojieio-note"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

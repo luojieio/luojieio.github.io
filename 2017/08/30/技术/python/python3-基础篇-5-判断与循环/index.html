@@ -1,0 +1,963 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="python3-基础篇-5.判断与循环">
+<meta property="og:url" content="https://luojieio.github.io/2017/08/30/技术/python/python3-基础篇-5-判断与循环/index.html">
+<meta property="og:site_name" content="luojieio">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://luojieio.github.io/2017/08/30/技术/python/python3-基础篇-5-判断与循环/0.png">
+<meta property="og:updated_time" content="2018-03-14T03:18:17.363Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python3-基础篇-5.判断与循环">
+<meta name="twitter:image" content="https://luojieio.github.io/2017/08/30/技术/python/python3-基础篇-5-判断与循环/0.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://luojieio.github.io/2017/08/30/技术/python/python3-基础篇-5-判断与循环/"/>
+
+
+
+
+
+  <title> python3-基础篇-5.判断与循环 | luojieio </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">luojieio</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">热爱开源、热爱自由</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://luojieio.github.io/2017/08/30/技术/python/python3-基础篇-5-判断与循环/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="luojieio">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/teaser.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="luojieio">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                python3-基础篇-5.判断与循环
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-30T15:34:20+08:00">
+                2017-08-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/python3/" itemprop="url" rel="index">
+                    <span itemprop="name">python3</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/30/技术/python/python3-基础篇-5-判断与循环/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/08/30/技术/python/python3-基础篇-5-判断与循环/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <img src="/2017/08/30/技术/python/python3-基础篇-5-判断与循环/0.png">
+<p><br><br><a id="more"></a></p>
+<h2 id="判断"><a href="#判断" class="headerlink" title="判断"></a>判断</h2><h3 id="if-else判断"><a href="#if-else判断" class="headerlink" title="if-else判断"></a>if-else判断</h3><p>很多情况下当我们需要执行某些功能的时候，程序需要进行判断，在A的情况下做什么，在B的情况下做什么，在这里就需要<code>IF-ELSE</code>语句来用于判断，这个语句被称为“选择语句”，如果满足if的条件，就执行if的内容，如果不满足，就执行else的内容。</p>
+<p>格式：（所谓条件指的就是成立的条件，即是返回值为True的布尔表达式，也就是说要想一个判断展开第一层，必须为True，同理要想一个判断不展开第一层（而是展开else那层），只要判断条件为False即可）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">if 条件：</span><br><span class="line">	执行语句</span><br><span class="line">elif 条件：</span><br><span class="line">	执行语句 </span><br><span class="line">...</span><br><span class="line">else：						</span><br><span class="line">	执行语句</span><br></pre></td></tr></table></figure></p>
+<p>注意：elif和else是可选的，一个最简单的有效if语句是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if True:</span><br><span class="line">	print(&apos;Yes, it is true&apos;)</span><br></pre></td></tr></table></figure></p>
+<p>注意：python没有case判断哦，即如同C/C++中没有switch语句。你可以使用if..elif..else语句来完成同样的工作（在某些场合，使用“字典”这种映射类型会更加快捷）</p>
+<p>注意：不同类型的对象不能使用&lt;,&gt;,&lt;=,&gt;=进行比较，却可以使用==和!=，例如字符串和数字<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">42 &gt; &apos;the answer&apos;  无法比较</span><br><span class="line">42 == &apos;the answer&apos;	False</span><br><span class="line">42 != &apos;the answer&apos;  True</span><br></pre></td></tr></table></figure></p>
+<p>注意：为什么<code>1=1</code>要写成<code>1==1</code>呢？<br>因为<code>=</code>号在python中代表着赋值，是定义变量时使用的，并非我们熟知的“等于”，所以<code>1=1</code>这种写法并不成立，因为变量名也不可以以数字开头，并且它也不会返回一个布尔值，·需要使用<code>==</code>来表示“等于”。</p>
+<p>布尔类型的比较<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">True &gt; False		#结果为True </span><br><span class="line">True + False &gt; False + False  #结果为True</span><br></pre></td></tr></table></figure></p>
+<p>说明：True和False对于计算机就像是1和0一样，因此，<code>True=1</code>，<code>False=0</code> ，因此上面的代码就等价于<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">1&gt;0  </span><br><span class="line">1+0&gt;0+0</span><br></pre></td></tr></table></figure></p>
+<p>注意:不等于在python中有两种写法：<code>!=</code>和<code>&lt;&gt;</code></p>
+<h3 id="switch判断（待补充）"><a href="#switch判断（待补充）" class="headerlink" title="switch判断（待补充）"></a>switch判断（待补充）</h3><p>python可以通过“字典”来实现switch即类似于shell中的case语句的功能，还可以通过类来实现switch功能</p>
+<p>实现方法分为两步：</p>
+<ol>
+<li>定义一个<code>字典</code></li>
+<li>调用字典的<code>get()</code>获取相应的表达式</li>
+</ol>
+<hr>
+<h2 id="循环"><a href="#循环" class="headerlink" title="循环"></a>循环</h2><h3 id="for循环"><a href="#for循环" class="headerlink" title="for循环"></a>for循环</h3><p>提示：使用for的技巧，可以用在一些规定次数的循环时使用</p>
+<h4 id="遍历序列-多行输出"><a href="#遍历序列-多行输出" class="headerlink" title="遍历序列-多行输出"></a>遍历序列-多行输出</h4><p>如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">items=[1,2,3,4,5]</span><br><span class="line">for item in items:			</span><br><span class="line">	print(item)</span><br><span class="line">	</span><br><span class="line">结果：</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td></tr></table></figure></p>
+<p>注意：else部份是可选的，如果包含else，它总是在for循环结束后执行一次，也就是说执行完for循环中的循环体才会执行else的内容，除非遇到break语句。</p>
+<h4 id="遍历序列-单行输出"><a href="#遍历序列-单行输出" class="headerlink" title="遍历序列-单行输出"></a>遍历序列-单行输出</h4><p>如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">items=[1,2,3,4,5]</span><br><span class="line">for item in items:</span><br><span class="line">	print(item,)</span><br><span class="line"></span><br><span class="line">结果：</span><br><span class="line">1 2 3 4 5</span><br></pre></td></tr></table></figure></p>
+<h4 id="1加到100的for循环示例"><a href="#1加到100的for循环示例" class="headerlink" title="1加到100的for循环示例"></a>1加到100的for循环示例</h4><p>如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">a=0</span><br><span class="line">for i in range(1,101):</span><br><span class="line">	a=a+i</span><br><span class="line">print(a)</span><br><span class="line"></span><br><span class="line">#如果你将print写在for循环体内，就可以看到整个过程</span><br><span class="line">a=0</span><br><span class="line">for i in range(1,101):</span><br><span class="line">	a=a+i</span><br><span class="line">	print(a)</span><br><span class="line"></span><br><span class="line">其演变过程:（temp为相加的上一个值的临时保存变量）</span><br><span class="line">temp=0</span><br><span class="line">for i in range(1,101):</span><br><span class="line">	total=temp+i</span><br><span class="line">	temp=total</span><br><span class="line">print(temp)</span><br><span class="line"></span><br><span class="line">简化为：</span><br><span class="line">temp=0</span><br><span class="line">for i in range(1,101):</span><br><span class="line">	temp=temp+i</span><br><span class="line">print(temp)</span><br><span class="line"></span><br><span class="line">再简化为：</span><br><span class="line">temp=0</span><br><span class="line">for i in range(1,101):</span><br><span class="line">	temp+=i</span><br><span class="line">print(temp)</span><br></pre></td></tr></table></figure></p>
+<h4 id="遍历序列-2种方式"><a href="#遍历序列-2种方式" class="headerlink" title="遍历序列-2种方式"></a>遍历序列-2种方式</h4><h5 id="直接取值"><a href="#直接取值" class="headerlink" title="直接取值"></a>直接取值</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for letter in &apos;python&apos;:</span><br><span class="line">	print(letter)</span><br></pre></td></tr></table></figure>
+<h5 id="通过索引取值"><a href="#通过索引取值" class="headerlink" title="通过索引取值"></a>通过索引取值</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">s=&apos;python&apos;</span><br><span class="line">for x in range(len(s)):</span><br><span class="line">	print(s[x])</span><br></pre></td></tr></table></figure>
+<h4 id="遍历字典-2种方式"><a href="#遍历字典-2种方式" class="headerlink" title="遍历字典-2种方式"></a>遍历字典-2种方式</h4><p>当我们直接遍历内容时，其打印的其实只是key<br>如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">dict=&#123;1:11,2:22,3:33&#125;</span><br><span class="line">for i in dict:</span><br><span class="line">	print(i)</span><br><span class="line">结果：</span><br><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td></tr></table></figure></p>
+<h5 id="通过key来遍历的方式"><a href="#通过key来遍历的方式" class="headerlink" title="通过key来遍历的方式"></a>通过key来遍历的方式</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">dict=&#123;1:11,2:22,3:33&#125;</span><br><span class="line">for i in dict:</span><br><span class="line">	print(dict[i])</span><br><span class="line">		</span><br><span class="line">结果：</span><br><span class="line">11</span><br><span class="line">22</span><br><span class="line">33</span><br></pre></td></tr></table></figure>
+<h5 id="字典的拆分"><a href="#字典的拆分" class="headerlink" title="字典的拆分"></a>字典的拆分</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">for k,v in dict.items():</span><br><span class="line">	print(k,v)</span><br></pre></td></tr></table></figure>
+<h3 id="while循环"><a href="#while循环" class="headerlink" title="while循环"></a>while循环</h3><p>当满足条件时执行循环体，while循环执行完后再调回到  while 所在的位置，如此重复进行，直到 while 表达式为  False 为止，注意是while所在的位置<br>使用while循环的三个要求：</p>
+<ol>
+<li>尽量少用  while-loop ，大部分时候 for-loop 是更好的选择。</li>
+<li>重复检查你的 while 语句，确定你测试的布尔表达式最终会变成  False 。</li>
+<li>如果不确定，就在  while-loop 的结尾打印出你要测试的值。看看它的变化。</li>
+</ol>
+<p>注意：如果while循环不能像for循环那样，在集合被穷尽之后停止下来，我们又怎么样才能控制while循环呢？<br>方式一：在循环过程中制造某种可以使循环停止下来的条件，增加<code>break</code>、<code>continue</code>之类的命令。<br>方式二：改变使循环成立的条件。比如直接指定<code>False</code>或产生<code>False</code>效果的条件</p>
+<p>格式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">while 条件：</span><br><span class="line">	执行语句</span><br></pre></td></tr></table></figure></p>
+<p>注意：while语句也有一个可选的else从句，执行完while循环中的循环体才会执行else的内容，不过python中没有until循环哦    </p>
+<p>切记：做while循环时，一定要配置结束循环操作，否则可能会造成死循环    </p>
+<h4 id="方法1-加入break"><a href="#方法1-加入break" class="headerlink" title="方法1.加入break"></a>方法1.加入break</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">while True:</span><br><span class="line">	print(&apos;hello&apos;)</span><br><span class="line">	x=input(&apos;please input something,q for quit: &apos;)</span><br><span class="line">		if x == &apos;q&apos;:</span><br><span class="line">			break</span><br></pre></td></tr></table></figure>
+<h4 id="方法2-while条件为False时"><a href="#方法2-while条件为False时" class="headerlink" title="方法2.while条件为False时"></a>方法2.while条件为False时</h4><p>因为只有True时while条件才会执行，False不会执行，因为True就代表真，真就代表这个条件成立，这也是为什么while True时会执行后续代码，while False时不会执行后续代码的原因<br>如：按q结束<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">x=&quot;&quot;</span><br><span class="line">while x != &apos;q&apos;:</span><br><span class="line">	print(&apos;hello&apos;)</span><br><span class="line">	x=input(&apos;please input something,q for quit:&apos;)</span><br></pre></td></tr></table></figure></p>
+<p>如：按q或直接回车结束<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">x=&quot;&quot;</span><br><span class="line">while x != &apos;q&apos;:</span><br><span class="line">	print(&apos;hello&apos;)</span><br><span class="line">	x=input(&apos;please input something,q for quit:&apos;)</span><br><span class="line">	if not x:     #因为直接回车时x为False，而if判断又只有为True才会执行，False是不会执行的，所以取反，即非False，即为True，所以执行break</span><br><span class="line">		break</span><br></pre></td></tr></table></figure></p>
+<h3 id="循环控制"><a href="#循环控制" class="headerlink" title="循环控制"></a>循环控制</h3><ul>
+<li>跳出结束循环：break     （只用于循环）</li>
+<li>重新开始循环：continue    （只用于循环）</li>
+<li>循环体占位符：pass   （也叫代码桩）</li>
+<li>结束整个代码：exit()</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/30/技术/python/python3-基础篇-4-IO/" rel="next" title="python3-基础篇-4.IO">
+                <i class="fa fa-chevron-left"></i> python3-基础篇-4.IO
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/30/技术/python/python3-基础篇-6-模块/" rel="prev" title="python3-基础篇-6.模块">
+                python3-基础篇-6.模块 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/08/30/技术/python/python3-基础篇-5-判断与循环/"
+           data-title="python3-基础篇-5.判断与循环" data-url="https://luojieio.github.io/2017/08/30/技术/python/python3-基础篇-5-判断与循环/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/teaser.png"
+               alt="luojieio" />
+          <p class="site-author-name" itemprop="name">luojieio</p>
+           
+              <p class="site-description motion-element" itemprop="description">热爱开源、热爱自由</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/luojieio" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/alex3714/category/770733.html" title="金角大王" target="_blank">金角大王</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.runoob.com/" title="菜鸟教程" target="_blank">菜鸟教程</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://python.jobbole.com/" title="伯乐在线" target="_blank">伯乐在线</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://docs.docker.com/" title="Docker" target="_blank">Docker</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://hexo.io/zh-cn/" title="Hexo" target="_blank">Hexo</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://theme-next.iissnan.com/" title="NexT" target="_blank">NexT</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://fontawesome.io" title="Font Awesome" target="_blank">Font Awesome</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://duoshuo.com/" title="多说" target="_blank">多说</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#判断"><span class="nav-number">1.</span> <span class="nav-text">判断</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#if-else判断"><span class="nav-number">1.1.</span> <span class="nav-text">if-else判断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#switch判断（待补充）"><span class="nav-number">1.2.</span> <span class="nav-text">switch判断（待补充）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#循环"><span class="nav-number">2.</span> <span class="nav-text">循环</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#for循环"><span class="nav-number">2.1.</span> <span class="nav-text">for循环</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#遍历序列-多行输出"><span class="nav-number">2.1.1.</span> <span class="nav-text">遍历序列-多行输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#遍历序列-单行输出"><span class="nav-number">2.1.2.</span> <span class="nav-text">遍历序列-单行输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1加到100的for循环示例"><span class="nav-number">2.1.3.</span> <span class="nav-text">1加到100的for循环示例</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#遍历序列-2种方式"><span class="nav-number">2.1.4.</span> <span class="nav-text">遍历序列-2种方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#直接取值"><span class="nav-number">2.1.4.1.</span> <span class="nav-text">直接取值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#通过索引取值"><span class="nav-number">2.1.4.2.</span> <span class="nav-text">通过索引取值</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#遍历字典-2种方式"><span class="nav-number">2.1.5.</span> <span class="nav-text">遍历字典-2种方式</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#通过key来遍历的方式"><span class="nav-number">2.1.5.1.</span> <span class="nav-text">通过key来遍历的方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#字典的拆分"><span class="nav-number">2.1.5.2.</span> <span class="nav-text">字典的拆分</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#while循环"><span class="nav-number">2.2.</span> <span class="nav-text">while循环</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法1-加入break"><span class="nav-number">2.2.1.</span> <span class="nav-text">方法1.加入break</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方法2-while条件为False时"><span class="nav-number">2.2.2.</span> <span class="nav-text">方法2.while条件为False时</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环控制"><span class="nav-number">2.3.</span> <span class="nav-text">循环控制</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">luojieio</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"luojieio-note"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

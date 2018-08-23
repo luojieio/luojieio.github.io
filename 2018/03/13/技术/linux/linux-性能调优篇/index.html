@@ -1,0 +1,1227 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux-性能调优篇">
+<meta property="og:url" content="https://luojieio.github.io/2018/03/13/技术/linux/linux-性能调优篇/index.html">
+<meta property="og:site_name" content="luojieio">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://luojieio.github.io/2018/03/13/技术/linux/linux-性能调优篇/0.jpg">
+<meta property="og:image" content="https://luojieio.github.io/2018/03/13/技术/linux/linux-性能调优篇/1.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/03/13/技术/linux/linux-性能调优篇/2.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/03/13/技术/linux/linux-性能调优篇/3.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/03/13/技术/linux/linux-性能调优篇/4.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/03/13/技术/linux/linux-性能调优篇/5.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/03/13/技术/linux/linux-性能调优篇/6.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/03/13/技术/linux/linux-性能调优篇/7.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/03/13/技术/linux/linux-性能调优篇/8.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/03/13/技术/linux/linux-性能调优篇/9.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/03/13/技术/linux/linux-性能调优篇/10.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/03/13/技术/linux/linux-性能调优篇/11.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/03/13/技术/linux/linux-性能调优篇/12.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/03/13/技术/linux/linux-性能调优篇/13.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/03/13/技术/linux/linux-性能调优篇/14.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/03/13/技术/linux/linux-性能调优篇/15.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/03/13/技术/linux/linux-性能调优篇/16.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/03/13/技术/linux/linux-性能调优篇/17.png">
+<meta property="og:updated_time" content="2018-03-13T08:51:27.946Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux-性能调优篇">
+<meta name="twitter:image" content="https://luojieio.github.io/2018/03/13/技术/linux/linux-性能调优篇/0.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://luojieio.github.io/2018/03/13/技术/linux/linux-性能调优篇/"/>
+
+
+
+
+
+  <title> linux-性能调优篇 | luojieio </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">luojieio</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">热爱开源、热爱自由</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://luojieio.github.io/2018/03/13/技术/linux/linux-性能调优篇/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="luojieio">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/teaser.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="luojieio">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                linux-性能调优篇
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-13T16:25:29+08:00">
+                2018-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/03/13/技术/linux/linux-性能调优篇/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/03/13/技术/linux/linux-性能调优篇/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <img src="/2018/03/13/技术/linux/linux-性能调优篇/0.jpg">
+<p><br><br><a id="more"></a></p>
+<h3 id="命令索引"><a href="#命令索引" class="headerlink" title="命令索引"></a>命令索引</h3><ul>
+<li><p>CPU</p>
+<ul>
+<li>uptime</li>
+<li>vmstat</li>
+<li>iostat -c</li>
+<li>sar -u</li>
+<li>ps/top</li>
+</ul>
+</li>
+<li><p>内存</p>
+<ul>
+<li>free</li>
+<li>vmstat</li>
+<li>sar -r</li>
+</ul>
+</li>
+<li>硬盘<ul>
+<li>iostat -d</li>
+<li>vmstat -d</li>
+<li>sar -d</li>
+</ul>
+</li>
+<li>网络<ul>
+<li>ping</li>
+<li>netstat -i/-r</li>
+<li>route</li>
+<li>sar -n</li>
+<li>traceroute</li>
+<li>nslookup</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="优化性能的概述"><a href="#优化性能的概述" class="headerlink" title="优化性能的概述"></a>优化性能的概述</h3><p>性能问题，主要实现的是linux<code>操作系统</code>和<code>应用程序</code>的最佳结合。系统的性能是指操作系统完成任务的<code>有效性</code>、<code>稳定性</code>和<code>响应速度</code>。系统的性能与上下游的多个方面都密切相关，任何一个环节出现问题，都会影响整个系统的性能。</p>
+<p>因此当linux应用现出问题时，应当从<code>应用程序</code>、<code>操作系统</code>、<code>服务器硬件</code>、<code>网络环境</code>等多个方面综合有序的排查，定位问题出现在哪个部分，然后对症解决。</p>
+<p>在应用程序、操作系统、服务器硬件、网络环境等方面，影响性能最大的是<code>应用程序</code>和<code>操作系统</code>两个方面，因为这两个方面出现问题不易察觉，隐蔽性强。而硬件、网络方面只要出现问题，一般都能马上定位。</p>
+<hr>
+<h3 id="影响性能的因素"><a href="#影响性能的因素" class="headerlink" title="影响性能的因素"></a>影响性能的因素</h3><p>1.CPU<br>2.内存<br>3.磁盘I/O<br>4.网络I/O</p>
+<ul>
+<li>CPU<br>对应于需要查询操作的服务，比如：邮件服务器、动态网站等等</li>
+<li>内存<br>对应于需要缓存数据的服务，比如：打印服务器、数据库服务器、静态网站等等，并且在内存问题上，虽然有物理内存和虚拟内存的说法，但当应用使用虚拟内存时会降低性能，而且在内存问题上要注意CPU和操作系统的架构，如果是32位，最大也只能使用4G内存，此时过多内存将是浪费。</li>
+<li>硬盘I/O<br>对应于有频繁读写的应用，如果磁盘I/O性能得不到满足，会导致应用的停滞。</li>
+</ul>
+<p>以上<code>各个方面之间都是相互依赖的，不能孤立的从某个方面来排查问题</code>。当一个方面出现性能问题时，往往会引发其他方面出现问题。</p>
+<p>比如： </p>
+<ul>
+<li>大量的磁盘读写势必消耗CPU和磁盘I/O资源</li>
+<li>内存的不足会导致频繁地进行内存页写入磁盘、磁盘写到内存的操作，造成磁盘I/O瓶颈</li>
+<li>大量的网络流量也会造成CPU过载</li>
+</ul>
+<p>所以，在处理性能问题时，要纵观全局，从各个方面进行综合考虑，并且对于这些硬件层面的问题，当达到瓶颈，解决方法只能是提高硬件配置</p>
+<hr>
+<h3 id="解决问题的思路"><a href="#解决问题的思路" class="headerlink" title="解决问题的思路"></a>解决问题的思路</h3><p>1.外部网络环境<br>2.服务器硬件设备<br>3.操作系统</p>
+<ul>
+<li>网络</li>
+<li>CPU</li>
+<li>内存</li>
+<li>硬盘I/O</li>
+</ul>
+<p>4.应用程序自身</p>
+<p>性能优化是一个系统工程，四个要素之间相互关联，要综合起来分析，上下游与关联周边一起分析。</p>
+<hr>
+<h3 id="CPU性能评估"><a href="#CPU性能评估" class="headerlink" title="CPU性能评估"></a>CPU性能评估</h3><h4 id="vmstat"><a href="#vmstat" class="headerlink" title="vmstat"></a>vmstat</h4><img src="/2018/03/13/技术/linux/linux-性能调优篇/1.png">
+<p>输出说明：<br>1.procs</p>
+<ul>
+<li>r：表示运行和等待CPU时间片的进程数，这个值如果长期大于系统CPU的个数，就说明CPU不足，需要增加CPU</li>
+<li>b：表示在等待资源的进程数，比如正在等待I/O或内存交换等</li>
+</ul>
+<p>2.memory</p>
+<ul>
+<li>swpd：表示切换到内存交换区的内存数量（以KB为单位）。如果swpd的值不为0，或比较大，而且si、so的值长期为0，那么这种情况下一般不用担心，不会影响系统性能。</li>
+<li>free：表示当前空闲的物理内存数量（以KB为单位）</li>
+<li>buff：表示buffers cache的内存数量，即缓冲。一般对块设备的读写才需要缓冲</li>
+<li>cache：表示page cached的内存数量，一般作为文件系统cached，即缓存。频繁访问的文件都会被cached。如果cache值较大，就说明cached的文件数量较多，如果此时IO中的bi比较小，就说明文件系统效率比较好。</li>
+</ul>
+<p>3.swap</p>
+<ul>
+<li>si：表示由swap调入内存</li>
+<li>so：表示由内存调入swap，一般情况下，si、so的值都为0，如果si、so的值长期不为0，则表示系统内存不足，需要增加系统内存</li>
+</ul>
+<p>4.IO<br>显示磁盘读写状况，这里设置的bi+bo的参考值为1000，如果超过1000，而且wa值较大，则表示系统磁盘IO有问题，应该考虑提高磁盘的读写性能。</p>
+<ul>
+<li>bi：表示从块设备读入数据的总量（即读磁盘，每秒KB）</li>
+<li>bo：表示写入到块设备的数据总量（即写磁盘，每秒KB）</li>
+</ul>
+<p>5.system<br>显示采集间隔内发生的中断数，这两个值越大，会看到由内核消耗的CPU时间就越多</p>
+<ul>
+<li>in：表示在某一时间间隔中观测到的每秒设备中断数</li>
+<li>cs：表示每秒产生的上下文切换次数</li>
+</ul>
+<p>6.CPU<br>显示了CPU的使用状态，us+sy的参考值为80%，如果us+sy大于80%，就说明可能存在CPU资源不足的情况</p>
+<ul>
+<li>us：用户进程消耗的CPU时间百分比。us的值比较高时，说明用户进程消耗的CPU时间多，但是如果长期大于50%，就需要考虑优化程序或算法</li>
+<li>sy：内核进程消耗的CPU时间百分比。sy的值较高时，说明内核消耗的CPU资源很多。</li>
+<li>id：CPU处于空闲状态的时间百分比</li>
+<li>wa：IO等待所占用的CPU时间百分比。wa值越高，说明IO等待越严重。根据经验，wa的参考值为20%，如果wa超过20%，就说明IO等待严重，引起IO等待的原因可能是磁盘大量随机读写造成的，也可能是磁盘或磁盘控制器的带宽瓶颈造成的（主要是块操作）</li>
+</ul>
+<p>总结：在CPU的评估中，需要重点注意的是<code>procs</code>项<code>r</code>列的值和<code>cpu</code>项中<code>us</code>、<code>sy</code>和<code>id</code>列的值。</p>
+<hr>
+<h4 id="sar-u"><a href="#sar-u" class="headerlink" title="sar -u"></a>sar -u</h4><p>sar命令需要另外安装<code>sysstat</code>包，sar命令<code>可以对系统的每个方面进行单独的统计</code>，但是使用sar命令会增加系统开销，不过这些开销是可以忽略的，对系统的统计结果不会有很大影响。</p>
+<p>sar命令对CPU统计输出：（这个输出是对系统整体CPU使用状况的统计，每项的输出都非常直观，并且最后一行Average是个汇总行，是对上面统计信息的一个平均值）<br><img src="/2018/03/13/技术/linux/linux-性能调优篇/2.png"></p>
+<p>输出说明：</p>
+<ul>
+<li>%user：用户进程消耗的CPU时间百分比</li>
+<li>%nice：运行正常进程所消耗的CPU时间百分比</li>
+<li>%system：系统进程消耗的CPU时间百分比</li>
+<li>%iowait：IO等待所占用的CPU时间百分比</li>
+<li>%steal：在内存相对紧张的环境下pagein强制对不同的页面进行的steal操作</li>
+<li>%idle：CPU处在空闲状态的时间百分比</li>
+</ul>
+<p>在一个多CPU的系统中，如果程序使用了单线程，就会出现一个现象，CPU的整体使用率不高，但是系统应用响应缓慢，这可能是程序使用单线程的原因。单线程只使用一个CPU，导致这个CPU占用率为100%，无法处理其他请求，而其他的CPU却闲置，这就导致了整体CPU使用率不高，而应用缓慢现象的发生。</p>
+<p>针对这个问题，可以对系统的每个CPU分开查询，统计每个CPU的使用情况。<br><img src="/2018/03/13/技术/linux/linux-性能调优篇/3.png"></p>
+<p>这个输出是对系统的第1颗CPU的信息统计。需要注意的是，sar中对CPU的计数是从0开始的，因此，<code>sar -P 0 3 5</code>表示对系统的第一颗CPU进行每隔3秒一次，共5次的信息统计。<code>sar -P 4 3 5</code>则表示对系统的第5颗CPU进行每隔3秒一次，共5次的信息统计。依次类推。从sar的首行输出中也可知，此系统有4颗CPU。</p>
+<hr>
+<h4 id="iostat-c"><a href="#iostat-c" class="headerlink" title="iostat -c"></a>iostat -c</h4><p>iostat主要用于统计磁盘IO状态，但是也能查看CPU的使用信息，它的局限性是只能显示系统<code>所有CPU的平均信息</code>。</p>
+<img src="/2018/03/13/技术/linux/linux-性能调优篇/4.png">
+<p>这里使用了<code>-c</code>选项，只显示系统CPU的统计信息，输出中每项代表的含义与sar命令的输出项完全相同。<br>（可以说iostat秉持着vmstat的全局信息统计，又拿着sar的输出菜单项）</p>
+<hr>
+<h4 id="uptime"><a href="#uptime" class="headerlink" title="uptime"></a>uptime</h4><p>uptime用于统计系统当前的负载状况，输出的信息依次为系统现在的时间，系统从上次开机到现在运行了多长时间，系统目前有多少登录用户，系统在1分钟内、5分钟内、15分钟内的平均负载。<br><img src="/2018/03/13/技术/linux/linux-性能调优篇/5.png"></p>
+<p>这里需要注意的是load average这个输出值，即平均负载，3个输出值的大小一般不能大于系统CPU的个数。例如此系统有4个CPU，如果load average的3个值长期大于4时，说明CPU很繁忙，负载很高，可能会影响系统性能。但是偶尔大于4时，倒不用担心，一般不会影响系统性能。相反，如果load average的输出值小于CPU的个数，则表示CPU还有空闲的时间片。</p>
+<p>总结：以上这些命令只能查看CPU是否繁忙，负载是否过大，但是无法知道CPU为何负载过大，因此，判断系统CPU出现问题后，要结合<code>top</code>、<code>ps</code>等命令进一步检查是由哪些进程导致CPU负载过大的。引起CPU资源紧缺的原因可能是<code>应用程序不合理造成的</code>，也可能是<code>硬件资源匮乏引起的</code>，所以，要具体问题具体分析，或优化应用程序，或增加系统CPU资源。</p>
+<hr>
+<h3 id="内存性能评估"><a href="#内存性能评估" class="headerlink" title="内存性能评估"></a>内存性能评估</h3><h4 id="free"><a href="#free" class="headerlink" title="free"></a>free</h4><img src="/2018/03/13/技术/linux/linux-性能调优篇/6.png">
+<p><code>free -m</code>表示以MB为单位查看内存使用情况。重点关注的项是<code>free（空闲）</code>、<code>buffers（缓冲）</code>、<code>cached（缓存）</code>。由图可知，此系统空闲内存有2945MB，缓冲了288MB，缓存了1222MB的文件和目录。对于应用程序而言，可用内存有4457MB，其包含了free（空闲）、buffers（缓冲）和cached（缓存）。另外swap交换分区还未使用，所以此系统内存资源还非常充足。</p>
+<blockquote>
+<p>一般有这样一个经验公式：应用程序可用内存/系统物理内存&gt;70%时，表示系统内存资源非常充足，不影响系统性能，应用程序可用内存/系统物理内存&lt;20%时，表示系统内存资源紧缺，需要增加系统内存，20%&lt;应用程序可用内存/系统物理内存&lt;70%时，表示系统内存资源基本能满足应用需求，暂时不影响系统性能</p>
+</blockquote>
+<p><code>free -s</code>可以在指定的时间段内不间断地监控内存的使用情况</p>
+<img src="/2018/03/13/技术/linux/linux-性能调优篇/7.png">
+<hr>
+<h4 id="watch-free"><a href="#watch-free" class="headerlink" title="watch+free"></a>watch+free</h4><p>通过watch可以动态地监控命令的运行结果，省去手动执行的麻烦</p>
+<p>比如：<code>watch -n 3 -d free</code><br><img src="/2018/03/13/技术/linux/linux-性能调优篇/8.png"></p>
+<p>其中<code>-n</code>指定重复执行的时间，<code>-d</code>表示高亮显示变动</p>
+<hr>
+<h4 id="vmstat-1"><a href="#vmstat-1" class="headerlink" title="vmstat"></a>vmstat</h4><img src="/2018/03/13/技术/linux/linux-性能调优篇/9.png">
+<p>vmstat中重点关注的是<code>swpd</code>、<code>si</code>、<code>so</code>行。</p>
+<hr>
+<h4 id="sar-r"><a href="#sar-r" class="headerlink" title="sar -r"></a>sar -r</h4><img src="/2018/03/13/技术/linux/linux-性能调优篇/10.png">
+<p>输出说明：</p>
+<ul>
+<li>kbmemfree：空闲物理内存大小</li>
+<li>kbmemused：已使用物理内存大小</li>
+<li>%memused：已使用内存占总内存大小百分比</li>
+<li>kbbuffers：buffer cache，即缓冲大小</li>
+<li>kbcached：page cache，即缓存大小</li>
+<li>kbcommit：应用程序当前使用的内存大小</li>
+<li>%commit：应用程序当前使用的内存百分比</li>
+</ul>
+<p>sar的输出其实与free的输出完全对应，不过sar更加人性化，不仅给出了内存使用量，还给出了内存使用的百分比以及统计的平均值，从%commit项可知，此系统目前内存资源充足。</p>
+<hr>
+<h3 id="磁盘I-O性能评估"><a href="#磁盘I-O性能评估" class="headerlink" title="磁盘I/O性能评估"></a>磁盘I/O性能评估</h3><p>磁盘I/O性能评估的准则：</p>
+<ul>
+<li><code>选RAID</code>，根据应用的不同，选择不同的RAID方式<ul>
+<li>经常有大量读操作，选择RAID5</li>
+<li>经常有大量写操作，选择RAID0</li>
+<li>对数据安全要求较高，同时对读写也有要求，选择RAID01</li>
+</ul>
+</li>
+<li><code>用内存</code>，尽可能用内存的读写代替直接磁盘I/O，使频繁访问的文件或数据放入内存中进行操作处理，因为内存的读写操作比直接磁盘读写的效率要高千倍</li>
+<li><code>区分文件</code>，将经常进行读写的文件与长期不变的文件独立出来，分别放置到不同的磁盘设备上</li>
+<li><code>祼设备</code>，对于写操作频繁的数据，可以考虑使用裸设备代替文件系统。（祼设备的优点就是文件系统的缺点，反之也是如此，这就需要我们根据自己的业务需要做出合理的规划和衡量）<ul>
+<li>使用祼设备的优点有：<ul>
+<li>数据可以直接读写，不需要经过操作系统级的缓存，节省了内存资源，避免了内存资源争用</li>
+<li>避免了文件系统级的维护开销，比如：文件系统需要维护超级块，inode等</li>
+<li>避免了操作系统的cache预读功能，减少了I/O请求。</li>
+</ul>
+</li>
+<li>使用祼设备的缺点有：<ul>
+<li>数据管理、空间管理不灵活</li>
+<li>需要很专业的人来操作</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h4 id="sar-d"><a href="#sar-d" class="headerlink" title="sar -d"></a>sar -d</h4><img src="/2018/03/13/技术/linux/linux-性能调优篇/11.png">
+<p>输出说明：</p>
+<ul>
+<li>DEV：磁盘设备名称</li>
+<li>tps：每秒到物理磁盘的传送数，也就是每秒的I/O流量，一个传送就是一个I/O请求，多个逻辑请求可以被合并为一个物理I/O请求</li>
+<li>rd_sec/s：每秒读取设备的扇区数（1扇区=512字节）</li>
+<li>wr_sec/s：每秒写入设备的扇区数</li>
+<li>avgrq-sz：平均每次设备I/O操作的数据大小（以扇区为单位），<code>类似于超市排队中每人所买东西的多少</code></li>
+<li>avgqu-sz：平均I/O队列长度，<code>类似于超市排队中单位时间内平均排队的人数</code></li>
+<li>await：平均每次设备I/O操作的等待时间（以毫秒为单位），<code>类似于超市排队中每人的等待时间</code></li>
+<li>svctm：平均每次设备I/O操作的服务时间（以毫秒为单位），<code>类似于超市排队中收银员的收款速度</code></li>
+<li>%util：一秒中有百分之几的时间用于I/O操作，<code>类似于超市收银台前有人排队的时间比例</code></li>
+</ul>
+<p>对于磁盘I/O性能，一般有如下评判标准：</p>
+<ul>
+<li><code>svctm</code>，正常情况下，svctm应该小于await值的，（收银员肯定慢于排队的人数，要不然就不用排队了呀），而svctm的大小和磁盘性能有关，CPU、内存的负荷也会对svctm值造成影响，过多的请求也会间接导致svctm值的增加</li>
+<li><code>await</code>，await值的大小一般取决于svctm的值和I/O队列长度以及I/O请求模式。如果svctm的值与await很接近，就表示几乎没有I/O等待，磁盘性能很好，如果await值远高于svctm的值，则表示I/O队列等待太长，系统上运行的应用程序将变慢，此时可以通过更换更快的硬盘来解决问题。</li>
+<li><code>%util</code>，%util也是衡量磁盘I/O的一个重要指标，如果%util接近100%，就表示磁盘产生的I/O请求太多，I/O系统已经满负荷地在工作，该磁盘可能存在瓶颈，长期下去，势必影响系统性能，可以通过优化程序或通过更换更高、更快的硬盘来解决此问题</li>
+</ul>
+<hr>
+<h4 id="iostat-d"><a href="#iostat-d" class="headerlink" title="iostat -d"></a>iostat -d</h4><img src="/2018/03/13/技术/linux/linux-性能调优篇/12.png">
+<p>输出说明：</p>
+<ul>
+<li>Device：磁盘设备名称</li>
+<li>tps：每秒I/O流量</li>
+<li>Blk_read/s：每秒读取的数据块</li>
+<li>Blk_wrtn/s：每秒写入的数据块</li>
+<li>Blk_read：读取的所有块数</li>
+<li>Blk_wrtn：写入的所有块数</li>
+</ul>
+<blockquote>
+<p>上面输出的第一项是系统从启动以来到统计时的所有传输信息，从第二次输出的数据才代表在检测的时间段内系统的传输值</p>
+</blockquote>
+<p>可以通过<code>Blk_read/s</code>和<code>Blk_wrtn/s</code>的值对磁盘的读写性能有一个基本的了解。</p>
+<ul>
+<li>如果<code>Blk_wrtn/s</code>的值很大，就表示磁盘的写操作很频繁，可以考虑优化磁盘或优化程序，</li>
+<li>如果<code>Blk_read/s</code>的值很大，就表示磁盘直接读取操作很多，可以将读取的数据放入内存中进行操作。</li>
+</ul>
+<h5 id="iostat-x"><a href="#iostat-x" class="headerlink" title="iostat -x"></a>iostat -x</h5><p><code>iostat -x</code>提供了对每个磁盘的单独统计，如果不指定磁盘，默认就是对所有磁盘进行统计。<br><img src="/2018/03/13/技术/linux/linux-性能调优篇/13.png"></p>
+<p>这个输出基本与<code>sar -d</code>相同，输出说明如下：</p>
+<ul>
+<li>rrqm/s：每秒进行merged的读操作数目</li>
+<li>wrqm/s：每秒进行merged的写操作数目</li>
+<li>r/s：每秒读I/O设备的次数</li>
+<li>w/s：每秒写I/O设备的次数</li>
+<li>rsec/s：每秒读取的扇区数</li>
+<li>wsec/s：每秒写入的扇区数</li>
+</ul>
+<hr>
+<h4 id="vmstat-d"><a href="#vmstat-d" class="headerlink" title="vmstat -d"></a>vmstat -d</h4><img src="/2018/03/13/技术/linux/linux-性能调优篇/14.png">
+<p>总结：衡量磁盘I/O好坏是多方面的，有<code>应用程序本身</code>、<code>硬件设计上的</code>、<code>系统自身配置</code>的问题等。要解决I/O的瓶颈，关键是要提高I/O子系统的执行效率。<br>例如：</p>
+<ul>
+<li>从应用程序对磁盘读写进行优化，能够放到内存执行的操作，尽量不要放到磁盘</li>
+<li>硬件设计上，对磁盘存储方式进行合理规划，选择适合自己的RAID存取方式</li>
+<li>系统自身配置上，可以选择适合自身应用的文件系统，必要时使用祼设备提高读写性能</li>
+</ul>
+<hr>
+<h3 id="网络性能评估"><a href="#网络性能评估" class="headerlink" title="网络性能评估"></a>网络性能评估</h3><h4 id="ping"><a href="#ping" class="headerlink" title="ping"></a>ping</h4><p>通过ping命令检测网络的连通性。</p>
+<p>time值显示了两台主机之间的网络延时情况，如果此值很大，则表示网络的延时很大，单位为毫秒。在输出的最后，是对上面输出信息的一个总结，packet loss 表示网络丢包率，此值越小，表示网络的质量越高<br><img src="/2018/03/13/技术/linux/linux-性能调优篇/15.png"></p>
+<hr>
+<h4 id="netstat-i"><a href="#netstat-i" class="headerlink" title="netstat -i"></a>netstat -i</h4><p>检测网络接口状况</p>
+<img src="/2018/03/13/技术/linux/linux-性能调优篇/16.png">
+<p>输出说明：</p>
+<ul>
+<li>Iface：网络设备的接口名称</li>
+<li>MTU：最大传输单元，单位字节</li>
+<li>Met：</li>
+<li>RX-OK：完整接收多少数据包</li>
+<li>RX-ERR：接收数据包时发生了多少错误</li>
+<li>RX-DRP：接收数据包时丢弃了多少数据包</li>
+<li>RX-OVR：接收数据包时遗失了多少数据包</li>
+<li>TX-OK：完整发送多少数据包</li>
+<li>TX-ERR：发送数据包时发生了多少错误</li>
+<li>TX-DRP：发送数据包时丢弃了多少数据包</li>
+<li>TX-OVR：发送数据包时遗失了多少数据包</li>
+<li>Flg：接口标记<ul>
+<li>L：表示该接口是回环设备</li>
+<li>B：表示设置了广播地址</li>
+<li>M：表示接收所有数据包</li>
+<li>R：表示接口正在运行</li>
+<li>U：表示接口处于活动状态</li>
+<li>O：表示在该接口上禁用arp</li>
+<li>P：表示一个点到点的连接</li>
+</ul>
+</li>
+</ul>
+<p>正常情况下，RX-ERR/TX-ERR、 RX-DRP/TX-DRP、RX-OVR/TX-OVR的值都应该为0，如果这几个选项的值不为0，并且很大，那么网络质量肯定有问题，网络传输性能也一定会下降。</p>
+<p>当网络传输存在问题时，可以检测网卡设备是否存在故障：</p>
+<ul>
+<li>网卡接触不良，重新接入以修复</li>
+<li>网卡本身坏了，更换新的网卡</li>
+<li>网卡带宽太低，更换千兆或光纤口</li>
+<li>网络部署环境是否合理，网络设备环境、机房环境、主干网络环境</li>
+</ul>
+<hr>
+<h4 id="netstat-r"><a href="#netstat-r" class="headerlink" title="netstat -r"></a>netstat -r</h4><p>检测路由表信息</p>
+<p>在网络不通，或网络异常时，ping不通时，首先想到就是检查系统的路由表信息，防火墙信息。这里我们说说路由表。<br><code>netstat -r</code>的输出结果与<code>route</code>命令的输出完全相同。重点关注default行对应的值，因为其指向的是默认网关出口<br><img src="/2018/03/13/技术/linux/linux-性能调优篇/17.png"></p>
+<hr>
+<h4 id="sar-n"><a href="#sar-n" class="headerlink" title="sar -n"></a>sar -n</h4><p>显示系统的网络运行状态，主要是一些发送、接收的数据量信息。</p>
+<p>sar提供4种不同的选项来显示网络统计信息，通过<code>-n</code>选项可以指定4个不同类型的开关，即<code>DEV</code>、<code>EDEV</code>、<code>SOCK</code>、<code>FULL</code>。</p>
+<ul>
+<li>DEV：显示网络接口信息</li>
+<li>EDEV：显示网络错误的统计数据</li>
+<li>SOCK：显示套接字信息</li>
+<li>FULL：显示所有3个开关<br>xxxxx<br>输出说明：</li>
+<li>IFACE：网络接口设备</li>
+<li>rxpck/s：每秒钟接收的数据包大小</li>
+<li>txpck/s：每秒钟发送的数据包大小</li>
+<li>rxkB/s：每秒钟接收的字节数</li>
+<li>txkB/s：每秒钟发送的字节数</li>
+<li>rxcmp/s：每秒接收的压缩数据包</li>
+<li>txcmp/s：每秒发送的压缩数据包</li>
+<li>rxmcst/s：每秒接收的多播数据包</li>
+</ul>
+<hr>
+<h4 id="traceroute"><a href="#traceroute" class="headerlink" title="traceroute"></a>traceroute</h4><p>跟踪数据包的传输路径</p>
+<hr>
+<h4 id="nslookup"><a href="#nslookup" class="headerlink" title="nslookup"></a>nslookup</h4><p>用于判断DNS解析信息</p>
+<p>总结：网络问题的解决方法一般是<code>增加网络带宽</code>或<code>优化网络部署环境</code>。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/13/个人/最收藏-文摘-7-老婆使用说明书/" rel="next" title="最收藏-文摘-7.老婆使用说明书">
+                <i class="fa fa-chevron-left"></i> 最收藏-文摘-7.老婆使用说明书
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/03/13/技术/linux/linux-性能调优篇/"
+           data-title="linux-性能调优篇" data-url="https://luojieio.github.io/2018/03/13/技术/linux/linux-性能调优篇/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/teaser.png"
+               alt="luojieio" />
+          <p class="site-author-name" itemprop="name">luojieio</p>
+           
+              <p class="site-description motion-element" itemprop="description">热爱开源、热爱自由</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/luojieio" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/alex3714/category/770733.html" title="金角大王" target="_blank">金角大王</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.runoob.com/" title="菜鸟教程" target="_blank">菜鸟教程</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://python.jobbole.com/" title="伯乐在线" target="_blank">伯乐在线</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://docs.docker.com/" title="Docker" target="_blank">Docker</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://hexo.io/zh-cn/" title="Hexo" target="_blank">Hexo</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://theme-next.iissnan.com/" title="NexT" target="_blank">NexT</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://fontawesome.io" title="Font Awesome" target="_blank">Font Awesome</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://duoshuo.com/" title="多说" target="_blank">多说</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#命令索引"><span class="nav-number">1.</span> <span class="nav-text">命令索引</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化性能的概述"><span class="nav-number">2.</span> <span class="nav-text">优化性能的概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#影响性能的因素"><span class="nav-number">3.</span> <span class="nav-text">影响性能的因素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#解决问题的思路"><span class="nav-number">4.</span> <span class="nav-text">解决问题的思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CPU性能评估"><span class="nav-number">5.</span> <span class="nav-text">CPU性能评估</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#vmstat"><span class="nav-number">5.1.</span> <span class="nav-text">vmstat</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sar-u"><span class="nav-number">5.2.</span> <span class="nav-text">sar -u</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#iostat-c"><span class="nav-number">5.3.</span> <span class="nav-text">iostat -c</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#uptime"><span class="nav-number">5.4.</span> <span class="nav-text">uptime</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内存性能评估"><span class="nav-number">6.</span> <span class="nav-text">内存性能评估</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#free"><span class="nav-number">6.1.</span> <span class="nav-text">free</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#watch-free"><span class="nav-number">6.2.</span> <span class="nav-text">watch+free</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vmstat-1"><span class="nav-number">6.3.</span> <span class="nav-text">vmstat</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sar-r"><span class="nav-number">6.4.</span> <span class="nav-text">sar -r</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#磁盘I-O性能评估"><span class="nav-number">7.</span> <span class="nav-text">磁盘I/O性能评估</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#sar-d"><span class="nav-number">7.1.</span> <span class="nav-text">sar -d</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#iostat-d"><span class="nav-number">7.2.</span> <span class="nav-text">iostat -d</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#iostat-x"><span class="nav-number">7.2.1.</span> <span class="nav-text">iostat -x</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#vmstat-d"><span class="nav-number">7.3.</span> <span class="nav-text">vmstat -d</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络性能评估"><span class="nav-number">8.</span> <span class="nav-text">网络性能评估</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#ping"><span class="nav-number">8.1.</span> <span class="nav-text">ping</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#netstat-i"><span class="nav-number">8.2.</span> <span class="nav-text">netstat -i</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#netstat-r"><span class="nav-number">8.3.</span> <span class="nav-text">netstat -r</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#sar-n"><span class="nav-number">8.4.</span> <span class="nav-text">sar -n</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#traceroute"><span class="nav-number">8.5.</span> <span class="nav-text">traceroute</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#nslookup"><span class="nav-number">8.6.</span> <span class="nav-text">nslookup</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">luojieio</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"luojieio-note"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

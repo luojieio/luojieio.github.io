@@ -1,0 +1,1161 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker-2.实战篇-1.ssh镜像">
+<meta property="og:url" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/index.html">
+<meta property="og:site_name" content="luojieio">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/0.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/1.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/2.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/3.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/4.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/5.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/6.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/7.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/8.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/9.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/10.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/11.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/12.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/13.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/14.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/15.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/16.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/17.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/18.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/19.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/20.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/21.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/22.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/23.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/24.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/25.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/26.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/27.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/28.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/29.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/30.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/31.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/32.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/33.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/34.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/35.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/36.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/37.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/38.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/39.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/40.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/41.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/42.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/43.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/44.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/45.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/46.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/47.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/48.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/49.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/50.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/51.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/52.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/53.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/54.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/55.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/56.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/57.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/58.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/59.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/60.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/61.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/62.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/63.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/64.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/65.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/66.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/67.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/68.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/69.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/70.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/71.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/72.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/73.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/74.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/75.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/76.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/77.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/78.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/79.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/80.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/81.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/82.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/83.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/84.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/85.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/86.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/87.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/88.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/89.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/90.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/91.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/92.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/93.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/94.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/95.png">
+<meta property="og:updated_time" content="2018-03-14T03:08:44.914Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="docker-2.实战篇-1.ssh镜像">
+<meta name="twitter:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/0.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/"/>
+
+
+
+
+
+  <title> docker-2.实战篇-1.ssh镜像 | luojieio </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">luojieio</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">热爱开源、热爱自由</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="luojieio">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/teaser.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="luojieio">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                docker-2.实战篇-1.ssh镜像
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-15T15:57:53+08:00">
+                2017-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/0.png">
+<p><br><br><a id="more"></a></p>
+<blockquote>
+<p>基于docker 1.12版本</p>
+</blockquote>
+<p><a href="https://docs.docker.com" target="_blank" rel="noopener">官方参考文档</a></p>
+<blockquote>
+<p><strong>SSH之争议</strong><br>反方：</p>
+<ul>
+<li>容器的思想就是一个容器仅运行一个应用，加SSH违背理念</li>
+<li>不需要远程进入容器，直接在宿主机attach、exec连接进入，或通过更复杂的手段执行脚本来完成需要的事务</li>
+</ul>
+</blockquote>
+<p>正方：</p>
+<ul>
+<li>SSH不耗费资源，所以一个应用和加多一个SSH应用相差不大</li>
+<li>有时需要远程SSH进入，而不用每次都从宿主机进入，更方便，更符合linux管理的习惯</li>
+</ul>
+<h2 id="centos-7镜像安装SSH"><a href="#centos-7镜像安装SSH" class="headerlink" title="centos 7镜像安装SSH"></a>centos 7镜像安装SSH</h2><h3 id="以commit方式创建镜像"><a href="#以commit方式创建镜像" class="headerlink" title="以commit方式创建镜像"></a>以commit方式创建镜像</h3><h4 id="方式一：以密码登录"><a href="#方式一：以密码登录" class="headerlink" title="方式一：以密码登录"></a>方式一：以密码登录</h4><p>1.首先，pull 拉取最新的centos镜像到本地<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/1.png"></p>
+<p>2.查看拉取下来的镜像<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/2.png"></p>
+<p>3.基于此标准镜像创建并运行容器<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/3.png"></p>
+<p>4.进入容器后，开始安装ssh服务，为了方便使用再安装一些其它应用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install openssh-server -y</span><br><span class="line">yum install net-tools vim -y</span><br></pre></td></tr></table></figure></p>
+<p>5.安装完成后，准备启动，启动报错，提示ssh服务需要加载主机密钥文件<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/4.png"></p>
+<p>既然需要这些密钥文件，那就生成出来就好<br>-t  指定密钥加密方式<br>-f 指定密钥文件名<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/5.png"></p>
+<p>同理其它两个也一样的生成即可<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/6.png"></p>
+<p>生成好密钥文件后，再次启动，没有报错，查看端口也正常处于侦听状态<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/7.png"></p>
+<p>6.接下来，修改SSH服务的安全登录配置，取消PAM登录限制<br><code>vim /etc/pam.d/sshd</code>   将session  required pam_loginuid.so 这一行加上#注释<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/8.png"></p>
+<p>7.因为这一例是以密码登录方式，所以需要为所需要登录的用户设置密码，比如设置root用户<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/9.png"></p>
+<p>8.ssh的服务在容器中所需要配置的项完成，接着exit退出，接着查看容器ID<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/10.png"></p>
+<p>9.根据容器ID开始commit出基于容器的镜像文件<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/11.png"></p>
+<p>10.查看生成的镜像<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/12.png"></p>
+<p>11.接下来，基于新的镜像创建容器<br>注意：/usr/sbin/sshd -D  一定要带-D选项，将sshd作为非后台程序运行即前台运行，否则容器会EXIT退出。<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/13.png"></p>
+<p>12.测试，从宿主机通过设置的21860端口登录<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/14.png"></p>
+<p>成功登录，这里需要注意的一点是，如果你的宿主机当前用户家目录.ssh目录下有know_hosts文件，可能是之前连接其它容器遗留下来的记录文件，会导致因为密钥不匹配的问题导致连接失败。<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/15.png"></p>
+<p>错误提示：<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/16.png"></p>
+<p>这种情况只需要将know_hosts文件删除即可。</p>
+<p>13.测试，从其它主机通过设置的21860端口登录<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/17.png"></p>
+<p>登录成功<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/18.png"></p>
+<hr>
+<h4 id="方式二：以密钥登录"><a href="#方式二：以密钥登录" class="headerlink" title="方式二：以密钥登录"></a>方式二：以密钥登录</h4><p>1.首先，pull 拉取最新的centos镜像到本地<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/19.png"></p>
+<p>2.查看拉取下来的镜像<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/20.png"></p>
+<p>3.基于此标准镜像创建并运行容器<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/21.png"></p>
+<p>4.进入容器后，开始安装ssh服务，为了方便使用再安装一些其它应用<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install openssh-server -y</span><br><span class="line">yum install net-tools vim -y</span><br></pre></td></tr></table></figure></p>
+<p>5.安装完成后，准备启动，启动报错，提示ssh服务需要加载主机密钥文件<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/22.png"></p>
+<p>既然需要这些密钥文件，那就生成出来就好<br>-t  指定密钥加密方式<br>-f 指定密钥文件名<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/23.png"></p>
+<p>同理其它两个也一样的生成即可<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/24.png"></p>
+<p>生成好密钥文件后，再次启动，没有报错，查看端口也正常处于侦听状态<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/25.png"></p>
+<p>6.接下来，修改SSH服务的安全登录配置，取消PAM登录限制<br><code>vim /etc/pam.d/sshd</code>   将session  required pam_loginuid.so 这一行加上#注释<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/26.png"></p>
+<p>7.接下来，开始加密钥<br>由于密钥方式是以非对称加密的方式进行解密的，所以只需要在一发起方生成密码文件即可。比如在宿主机通过ssh访问容器，则需要在宿主机上生成密钥文件，再将宿主机上的公钥复制到容器内的用户家目录下的.ssh/authorized_keys文件中即可</p>
+<p>我们在宿主机上生成密钥文件<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/27.png"></p>
+<p>将宿主机里生成的公钥文件拷贝到容器<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/28.png"></p>
+<p>容器加好公钥后，我们退出容器</p>
+<p>8.开始commit创建出通过密钥方式验证的ssh容器的镜像<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/29.png"></p>
+<p>9.开始根据新生成的镜像创建容器<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/30.png"></p>
+<p>10.测试在宿主机以ssh方式登录容器，可以不用密码就登录成功了<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/31.png"></p>
+<p>11.测试在其它机器上以ssh方式登录容器，只需要将宿主机上的密钥文件（包括公钥和私钥）复制到其它机器上即可</p>
+<p>连接时记得把公钥认证方式移动到上面，点击属性选择公钥文件的位置<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/32.png"><br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/33.png"></p>
+<p>连接成功，连密码都不用输入了。<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/34.png"></p>
+<hr>
+<h3 id="以Dockerfile方式创建镜像"><a href="#以Dockerfile方式创建镜像" class="headerlink" title="以Dockerfile方式创建镜像"></a>以Dockerfile方式创建镜像</h3><h4 id="方式一：以密码登录-1"><a href="#方式一：以密码登录-1" class="headerlink" title="方式一：以密码登录"></a>方式一：以密码登录</h4><p>1.创建构建工作目录并创建Dockerfile构建文件<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/35.png"></p>
+<p>2.关于Dockerfile文件的更多详细内容可参看下面的ubuntu的操作说明，在此不再赘述，直接上构建文件<br>如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#设置继承镜像</span></span><br><span class="line">FROM centos</span><br><span class="line"></span><br><span class="line"><span class="comment">#提供一些维护者信息</span></span><br><span class="line">MAINTAINER luojie</span><br><span class="line"></span><br><span class="line"><span class="comment">#下面开始运行命令</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#开始安装openssh-server</span></span><br><span class="line">RUN yum install -y openssh-server</span><br><span class="line"></span><br><span class="line"><span class="comment">#centos启动需要一些密钥文件，哪怕不用密钥登录也需要，否则sshd无法启动</span></span><br><span class="line">RUN ssh-keygen -N <span class="string">''</span> -t rsa -q -f /etc/ssh/ssh_host_rsa_key  </span><br><span class="line">RUN ssh-keygen -N <span class="string">''</span> -t ed25519 -f /etc/ssh/ssh_host_ed25519_key</span><br><span class="line">RUN ssh-keygen -N <span class="string">''</span> -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key</span><br><span class="line"></span><br><span class="line"><span class="comment">#创建用户登录的用户</span></span><br><span class="line">RUN useradd luojie</span><br><span class="line"><span class="comment">#为普通用户设置密码,需要注意的是ubuntu已经不支持passwd --stdin的方式设置密码了</span></span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">'luojie'</span>|passwd --stdin luojie</span><br><span class="line"></span><br><span class="line"><span class="comment">#取消pam限制</span></span><br><span class="line">RUN sed -ri <span class="string">'s/session    required     pam_loginuid.so/#session    required     pam_loginuid.so/g'</span> /etc/pam.d/sshd</span><br><span class="line"></span><br><span class="line"><span class="comment">#开放端口</span></span><br><span class="line">EXPOSE 22</span><br><span class="line"><span class="comment">#设置自启动命令，-D为非后台运行，即前台运行</span></span><br><span class="line">CMD /usr/sbin/sshd -D</span><br></pre></td></tr></table></figure></p>
+<p>3.开始构建<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/36.png"></p>
+<p>4.构建成功<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/37.png"></p>
+<p>5.查看镜像<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/38.png"></p>
+<p>6.创建容器<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/39.png"></p>
+<p>7.连接测试<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/40.png"></p>
+<hr>
+<h4 id="方式二：以密钥登录-1"><a href="#方式二：以密钥登录-1" class="headerlink" title="方式二：以密钥登录"></a>方式二：以密钥登录</h4><p>1.创建构建工作目录并创建Dockerfile构建文件<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/41.png"></p>
+<p>2.前期准备，因为需要使用密钥登录，所以先在发起方生成密钥文件，如在宿主机登录测试，则在宿主机生成，并将生成的密钥文件中的公钥拷贝到构建目录中，命名为<code>authorized_keys</code>，用于Dockerfile构建时引用备用<br>如:<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/42.png"></p>
+<p>3.关于Dockerfile文件的更多详细内容可参看下面的ubuntu的操作说明，在此不再赘述，直接上构建文件<br>如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#设置继承镜像</span></span><br><span class="line">FROM centos</span><br><span class="line"></span><br><span class="line"><span class="comment">#提供一些维护者信息</span></span><br><span class="line">MAINTAINER luojie</span><br><span class="line"></span><br><span class="line"><span class="comment">#下面开始运行命令</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#开始安装openssh-server</span></span><br><span class="line">RUN yum install -y openssh-server</span><br><span class="line"></span><br><span class="line"><span class="comment">#centos启动需要一些密钥文件，哪怕不用密钥登录也需要，否则sshd无法启动</span></span><br><span class="line">RUN ssh-keygen -N <span class="string">''</span> -t rsa -q -f /etc/ssh/ssh_host_rsa_key  </span><br><span class="line">RUN ssh-keygen -N <span class="string">''</span> -t ed25519 -f /etc/ssh/ssh_host_ed25519_key</span><br><span class="line">RUN ssh-keygen -N <span class="string">''</span> -t ecdsa -f /etc/ssh/ssh_host_ecdsa_key</span><br><span class="line"></span><br><span class="line"><span class="comment">#创建公钥文件到/root/.ssh/authorized_keys</span></span><br><span class="line">ADD ./authorized_keys /root/.ssh/authorized_keys</span><br><span class="line"></span><br><span class="line"><span class="comment">#取消pam限制</span></span><br><span class="line">RUN sed -ri <span class="string">'s/session    required     pam_loginuid.so/#session    required     pam_loginuid.so/g'</span> /etc/pam.d/sshd</span><br><span class="line"></span><br><span class="line"><span class="comment">#开放端口</span></span><br><span class="line">EXPOSE 22</span><br><span class="line"><span class="comment">#设置自启动命令，以-D非后台模式运行，即以前台模式运行</span></span><br><span class="line">CMD /usr/sbin/sshd -D</span><br></pre></td></tr></table></figure></p>
+<p>4.开始构建<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/43.png"></p>
+<p>5.构建成功<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/44.png"></p>
+<p>6.查看镜像<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/45.png"></p>
+<p>为了命名规则，打个tag<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/46.png"></p>
+<p>7.创建容器<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/47.png"></p>
+<p>8.登录测试即可，在此不再赘述</p>
+<hr>
+<h2 id="ubuntu-16-04-镜像安装SSH"><a href="#ubuntu-16-04-镜像安装SSH" class="headerlink" title="ubuntu 16.04 镜像安装SSH"></a>ubuntu 16.04 镜像安装SSH</h2><h3 id="以commit方式创建镜像-1"><a href="#以commit方式创建镜像-1" class="headerlink" title="以commit方式创建镜像"></a>以commit方式创建镜像</h3><h4 id="方式一：以密码登录-2"><a href="#方式一：以密码登录-2" class="headerlink" title="方式一：以密码登录"></a>方式一：以密码登录</h4><p>1.启动镜像创建容器<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -ti ubuntu /bin/bash</span><br></pre></td></tr></table></figure></p>
+<p>2.查看是否有ssh命令，提示命令没找到<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@38a25c2a5fb1:/<span class="comment"># sshd</span></span><br><span class="line">bash: sshd: <span class="built_in">command</span> not found</span><br></pre></td></tr></table></figure></p>
+<p>3.下面开始安装ssh，apt-get报错，这是因为ubuntu官方镜像中没有包含openssh-server的缓存文件，需要更新一下apt源<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">root@38a25c2a5fb1:/<span class="comment"># apt-get install openssh-server</span></span><br><span class="line">Reading package lists... Done</span><br><span class="line">Building dependency tree       </span><br><span class="line">Reading state information... Done</span><br><span class="line">E: Unable to locate package openssh-server</span><br></pre></td></tr></table></figure></p>
+<p>4.更新apt源，安装openssh-server和一些相关工具（相关工具是为方便非必须）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">root@e4ad46ebe65b:/<span class="comment"># apt-get update</span></span><br><span class="line"><span class="comment">#提示如果网络不通，重启一下docker，Ubuntu 16.04.1 LTS 表示ping、ifconfig和vim都没有，也顺便安装一下吧</span></span><br><span class="line">root@e4ad46ebe65b:/<span class="comment"># apt-get install inetutils-ping</span></span><br><span class="line">root@e4ad46ebe65b:/<span class="comment"># apt-get install net-tools</span></span><br><span class="line">root@e4ad46ebe65b:/<span class="comment"># apt-get install vim</span></span><br><span class="line">root@e4ad46ebe65b:/<span class="comment"># apt-get install openssh-server</span></span><br></pre></td></tr></table></figure></p>
+<p>另外如果嫌弃ubuntu官方的软件源太慢了，可以自行添加163的源<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">root@e4ad46ebe65b:~<span class="comment"># vim /etc/apt/sources.list.d/163.list</span></span><br><span class="line">添加以下内容到文件：</span><br><span class="line">deb http://mirrors.163.com/ubuntu/ wily main restricted universe multiverse</span><br><span class="line">deb http://mirrors.163.com/ubuntu/ wily-security main restricted universe multiverse</span><br><span class="line">deb http://mirrors.163.com/ubuntu/ wily-updates main restricted universe multiverse</span><br><span class="line">deb http://mirrors.163.com/ubuntu/ wily-proposed main restricted universe multiverse</span><br><span class="line">deb http://mirrors.163.com/ubuntu/ wily-backports main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.163.com/ubuntu/ wily main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.163.com/ubuntu/ wily-security main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.163.com/ubuntu/ wily-updates main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.163.com/ubuntu/ wily-proposed main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.163.com/ubuntu/ wily-backports main restricted universe multiverse</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">然后重新更新一下即可</span><br><span class="line">root@e4ad46ebe65b:~<span class="comment"># apt-get update</span></span><br></pre></td></tr></table></figure></p>
+<p>（来源于网易镜像站：<a href="http://mirrors.163.com/.help/ubuntu.html）" target="_blank" rel="noopener">http://mirrors.163.com/.help/ubuntu.html）</a></p>
+<p>5.openssh-server安装好后，我们看看它的安装路径<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@e4ad46ebe65b:~<span class="comment"># which sshd</span></span><br><span class="line">/usr/sbin/sshd</span><br></pre></td></tr></table></figure></p>
+<p>6.试着启动一下看看，报错说缺少<code>/var/run/sshd</code>这个运行目录，既然说缺少，那就创建一下吧<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">root@e4ad46ebe65b:~<span class="comment"># /usr/sbin/sshd</span></span><br><span class="line">Missing privilege separation directory: /var/run/sshd</span><br><span class="line"></span><br><span class="line">创建好目录再启动就没有报错了</span><br><span class="line">root@e4ad46ebe65b:~<span class="comment"># mkdir -p /var/run/sshd</span></span><br><span class="line">root@e4ad46ebe65b:~<span class="comment"># /usr/sbin/sshd        </span></span><br><span class="line">root@e4ad46ebe65b:~<span class="comment">#</span></span><br></pre></td></tr></table></figure></p>
+<p>7.我们看看sshd是否正常启动了，进程有了，22端口也处于侦听状态了<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">root@e4ad46ebe65b:~<span class="comment"># ps uax</span></span><br><span class="line">USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND</span><br><span class="line">root         1  0.0  0.1  18236  2056 ?        Ss   09:28   0:00 /bin/bash</span><br><span class="line">root      4152  0.0  0.0  65604  1172 ?        Ss   09:45   0:00 /usr/sbin/sshd</span><br><span class="line">root      4153  0.0  0.0  34416  1468 ?        R+   09:45   0:00 ps uax</span><br><span class="line">root@e4ad46ebe65b:~<span class="comment"># netstat -ntpla</span></span><br><span class="line">Active Internet connections (servers and established)</span><br><span class="line">Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name</span><br><span class="line">tcp        0      0 0.0.0.0:22              0.0.0.0:*               LISTEN      4152/sshd       </span><br><span class="line">tcp6       0      0 :::22                   :::*                    LISTEN      4152/sshd</span><br></pre></td></tr></table></figure></p>
+<p>8.跟centos一样，我们也要修改一下pam的访问限制<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@e4ad46ebe65b:~<span class="comment"># vim /etc/pam.d/sshd</span></span><br></pre></td></tr></table></figure></p>
+<p>注释掉标红处<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/48.png"></p>
+<p>9.由于ubuntu默认是禁止从root登录的，所以我们还需要将sshd_config中的<code>prohibit-password</code>（禁止密码）修改为<code>yes</code>，当然如果你是用其它用户来测试可以不用修改这个，这里因为是使用root用户来测试所以需要修改这里sshd以允许root用户从密码登录。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root@59c1945cff4f:/<span class="comment"># vim /etc/ssh/sshd_config</span></span><br></pre></td></tr></table></figure></p>
+<p>修改前：<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/49.png"><br>修改后：<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/50.png"></p>
+<p>10.openssh-server方面基本就完成了，因为这一个是通过密码登录的，所以我要为需要登录的用户设置密码，在此为root用户设置密码<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">root@e4ad46ebe65b:~<span class="comment"># passwd  </span></span><br><span class="line">Enter new UNIX password: </span><br><span class="line">Retype new UNIX password: </span><br><span class="line">passwd: password updated successfully</span><br></pre></td></tr></table></figure></p>
+<p>11.容器内整理完成，可以退出了，开始commit提交此容器为新的镜像<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/51.png"></p>
+<p>12.基于新创建的镜像创建容器，注意启动sshd一定要带<code>-D</code>选项，以非后台守护进程方式运行，即以前台方式运行。<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/52.png"></p>
+<p>13.宿主机登录测试<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/53.png"></p>
+<p>14.再从其它机器登录测试<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/54.png"><br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/55.png"></p>
+<p>测试成功，配置完成。</p>
+<hr>
+<h4 id="方式二：以密钥登录-2"><a href="#方式二：以密钥登录-2" class="headerlink" title="方式二：以密钥登录"></a>方式二：以密钥登录</h4><p>1.根据基本镜像创建容器<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/56.png"></p>
+<p>2.与上面密码登录的方式同理，先更新apt-get软件源，或增加163源</p>
+<p>下面开始更新apt源，安装openssh-server和一些相关工具（相关工具是为方便非必须）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">root@e4ad46ebe65b:/<span class="comment"># apt-get update</span></span><br><span class="line"><span class="comment">#提示如果网络不通，重启一下docker，Ubuntu 16.04.1 LTS 表示ping、ifconfig和vim都没有，也顺便安装一下吧</span></span><br><span class="line">root@e4ad46ebe65b:/<span class="comment"># apt-get install inetutils-ping</span></span><br><span class="line">root@e4ad46ebe65b:/<span class="comment"># apt-get install net-tools</span></span><br><span class="line">root@e4ad46ebe65b:/<span class="comment"># apt-get install vim</span></span><br><span class="line">root@e4ad46ebe65b:/<span class="comment"># apt-get install openssh-server</span></span><br></pre></td></tr></table></figure></p>
+<p>另外如果嫌弃ubuntu官方的软件源太慢了，可以自行添加163的源<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">root@e4ad46ebe65b:~<span class="comment"># vim /etc/apt/sources.list.d/163.list</span></span><br><span class="line">添加以下内容到文件：</span><br><span class="line">deb http://mirrors.163.com/ubuntu/ wily main restricted universe multiverse</span><br><span class="line">deb http://mirrors.163.com/ubuntu/ wily-security main restricted universe multiverse</span><br><span class="line">deb http://mirrors.163.com/ubuntu/ wily-updates main restricted universe multiverse</span><br><span class="line">deb http://mirrors.163.com/ubuntu/ wily-proposed main restricted universe multiverse</span><br><span class="line">deb http://mirrors.163.com/ubuntu/ wily-backports main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.163.com/ubuntu/ wily main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.163.com/ubuntu/ wily-security main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.163.com/ubuntu/ wily-updates main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.163.com/ubuntu/ wily-proposed main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.163.com/ubuntu/ wily-backports main restricted universe multiverse</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">然后重新更新一下即可</span><br><span class="line">root@e4ad46ebe65b:~<span class="comment"># apt-get update</span></span><br></pre></td></tr></table></figure></p>
+<p>（来源于网易镜像站：<a href="http://mirrors.163.com/.help/ubuntu.html）" target="_blank" rel="noopener">http://mirrors.163.com/.help/ubuntu.html）</a></p>
+<p>3.看看安装sshd运行程序放在哪，尝试启动sshd，报错提示需要有运行目录，那就创建这个目录<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/57.png"></p>
+<p>4.创建sshd运行目录，并再次尝试启动，没有报错了<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/58.png"></p>
+<p>5.查看进程和端口，正常<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/59.png"></p>
+<p>6.修改pam登录限制，注释<code>session    required     pam_loginuid.so</code><br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/60.png"></p>
+<p>7.由于这次是使用密钥登录，由宿主机发起登录请求，所以将发起端的公钥文件放置到容器中</p>
+<p>发起端产生公钥和私钥文件<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/61.png"></p>
+<p>将公钥文件<code>id_rsa.pub</code>的内容拷贝到容器里家目录下的.ssh/authorized_keys<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/62.png"></p>
+<p>8.至此，容器中ssh已经部署完成，退出容器</p>
+<p>9.基于刚才创建的容器commit提交为新镜像<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/63.png"></p>
+<p>10.基于新创建的ssh以密钥登录的镜像创建容器，注意<code>sshd -D</code>，以非后台守护进程方式运行，即以前台模式运行<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/64.png"></p>
+<p>12.宿主机登录测试，不用输入密码直接登录成功<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/65.png"></p>
+<p>13.其它主机登录测试，需要先将宿主机上的密钥文件（包括公钥和私钥）放置到需要发起登录的主机上<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/66.png"><br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/67.png"></p>
+<p>成功登录<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/68.png"></p>
+<hr>
+<h3 id="以Dockerfile方式创建镜像-1"><a href="#以Dockerfile方式创建镜像-1" class="headerlink" title="以Dockerfile方式创建镜像"></a>以Dockerfile方式创建镜像</h3><h4 id="方式一：以密码登录-3"><a href="#方式一：以密码登录-3" class="headerlink" title="方式一：以密码登录"></a>方式一：以密码登录</h4><p>1.使用Dockerfile方式创建镜像需要有一个工作目录环境，方便独立管理，所以先创建工作目录<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/69.png"></p>
+<p>2.在其中创建Dockerfile用于build的配置文件<br>通过查看docker build的选项帮助可以看到<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/70.png"><br>可以看到<code>PATH/Dockerfile</code>，默认情况下build是查找路径下的以<code>Dockerfile</code>命名的文件用于构建的。</p>
+<p><strong>几个问题在此强调一下：</strong><br>问题一：Dockerfile文件名是否必须写成Dockerfile首字母大写，可否写成其它名称？<br>答：可以<br>如果你所用于build构建而用的配置文件不是Dockerfile命名，需要使用选项<code>-f</code>后接你所定义的文件名，再后接该文件所在的路径，一定不可以反过来，必须是先文件名后路径<br>如：相对路径的写法<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/71.png"></p>
+<p>如：绝对路径的写法<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/72.png"></p>
+<p>问题二：编排顺序验证是否可穿插，如RUN后接ADD再接RUN？而不是一定要全部写RUN，再写ADD，再写其它关键字？<br>答，可以随意穿插，就像写shell脚本一样，从上至下执行，按你的思路来写即可，没有说关键字一定要写在一起</p>
+<p>问题三：是否可以有空行<br>答：可以。为了Dockerfile文件便于查看，可以留空一行，方便区分不同的段落</p>
+<p>问题四：构建过程如果没有构建完成，是否会生成镜像文件？<br>答：会的，从build构建的原理可知，每运行一次RUN就会commit提交一次镜像文件，所以当你通过Dockerfile文件展开build操作时，如果中途出错，此前commit的镜像文件依然会保存下来<br>如：构建错误<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/73.png"><br>如：未知的保存下来的镜像文件<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/74.png"></p>
+<p>用于构建的Dockerfile范例如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#设置继承镜像</span></span><br><span class="line">FROM ubuntu</span><br><span class="line"></span><br><span class="line"><span class="comment">#提供一些维护者信息</span></span><br><span class="line">MAINTAINER luojie</span><br><span class="line"></span><br><span class="line"><span class="comment">#下面开始运行命令</span></span><br><span class="line"><span class="comment">#此处更改ubuntu的源为国内163的源</span></span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">"deb http://mirrors.163.com/ubuntu/ wily main restricted universe multiverse"</span> &gt; /etc/apt/sources.list.d/163.list</span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">"deb http://mirrors.163.com/ubuntu/ wily-security main restricted universe multiverse"</span> &gt;&gt; /etc/apt/sources.list.d/163.list</span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">"deb http://mirrors.163.com/ubuntu/ wily-updates main restricted universe multiverse"</span> &gt;&gt; /etc/apt/sources.list.d/163.list</span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">"deb http://mirrors.163.com/ubuntu/ wily-proposed main restricted universe multiverse"</span> &gt;&gt; /etc/apt/sources.list.d/163.list</span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">"deb http://mirrors.163.com/ubuntu/ wily-backports main restricted universe multiverse"</span> &gt;&gt; /etc/apt/sources.list.d/163.list</span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">"deb-src http://mirrors.163.com/ubuntu/ wily main restricted universe multiverse"</span> &gt;&gt; /etc/apt/sources.list.d/163.list</span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">"deb-src http://mirrors.163.com/ubuntu/ wily-security main restricted universe multiverse"</span> &gt;&gt; /etc/apt/sources.list.d/163.list</span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">"deb-src http://mirrors.163.com/ubuntu/ wily-updates main restricted universe multiverse"</span> &gt;&gt; /etc/apt/sources.list.d/163.list</span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">"deb-src http://mirrors.163.com/ubuntu/ wily-proposed main restricted universe multiverse"</span> &gt;&gt; /etc/apt/sources.list.d/163.list</span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">"deb-src http://mirrors.163.com/ubuntu/ wily-backports main restricted universe multiverse"</span> &gt;&gt; /etc/apt/sources.list.d/163.list</span><br><span class="line">RUN apt-get update</span><br><span class="line"></span><br><span class="line"><span class="comment">#开始安装openssh-server</span></span><br><span class="line">RUN apt-get install -y openssh-server</span><br><span class="line"></span><br><span class="line"><span class="comment">#为启动sshd创建运行目录ubuntu需要有此目录</span></span><br><span class="line">RUN mkdir -p /var/run/sshd</span><br><span class="line"></span><br><span class="line"><span class="comment">#创建用户登录的用户，由于使用ubuntu默认是不允许root使用密码登录的，所以为了还要去修改/etc/ssh/sshd_config文件中的"PermitRootLogin prohibit-password "改为“PermitRootLogin yes”的麻烦，在此我们新建一个普通用户用于测试</span></span><br><span class="line">RUN useradd luojie</span><br><span class="line"><span class="comment">#为普通用户设置密码,需要注意的是ubuntu已经不支持passwd --stdin的方式设置密码了</span></span><br><span class="line">RUN <span class="built_in">echo</span> luojie:123456 | chpasswd </span><br><span class="line"></span><br><span class="line"><span class="comment">#取消pam限制</span></span><br><span class="line">RUN sed -ri <span class="string">'s/session    required     pam_loginuid.so/#session    required     pam_loginuid.so/g'</span> /etc/pam.d/sshd</span><br><span class="line"></span><br><span class="line"><span class="comment">#开放端口</span></span><br><span class="line">EXPOSE 22</span><br><span class="line"><span class="comment">#设置自启动命令以非后台模式运行，即以前台模式运行</span></span><br><span class="line">CMD /usr/sbin/sshd -D</span><br></pre></td></tr></table></figure></p>
+<p>3.开始构建<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/75.png"></p>
+<p>4.构建成功<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/76.png"></p>
+<p>5.查看新构建的镜像<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/77.png"></p>
+<p>为了统一命名将其改名（由于之前上面build时没有写完事名称导致）<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/78.png"></p>
+<p>再次查看镜像<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/79.png"></p>
+<p>6.以新镜像创建容器<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/80.png"></p>
+<p>7.连接测试，登录成功<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/81.png"></p>
+<hr>
+<h4 id="方式二：以密钥登录-3"><a href="#方式二：以密钥登录-3" class="headerlink" title="方式二：以密钥登录"></a>方式二：以密钥登录</h4><p>1.使用Dockerfile方式创建镜像需要有一个工作目录环境，方便独立管理，所以先创建工作目录<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/82.png"></p>
+<p>2.在其中创建Dockerfile用于build的配置文件<br>通过查看docker build的选项帮助可以看到<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/83.png"><br>可以看到<code>PATH/Dockerfile</code>，默认情况下build是查找路径下的以<code>Dockerfile</code>命名的文件用于构建的。</p>
+<p><strong>几个问题在此强调一下：</strong><br>问题一：Dockerfile文件名是否必须写成Dockerfile首字母大写，可否写成其它名称？<br>答：可以<br>如果你所用于build构建而用的配置文件不是Dockerfile命名，需要使用选项<code>-f</code>后接你所定义的文件名，再后接该文件所在的路径，一定不可以反过来，必须是先文件名后路径<br>如：相对路径的写法<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/84.png"></p>
+<p>如：绝对路径的写法<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/85.png"></p>
+<p>问题二：编排顺序验证是否可穿插，如RUN后接ADD再接RUN？而不是一定要全部写RUN，再写ADD，再写其它关键字？<br>答，可以随意穿插，就像写shell脚本一样，从上至下执行，按你的思路来写即可，没有说关键字一定要写在一起</p>
+<p>问题三：是否可以有空行<br>答：可以。为了Dockerfile文件便于查看，可以留空一行，方便区分不同的段落</p>
+<p>问题四：构建过程如果没有构建完成，是否会生成镜像文件？<br>答：会的，从build构建的原理可知，每运行一次RUN就会commit提交一次镜像文件，所以当你通过Dockerfile文件展开build操作时，如果中途出错，此前commit的镜像文件依然会保存下来<br>如：构建错误<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/86.png"><br>如：未知的保存下来的镜像文件<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/87.png"></p>
+<p>用于构建的Dockerfile范例如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#设置继承镜像</span></span><br><span class="line">FROM ubuntu</span><br><span class="line"></span><br><span class="line"><span class="comment">#提供一些维护者信息</span></span><br><span class="line">MAINTAINER luojie</span><br><span class="line"></span><br><span class="line"><span class="comment">#下面开始运行命令</span></span><br><span class="line"><span class="comment">#此处更改ubuntu的源为国内163的源</span></span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">"deb http://mirrors.163.com/ubuntu/ wily main restricted universe multiverse"</span> &gt; /etc/apt/sources.list.d/163.list</span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">"deb http://mirrors.163.com/ubuntu/ wily-security main restricted universe multiverse"</span> &gt;&gt; /etc/apt/sources.list.d/163.list</span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">"deb http://mirrors.163.com/ubuntu/ wily-updates main restricted universe multiverse"</span> &gt;&gt; /etc/apt/sources.list.d/163.list</span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">"deb http://mirrors.163.com/ubuntu/ wily-proposed main restricted universe multiverse"</span> &gt;&gt; /etc/apt/sources.list.d/163.list</span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">"deb http://mirrors.163.com/ubuntu/ wily-backports main restricted universe multiverse"</span> &gt;&gt; /etc/apt/sources.list.d/163.list</span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">"deb-src http://mirrors.163.com/ubuntu/ wily main restricted universe multiverse"</span> &gt;&gt; /etc/apt/sources.list.d/163.list</span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">"deb-src http://mirrors.163.com/ubuntu/ wily-security main restricted universe multiverse"</span> &gt;&gt; /etc/apt/sources.list.d/163.list</span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">"deb-src http://mirrors.163.com/ubuntu/ wily-updates main restricted universe multiverse"</span> &gt;&gt; /etc/apt/sources.list.d/163.list</span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">"deb-src http://mirrors.163.com/ubuntu/ wily-proposed main restricted universe multiverse"</span> &gt;&gt; /etc/apt/sources.list.d/163.list</span><br><span class="line">RUN <span class="built_in">echo</span> <span class="string">"deb-src http://mirrors.163.com/ubuntu/ wily-backports main restricted universe multiverse"</span> &gt;&gt; /etc/apt/sources.list.d/163.list</span><br><span class="line">RUN apt-get update</span><br><span class="line"></span><br><span class="line"><span class="comment">#开始安装openssh-server</span></span><br><span class="line">RUN apt-get install -y openssh-server</span><br><span class="line"></span><br><span class="line"><span class="comment">#为启动sshd创建运行目录ubuntu需要有此目录</span></span><br><span class="line">RUN mkdir -p /var/run/sshd</span><br><span class="line"></span><br><span class="line"><span class="comment">#开始设置密钥方面</span></span><br><span class="line">RUN mkdir -p /root/.ssh</span><br><span class="line"><span class="comment">#把密钥文件复制配置文件到相应的位置</span></span><br><span class="line">ADD authorized_keys /root/.ssh/authorized_keys</span><br><span class="line"></span><br><span class="line"><span class="comment">#取消pam限制</span></span><br><span class="line">RUN sed -ri <span class="string">'s/session    required     pam_loginuid.so/#session    required     pam_loginuid.so/g'</span> /etc/pam.d/sshd</span><br><span class="line"></span><br><span class="line"><span class="comment">#开放端口</span></span><br><span class="line">EXPOSE 22</span><br><span class="line"><span class="comment">#设置自启动命令以非后台模式运行，即以前台模式运行</span></span><br><span class="line">CMD /usr/sbin/sshd -D</span><br></pre></td></tr></table></figure></p>
+<p>3.从配置文件中可知我们需要使用密钥的方式进行登录，Dockerfile中以ADD的方式来将构建工作目录中的<code>authorized_keys</code>复制到了容器中的<code>/root/.ssh/authorized_keys</code>中，所以我们需要将<code>authorized_keys</code>这个公钥文件事先放在构建工作目录中，方便build构建时根据Dockerfile进行构建时找到这个文件，因此build的工作目录中所需要的文件如下：<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/88.png"></p>
+<p>总之就是将所有需要的用到的涉及到的文件都放在构建目录中，方便调取</p>
+<p>4.上面的准备工作都做好后，接下来，我们可以开始build构建我们所需要的自定义镜像了，它会按Dockerfile中定义的一条条执行，需要等待一点时间（<code>需要提醒的是，第一次构建需要的时间较长，但是当第二次使用该Dockerfile文件再次进行构建时，所花费的时间就很短了</code>）<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/89.png"></p>
+<p>5.构建完成后，提示成功构建出镜像，并提示新镜像的ID<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/90.png"></p>
+<p>6.可以查看一下<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/91.png"></p>
+<p>7.接下来以这个新构建的镜像启动容器，可以看到端口已经映射到容器的22端口<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/92.png"></p>
+<p>8.因为之前已经事先创建好了宿主机发起方的密钥文件（公钥和私钥），因为刚才构建时需要事先将公钥文件ADD到容器里，所以已经事先创建好了密钥文件。接下来，通过宿主机尝试登录测试</p>
+<p>宿主机成功登录<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/93.png"></p>
+<p>如果报错：将宿主机上的/root/.ssh/known_hosts文件删除即可，这个known_hosts文件可能是遗留下来的之前连接所使用的记录文件。<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/94.png"></p>
+<p>9.其它机器登录测试，登录成功<br><img src="/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/95.png"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/15/技术/docker/docker-1-基础篇-6-网络管理/" rel="next" title="docker-1.基础篇-6.网络管理">
+                <i class="fa fa-chevron-left"></i> docker-1.基础篇-6.网络管理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/15/技术/docker/docker-2-实战篇-2-apache镜像/" rel="prev" title="docker-2.实战篇-2.apache镜像">
+                docker-2.实战篇-2.apache镜像 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/"
+           data-title="docker-2.实战篇-1.ssh镜像" data-url="https://luojieio.github.io/2017/03/15/技术/docker/docker-2-实战篇-1-ssh镜像/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/teaser.png"
+               alt="luojieio" />
+          <p class="site-author-name" itemprop="name">luojieio</p>
+           
+              <p class="site-description motion-element" itemprop="description">热爱开源、热爱自由</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/luojieio" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/alex3714/category/770733.html" title="金角大王" target="_blank">金角大王</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.runoob.com/" title="菜鸟教程" target="_blank">菜鸟教程</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://python.jobbole.com/" title="伯乐在线" target="_blank">伯乐在线</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://docs.docker.com/" title="Docker" target="_blank">Docker</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://hexo.io/zh-cn/" title="Hexo" target="_blank">Hexo</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://theme-next.iissnan.com/" title="NexT" target="_blank">NexT</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://fontawesome.io" title="Font Awesome" target="_blank">Font Awesome</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://duoshuo.com/" title="多说" target="_blank">多说</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#centos-7镜像安装SSH"><span class="nav-number">1.</span> <span class="nav-text">centos 7镜像安装SSH</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#以commit方式创建镜像"><span class="nav-number">1.1.</span> <span class="nav-text">以commit方式创建镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方式一：以密码登录"><span class="nav-number">1.1.1.</span> <span class="nav-text">方式一：以密码登录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方式二：以密钥登录"><span class="nav-number">1.1.2.</span> <span class="nav-text">方式二：以密钥登录</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以Dockerfile方式创建镜像"><span class="nav-number">1.2.</span> <span class="nav-text">以Dockerfile方式创建镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方式一：以密码登录-1"><span class="nav-number">1.2.1.</span> <span class="nav-text">方式一：以密码登录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方式二：以密钥登录-1"><span class="nav-number">1.2.2.</span> <span class="nav-text">方式二：以密钥登录</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ubuntu-16-04-镜像安装SSH"><span class="nav-number">2.</span> <span class="nav-text">ubuntu 16.04 镜像安装SSH</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#以commit方式创建镜像-1"><span class="nav-number">2.1.</span> <span class="nav-text">以commit方式创建镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方式一：以密码登录-2"><span class="nav-number">2.1.1.</span> <span class="nav-text">方式一：以密码登录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方式二：以密钥登录-2"><span class="nav-number">2.1.2.</span> <span class="nav-text">方式二：以密钥登录</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以Dockerfile方式创建镜像-1"><span class="nav-number">2.2.</span> <span class="nav-text">以Dockerfile方式创建镜像</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方式一：以密码登录-3"><span class="nav-number">2.2.1.</span> <span class="nav-text">方式一：以密码登录</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#方式二：以密钥登录-3"><span class="nav-number">2.2.2.</span> <span class="nav-text">方式二：以密钥登录</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">luojieio</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"luojieio-note"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

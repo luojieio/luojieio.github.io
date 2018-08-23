@@ -1,0 +1,1086 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="python3-基础篇-3.变量与函数">
+<meta property="og:url" content="https://luojieio.github.io/2017/08/30/技术/python/python3-基础篇-3-变量与函数/index.html">
+<meta property="og:site_name" content="luojieio">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://luojieio.github.io/2017/08/30/技术/python/python3-基础篇-3-变量与函数/0.png">
+<meta property="og:updated_time" content="2018-03-14T03:18:08.770Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="python3-基础篇-3.变量与函数">
+<meta name="twitter:image" content="https://luojieio.github.io/2017/08/30/技术/python/python3-基础篇-3-变量与函数/0.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://luojieio.github.io/2017/08/30/技术/python/python3-基础篇-3-变量与函数/"/>
+
+
+
+
+
+  <title> python3-基础篇-3.变量与函数 | luojieio </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">luojieio</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">热爱开源、热爱自由</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://luojieio.github.io/2017/08/30/技术/python/python3-基础篇-3-变量与函数/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="luojieio">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/teaser.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="luojieio">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                python3-基础篇-3.变量与函数
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-30T10:41:02+08:00">
+                2017-08-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/python3/" itemprop="url" rel="index">
+                    <span itemprop="name">python3</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/08/30/技术/python/python3-基础篇-3-变量与函数/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/08/30/技术/python/python3-基础篇-3-变量与函数/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <img src="/2017/08/30/技术/python/python3-基础篇-3-变量与函数/0.png">
+<p><br><br><a id="more"></a></p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><h3 id="变量说明"><a href="#变量说明" class="headerlink" title="变量说明"></a>变量说明</h3><p>变量，顾名思义，值可以变化，即你可以使用变量存储任何东西，变量只是你的计算机中存储信息的一部分内存。通过内置函数<code>id(变量名)</code>可以来查看变量在内存中的存储空间地址编码，注意这个编码是python中的，而不是真正的内存中的，因为python是高级语言，不处理底层。<br>（对象，在很多其他编程语言中叫做“变量”，是一个基本的计算机术语，但我们说对象和变量其实质虽然相同，但含义是不同的，对象是相对于类来说的，具有更高一层的含义）</p>
+<ul>
+<li>值是一段代码需要处理和运行的最小单位，它可能是一个数字，或者一串字母。在实际生活中，当我们说“值”的时候，潜意识中就自动对它进行了分类。比如：数字、字母、单词 等等。计算机在处理数据的时候也是根据具体的数据“类型”来获取不同的“属性”，采用不同的处理“方法”的。</li>
+<li>变量是程序中最为基本的内容之一，变量名就是一个变量内容的名字（另一个重要的内容是“函数”）</li>
+<li>通过等号，我们把变量（名）指向一个值（即变量内容）</li>
+</ul>
+<p>比如：<br><code>myString=&quot;hello python&quot;</code>，其实际上就是我们把<code>“hello python”</code>这句话<code>赋予</code>给了<code>myString</code>这个变量，或<code>myString</code>这个变量名<code>指向</code>了<code>“hello python”</code>这个变量内容</p>
+<p>即：<br><code>variable</code> = <code>value</code><br><code>变量名</code>     <code>变量的内容</code> </p>
+<p>注意：请不要把赋值语句的<code>=</code>等同于数学的<code>等号</code><br>比如下面的代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">x = 10</span><br><span class="line">x = x + 2</span><br></pre></td></tr></table></figure></p>
+<p>如果从数学上理解<code>x = x + 2</code>那无论如何是不成立的，在程序中，赋值语句先计算右侧的表达式<code>x + 2</code>，得到结果12，再赋给变量<code>x</code>。由于x之前的值是10，重新赋值后，x的值变成12。而在数学中的等号应该使用<code>==</code>来表示。</p>
+<h3 id="命名要求"><a href="#命名要求" class="headerlink" title="命名要求"></a>命名要求</h3><ul>
+<li>它可以由字符、数字、下划线（_）组成，但是它不能用数字作为开头，即首字母必须是大小写字母或下划线</li>
+<li>不能有空格，空格是作为命令的分隔，容易导致错误。横杆<code>-</code>，因为横杆是<code>减号</code>占用了</li>
+<li>对大小写敏感</li>
+<li>简单明了，变量要有意义，尽量用名词，不可以使用关键字，这样做会导致将原来的关键字的功能被覆盖（python支持中文作为变量名，但是不建议这样做，而且不要写拼音，这样太Low了，写英文是最通用化的）</li>
+</ul>
+<h3 id="书写规则：驼峰规则"><a href="#书写规则：驼峰规则" class="headerlink" title="书写规则：驼峰规则"></a>书写规则：驼峰规则</h3><p>一般有三种命名规则：（全大写、全小写不便于识别）</p>
+<ul>
+<li>小驼峰式命名法（lower camel case）：第一个单词以小写字母开始，第二个单词的首字母大写，例如：myName、aDog</li>
+<li>大驼峰式命名法（upper camel case）：每一个单词的首字母都采用大写字母，例如：FirstName、LastName</li>
+<li>以下划线“_”来连接所有的单词，例如：my_name、last_name</li>
+</ul>
+<h3 id="定义变量"><a href="#定义变量" class="headerlink" title="定义变量"></a>定义变量</h3><p>在这里我们定义了三个变量，分别是一个字符串、一个整数、一个小数。这里再次提示一下：<code>字符串是需要用引号包裹起来的,否则会误以为是变量名</code>，等号（=）是我们常说的“赋值操作符”，通过等号，将右边的值赋予给左边的变量。也就是从变量名”指向”到变量的内容。<br>注意：shell中的变量后不可以加空格，python中可加空格也可以不加空格<br>提示：当python中的变量不指向时，python解释器会自动回收这个内存</p>
+<p>变量从变量名–&gt;值 为指向关系<br>从值来看，就是赋值关系，如果有修改变量的值，即有第三个值时，变量b是指向变量a所对应的值，而不是指向变量a</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#这是一个字符串</span><br><span class="line">myString = &apos;hello&apos;</span><br><span class="line">#这是一个数字</span><br><span class="line">aNum = 23</span><br><span class="line">#这是一个小数（浮点数）</span><br><span class="line">pi = 3.14</span><br></pre></td></tr></table></figure>
+<h3 id="打印变量"><a href="#打印变量" class="headerlink" title="打印变量"></a>打印变量</h3><p>通过<code>print()</code>我们可以打印出内容，打印方式与上面一样，在python中最简单的打印变量方式就是直接输入<code>print + 变量名</code>（也就是说在python中变量的引用不用像shell中那样还要带上个<code>$</code>符）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">print myString</span><br><span class="line">print aNum</span><br><span class="line">print pi</span><br></pre></td></tr></table></figure></p>
+<p>提示：交互终端中只是把它的<code>本质（属性）</code>显示出来，而不是说默认已在前面增加<code>print()</code>来打印输出，这点值得注意<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; mail =&apos;hello \n ,world \n&apos;</span><br><span class="line">&gt;&gt;&gt; mail</span><br><span class="line">&apos;hello \n ,world \n&apos;</span><br><span class="line">&gt;&gt;&gt; print(mail)</span><br><span class="line">hello </span><br><span class="line">,world</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h3 id="函数说明"><a href="#函数说明" class="headerlink" title="函数说明"></a>函数说明</h3><p>所谓的函数就是可以实现一个特定功能的代码块，这是编程的的另一个基本单元（先前一个基本单元是变量），它有自己名字，用来唯一的标识这个函数。当我们需要实现某个功能的时候，我们会“召唤”函数来帮我们实现这样的功能。<br>“召唤”的方法就是：<code>函数名+()</code>来调用这个函数，有时候还会在<code>()</code>中传进来实现这个功能需要使用的变量参数</p>
+<h3 id="为什么使用函数？"><a href="#为什么使用函数？" class="headerlink" title="为什么使用函数？"></a>为什么使用函数？</h3><ol>
+<li>降低编程的难度<br>通常将一个复杂的大问题分解成一系列更简单的小问题，然后将小问题继续划分成更小的问题，当问题细化为足够简单时，我们就可以分而治之。这时，我们可以使用函数来处理特定的问题，各个小问题解决了，大问题也就迎刃而解了。</li>
+<li>代码重用<br>我们定义的函数可以在一个程序的多个位置使用，也可以用于多个程序。此外，我们还可以把函数放到一个模块中供其他程序使用。同时我们也可以使用其他程序员定义的函数，这样就避免了重复劳动，提高了工作效率。</li>
+<li>一致性<br>一处修改处处生效</li>
+<li>可扩展性<br>想要增加功能，直接修改函数体即可</li>
+</ol>
+<h3 id="定义函数"><a href="#定义函数" class="headerlink" title="定义函数"></a>定义函数</h3><p>如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def showMyName(name):</span><br><span class="line">	print(name)</span><br></pre></td></tr></table></figure></p>
+<p>详细说明：</p>
+<ul>
+<li>关键字<code>def</code>是告诉解释器，我要写一个函数了</li>
+<li>showMyName就是这个函数的名字</li>
+<li>这个函数需要传入一个参数才能工作，这个参数（变量）的名字叫：<code>name</code></li>
+<li>别忘记，还要在末尾加一个<code>:</code>，他是告诉解释器，后面的这些内容是这个函数体内部的内容。具体是哪些内容呢？一般其他的语言会直接把它们放在一对<code>{}</code>中，在python中，我们不用花括号，我们用代码的缩进来展现一个程序内部的内容。</li>
+<li>在缩进之后，就是这个函数体内部的内容了。可以看到，这些内容的意义是打印出刚刚传入的<code>name</code>，这个<code>name</code>就是一个形式参数</li>
+</ul>
+<h3 id="调用函数"><a href="#调用函数" class="headerlink" title="调用函数"></a>调用函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">showMyName(&quot;duang&quot;)</span><br></pre></td></tr></table></figure>
+<p>传递参数的方式有两种：</p>
+<ul>
+<li>位置传参</li>
+<li>关键字传参（使用关键字进行传参，需要知道定义函数时所命名的形参才可以）</li>
+</ul>
+<p>总之，调用函数你就想像成跟调用变量一样，任何地方都可以调用变量，同理函数是由变量的功能演化而来的，所以同样任何地方都可以调用函数。另外，变量的命名原则，同样也适用于函数的命名原则，比如命名的大小驼峰和下划线之类的都是适用的。</p>
+<h3 id="演变过程"><a href="#演变过程" class="headerlink" title="演变过程"></a>演变过程</h3><ul>
+<li><code>变量</code>–&gt;<code>函数</code>–&gt;<code>模块</code>–&gt;<code>包</code>–&gt;<code>库</code></li>
+<li><code>数字</code>–&gt;<code>字符串</code>–&gt;<code>列表</code>–&gt;<code>元组</code>–&gt;<code>字典</code>–&gt;<code>集合</code></li>
+</ul>
+<h3 id="函数的形式参数与实际参数"><a href="#函数的形式参数与实际参数" class="headerlink" title="函数的形式参数与实际参数"></a>函数的形式参数与实际参数</h3><p>在定义函数时，函数名后面圆括号中的变量名称叫做”形式参数“，或简称为”形参“<br>在调用函数时，函数名后面圆括号中的变量名称叫做”实际参数“，或简称为”实参“</p>
+<p>切记：在以位置传参时，实参跟形参位置和数量一定是一一对应上的，不可以多，也不可以少，位置也一样（当然我们可以通过默认参数及参数组的方式来实现少传或多传的问题）。但需要清楚的是，形参是用于定义函数，实参是实际使用函数，所以两者的命名并不是一定要一致，它们没啥关联性。只要数量与位置对应上即可。</p>
+<h4 id="不带形参"><a href="#不带形参" class="headerlink" title="不带形参"></a>不带形参</h4><p>没有在()中写形参，直接修改函数体内容，来实现不同的功能<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#定义函数</span><br><span class="line">def num():</span><br><span class="line">    if 4&gt;2:</span><br><span class="line">	    print(4 , &apos;is max&apos;)</span><br><span class="line">	else:</span><br><span class="line">	    print(2 , &apos;is max&apos;)</span><br><span class="line"></span><br><span class="line">#引用函数</span><br><span class="line">num()</span><br></pre></td></tr></table></figure></p>
+<h4 id="不带形参-1"><a href="#不带形参-1" class="headerlink" title="不带形参"></a>不带形参</h4><p>没有在()中写形参，直接通过以变量或带交互式的提供实参<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#定义函数</span><br><span class="line">def num():</span><br><span class="line">	a=input(&apos;please input a:&apos;)</span><br><span class="line">	b=input(&apos;please input b:&apos;)</span><br><span class="line">	if a&gt;b:</span><br><span class="line">		print(a , &apos;is max&apos;)</span><br><span class="line">	else:</span><br><span class="line">		print(b , &apos;is max&apos;)</span><br><span class="line"></span><br><span class="line">#引用函数</span><br><span class="line">num()</span><br></pre></td></tr></table></figure></p>
+<h4 id="带形参"><a href="#带形参" class="headerlink" title="带形参"></a>带形参</h4><p>即函数体内的变量是跟所提供的形参相关的，并且直接给值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">#定义函数</span><br><span class="line">def num(a,b):</span><br><span class="line">	if a&gt;b:</span><br><span class="line">		print(a , &apos;is max&apos;)</span><br><span class="line">	else:</span><br><span class="line">		print(b , &apos;is max&apos;)</span><br><span class="line"></span><br><span class="line">#引用函数。提供实参的方式：直接给值</span><br><span class="line">num(2,3)</span><br></pre></td></tr></table></figure></p>
+<h4 id="带形参-1"><a href="#带形参-1" class="headerlink" title="带形参"></a>带形参</h4><p>即函数体内的变量是跟所提供的形参相关的，通过变量或交互式输入给值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#定义函数</span><br><span class="line">def num(a,b):</span><br><span class="line">		if a&gt;b:</span><br><span class="line">			print(a , &apos;is max&apos;)</span><br><span class="line">		else:</span><br><span class="line">			print(b , &apos;is max&apos;)</span><br><span class="line"></span><br><span class="line">#引用函数。提供实参的方式：通过变量给值或带交互式输入给值</span><br><span class="line">a=input(&apos;please input a:&apos;)</span><br><span class="line">b=input(&apos;please input b:&apos;)</span><br><span class="line">num(a,b)</span><br></pre></td></tr></table></figure></p>
+<h3 id="函数的默认参数"><a href="#函数的默认参数" class="headerlink" title="函数的默认参数"></a>函数的默认参数</h3><p>切记：默认参数是从右向左定义参数的，也就是说有默认参数的都写在<code>后面</code>，产生的原因是因为当调用有形参的函数时，如果不提供值，就会提示错误，因此有时我们需要其拥有默认的参数，这样哪怕你不输入值，也不会出错，而是以默认值来输出</p>
+<h4 id="情况1-全设置默认参数"><a href="#情况1-全设置默认参数" class="headerlink" title="情况1.全设置默认参数"></a>情况1.全设置默认参数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#定义函数</span><br><span class="line">def machine(x=3,y=&apos;巧克力&apos;):</span><br><span class="line">	 print(x,&apos;元&apos;,y,&apos;口味冰激凌&apos;)</span><br><span class="line"></span><br><span class="line">#引用函数</span><br><span class="line">machine()</span><br></pre></td></tr></table></figure>
+<h4 id="情况2-单个设置默认参数"><a href="#情况2-单个设置默认参数" class="headerlink" title="情况2.单个设置默认参数"></a>情况2.单个设置默认参数</h4><p>正确情况：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#定义函数</span><br><span class="line">def machine(x,y=&apos;巧克力&apos;):</span><br><span class="line">	print(x,&apos;元&apos;,y,&apos;口味冰激凌&apos;)</span><br><span class="line"></span><br><span class="line">#引用函数</span><br><span class="line">machine(3)     #注意实参的位置是跟形参的位置一一以应上的，所以3就对应着x</span><br></pre></td></tr></table></figure></p>
+<p>错误情况：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">#切记：默认参数是从右向左定义参数的，所以这样的写法是错误的，要想实现其实只要调换一下位置就好，如：machine(y,x=3)</span><br><span class="line">#定义函数</span><br><span class="line">def machine(x=3,y):			</span><br><span class="line">	print(x,&apos;元&apos;,y,&apos;口味冰激凌&apos;)</span><br><span class="line"></span><br><span class="line">#引用函数</span><br><span class="line">machine(&apos;巧克力&apos;)	#同理，由于参数位置是一一对应的，所以巧克力其应该在形参位置其实是x，而我们为x设置了默认值为3，然后巧克力作为实参使用上了，但y值没有定义默认参数，且没有实参，所以报错。</span><br></pre></td></tr></table></figure></p>
+<p>更正：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#定义函数</span><br><span class="line">def machine(y,x=3):		#位置换一下即可，函数体内只要可以引用到这两个参数项即可，不在意位置，但我们传入参数时则在意位置必须要一一对应上。</span><br><span class="line">	print(x,&apos;元&apos;,y,&apos;口味冰激凌&apos;)</span><br><span class="line"></span><br><span class="line">#引用函数</span><br><span class="line">machine(&apos;巧克力&apos;)</span><br></pre></td></tr></table></figure></p>
+<h4 id="情况3-指定赋值"><a href="#情况3-指定赋值" class="headerlink" title="情况3.指定赋值"></a>情况3.指定赋值</h4><p>上面两种情况都是按位置来给传值，其实我们也可以直接指定关键字来传参。由此我们可知，传入实参，如果你没有强制指定，就会按位置来一一对应实参，有强制指定则会按你所强制指定的值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#定义函数</span><br><span class="line">def machine(x=3,y=&apos;奶油&apos;):</span><br><span class="line">	print(x,&apos;元&apos;,y,&apos;口味冰激凌&apos;)</span><br><span class="line"></span><br><span class="line">#引用函数</span><br><span class="line">machine(y=&apos;巧克力&apos;)</span><br><span class="line"></span><br><span class="line">#这样一来，哪怕你的第一个对应位置是x，但因为你特别指定的值是y，所以没有按照位置来对应值，而是根据形参的变量名来指定赋值，这样也就不用遵循位置的一一对应了。</span><br></pre></td></tr></table></figure></p>
+<h3 id="内建函数"><a href="#内建函数" class="headerlink" title="内建函数"></a>内建函数</h3><p>绝大多数函数是我们自己写的，但是日常工作中有一些函数实现的功能是非常基本的，并且大家对结果的要求都一致，这些函数就预先被写好允许大家进行直接调用，我们称之为“内建函数”。</p>
+<h4 id="范围函数range"><a href="#范围函数range" class="headerlink" title="范围函数range()"></a>范围函数range()</h4><p>range()：函数会生成一个数字列表，具体列表依据传入的参数不同而定。range意为范围的意思。</p>
+<p>格式：（其实你只要记得[)的规则就没问题了）</p>
+<ul>
+<li>range(n)：会生成一个0，1，2，3，4…n-1的列表</li>
+<li>range(m,n)：  会生成一个m,m+1,m+2,…n-1的列表</li>
+<li>range(m,n,k)：  会生成一个m,m+k,m+2k,…n-1的列表</li>
+</ul>
+<p><code>range()</code>函数经常和<code>for</code>循环一起搭配，<code>for</code>通过<code>range()</code>函数生成的数字来计数，共同形成循环</p>
+<p>示例：利用for循环和range()函数，分别打印出来：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">0，1，2，3，4，5，6，7，8</span><br><span class="line">range(9)</span><br><span class="line">					</span><br><span class="line">3，4，5，6，7</span><br><span class="line">range(3,8)</span><br><span class="line"></span><br><span class="line">2，4，6，8，10</span><br><span class="line">range(2,11,2)</span><br></pre></td></tr></table></figure></p>
+<p>range()函数与序列的切片操作有点相类似<br>相似：</p>
+<ul>
+<li>格式类似：range(i,j[,步长值])，切片[i:j[:步长值]]</li>
+<li>[)形式</li>
+<li>应用领域</li>
+</ul>
+<p>区别：</p>
+<ul>
+<li>range()是以逗号”,”  切片是以冒号”:”</li>
+<li>切片的步长值可以判断方向为正负从而知道索引号的方向，range仅仅是步长</li>
+<li>range()没限制，切片是应用于数据结构中，即列表、元组、字典、集合这些数据结构</li>
+</ul>
+<h4 id="type-函数"><a href="#type-函数" class="headerlink" title="type()函数"></a>type()函数</h4><p>是一个内建函数，它返回一个参数的类型</p>
+<h4 id="int-函数"><a href="#int-函数" class="headerlink" title="int()函数"></a>int()函数</h4><p>可以通过此内建函数把一个字符串转化成一个数字，把一个小数转化成一个整数（每种类型都有自己类型转换的函数）<br>如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">print(int(32))</span><br><span class="line">print(int(3.14))</span><br><span class="line">print(int(&apos;hello&apos;))</span><br><span class="line"></span><br><span class="line">结果：</span><br><span class="line">32</span><br><span class="line">3		#总是取整的</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File &quot;&lt;stdin&gt;&quot;, line 3, in &lt;module&gt;</span><br><span class="line">  ValueError: invalid literal for int() with base 10: &apos;hello&apos;</span><br></pre></td></tr></table></figure></p>
+<p>可以看到，不是所有的数据都可以转化的，一个字符串<code>hello</code>是不能变成一个整数的。</p>
+<h3 id="函数的组合嵌套"><a href="#函数的组合嵌套" class="headerlink" title="函数的组合嵌套"></a>函数的组合嵌套</h3><p>函数是为了实现特定的功能而诞生的，功能之间不仅是简单的串联关系，还有可能“你中有我，我中有你”。A函数实现的功能也许就是B函数的子功能之一。<br>通过函数之间的组合，不同功能之间可以互相利用，共同实现一个目标，同时省去了很多需要重写的麻烦，节省了代码空间，减少了没必要的浪费。这一点很像Linux的精神，<code>不要重复造轮子，将各种已有的工具通过互相组合来实现新的功能</code>。</p>
+<h4 id="示例一：函数返回的结果成为了另一个函数的参数"><a href="#示例一：函数返回的结果成为了另一个函数的参数" class="headerlink" title="示例一：函数返回的结果成为了另一个函数的参数"></a>示例一：函数返回的结果成为了另一个函数的参数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">import math</span><br><span class="line">x=math.exp(math.log10(1000))</span><br><span class="line">print(x)</span><br></pre></td></tr></table></figure>
+<p>说明：<br>这里我们在函数<code>math.exp()</code>的参数中使用了<code>math.log10()</code>函数，<code>math.log10()</code>函数返回的结果成为了另一个函数的参数。</p>
+<h4 id="示例二：其他函数在一个函数的“肚子里”（即代码块中）"><a href="#示例二：其他函数在一个函数的“肚子里”（即代码块中）" class="headerlink" title="示例二：其他函数在一个函数的“肚子里”（即代码块中）"></a>示例二：其他函数在一个函数的“肚子里”（即代码块中）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">#定义函数</span><br><span class="line">def printLyrics1():</span><br><span class="line">	print(&quot;what I got to do to make you love me &quot;)</span><br><span class="line">	print(&quot;what I got to do to make you care&quot;)</span><br><span class="line">	</span><br><span class="line">def printLyrics2():</span><br><span class="line">	print(&quot;what can I do when lighting strikes me&quot;)</span><br><span class="line">	print(&quot;and wake to find you not there&quot;)</span><br><span class="line">	</span><br><span class="line">def playSong():</span><br><span class="line">	printLyrics1()   </span><br><span class="line">	printLyrics2()</span><br><span class="line">	print(&quot;it&apos;s sad,so sad,it&apos;s sad sad situation&quot;)</span><br><span class="line"></span><br><span class="line">#使用函数	    </span><br><span class="line">playSong()</span><br><span class="line"></span><br><span class="line">结果：</span><br><span class="line">	what I got to do to make you love me </span><br><span class="line">	what I got to do to make you care</span><br><span class="line">	what can I do when lighting strikes me</span><br><span class="line">	and wake to find you not there</span><br><span class="line">	it&apos;s sad,so sad,it&apos;s sad sad situation</span><br></pre></td></tr></table></figure>
+<p>说明：<br>可以看到结果，试想如果我们把这些都写在playSong这个函数里，这个函数该有多么复杂！更为重要的是，我们在这里做了一个解耦的工作，当第一句歌词需要修改的时候，我们只需要在printLyrics1中修改即可，改正的结果就可以反映在其他调用它的函数中。也许你现在还感受不到，因为例子中只有一个函数调用了printLyrics1，当有很函数都在调用它的时候，优势就会非常明显，一次修改，处处适用。这也是一堆代码为什么要分解成一个个函数的原因之一。<br>函数中有print输出时调用函数时哪怕没有print也可以输出，因为它会直接调用函数内写的print，所以没必要再在函数外面写print了，虽然也会正常打印输出，但是这是没必要写的。</p>
+<h3 id="函数的变量适用域"><a href="#函数的变量适用域" class="headerlink" title="函数的变量适用域"></a>函数的变量适用域</h3><p>说明：<br>在编写函数的过程中，我们可能根据需要在函数内部声明一些变量。这些变量的寿命非常短，函数在使用它们的时候非常残忍，<code>“狡兔死，走狗烹”，用完就毁灭它们是这些变量的命运</code>。然而在外部本来就存在的变量不会遭此厄运。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">dog=&quot;wangwang&quot;</span><br><span class="line">cat=&quot;mimi&quot;</span><br><span class="line"></span><br><span class="line">def friends(dog,cat):</span><br><span class="line">	animal=dog+&quot; &quot;+cat</span><br><span class="line">	print(animal,&quot;are friends!&quot;)</span><br><span class="line">		</span><br><span class="line">friends(dog,cat)</span><br><span class="line">print(dog)</span><br><span class="line">print(cat)</span><br><span class="line">print(animal)</span><br><span class="line"></span><br><span class="line">结果：</span><br><span class="line">wangwang mimi are friends!</span><br><span class="line">wangwang</span><br><span class="line">mimi</span><br><span class="line"></span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">File &quot;&lt;stdin&gt;&quot;, line 11, in &lt;module&gt;</span><br><span class="line">NameError: name &apos;animal&apos; is not defined    #因为animal只是定义在了函数里面，外面并没有定义，所以提示animal没有定义</span><br></pre></td></tr></table></figure></p>
+<p>解释：<br>运行一下，可以看到，在函数运行后，在函数外本来就存在的dog,cat依然存在。但是在函数内部产生的变量：animal，虽然在函数运行的时候产生并存在，但是当函数执行完之后就死亡了，解释器会产生：NameError: name ‘animal’ is not defined，这样的错误。这样的设定并不意味着残忍，而是一般在函数运行中产生的变量，一般只会在函数内部产生作用（即局部作用），函数外面定义的变量会对全局产生作用（即全局作用）。而对于函数内的变量来说，如果让它一直存在下去，会是对资源极大的浪费，如果在函数之外你会多次用到animal这个变量，正确的做法是：把animal=dog+cat从函数中提出来，放在更“广阔”的域中。即写成函数之外的全局变量或强制在函数体内声明为全局变量（有调用才生效）<br>注意：哪怕局部变量的变量名跟全局变量的变量名相同，它们也是两个不同意义的变量，作用范围不同。</p>
+<p>也可以强制声明局部变量为全局变量，但前提是该函数有被调用，否则仅仅只是定义的函数中有global因为没有被调用，所以也就没有实际产生作用<br>如：只要加上<code>global</code>关键字即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">global var </span><br><span class="line">var = value</span><br></pre></td></tr></table></figure></p>
+<p>全局变量与局部变量总结:</p>
+<ul>
+<li>全局变量与局部变量同名时，局部变量的优先级优先于全部变量</li>
+<li>局部变量可以变为全局变量通过<code>global 变量名</code> 的方式来声明，但不建议这样秀操作，不利于排错</li>
+<li>局部变量内修改变量时，要看这个类型是否是可变类型还是不可变类型。可变类型，比如列表、字典…这些是可以修改到全局变量的，但不可变类型，比如字符串、数字…这些就不可以修改了。其实从内存地址空间上看都没有修改。<br>即：<br>不可变：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">name=&apos;luojie&apos;</span><br><span class="line">def func1():</span><br><span class="line">    name=&apos;gogogo&apos;</span><br><span class="line">    print(name)</span><br><span class="line"></span><br><span class="line">func1()</span><br><span class="line">print(name)</span><br><span class="line"></span><br><span class="line">结果： </span><br><span class="line">gogogo</span><br><span class="line">luojie</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>可变：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">name=[1,2,3,4]</span><br><span class="line">def func1():</span><br><span class="line">    name[0]=&apos;luojie&apos;</span><br><span class="line">    print(name)</span><br><span class="line"></span><br><span class="line">func1()</span><br><span class="line">print(name)</span><br><span class="line"></span><br><span class="line">结果：</span><br><span class="line">[&apos;luojie&apos;, 2, 3, 4]</span><br><span class="line">[&apos;luojie&apos;, 2, 3, 4]</span><br></pre></td></tr></table></figure></p>
+<h3 id="函数的返回值"><a href="#函数的返回值" class="headerlink" title="函数的返回值"></a>函数的返回值</h3><ul>
+<li>函数被调用后会返回一个指定的值，这个值可以是由函数默认提供的<code>None</code>，也可以是我们自己定义的</li>
+<li>自已定义函数的返回值使用 <code>return 返回值</code>来实现，return的类型没有限制，可以是任意类型，比如数字，字符串，列表，字典等等，甚至是函数，因为在python中任意东西都是对象</li>
+<li>return的个数没有限制，可以一个也可以是多个</li>
+<li>特别强调的是<code>return执行后，函数终止</code></li>
+</ul>
+<p>返回值数=0：返回None<br>返回值数=1：返回object，即你定义的单个对象是什么就返回单个什么<br>返回值数&gt;1：返回tuple，即当你定义的返回值很多时，就将其包裹在一个元组内，作为单个元组整体返回</p>
+<p>为什么要有返回值？<br>我想要知道函数的执行结果，因为后面的程序逻辑需要根据这个执行结果来判断执行不同的代码来做出不同的操作</p>
+<h4 id="区分返回值和打印"><a href="#区分返回值和打印" class="headerlink" title="区分返回值和打印"></a>区分返回值和打印</h4><p>重点1：返回值赋予变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def f(x,y):</span><br><span class="line">print(x+y) </span><br><span class="line">	</span><br><span class="line">f(2,3)</span><br><span class="line">结果：会在屏幕中打印输出5</span><br><span class="line"></span><br><span class="line">当我们想把这个输出值赋予新的变量时</span><br><span class="line">如：</span><br><span class="line">z=f(2,3)</span><br><span class="line">此时，我们看到的结果z什么内容也没有，print(z) 结果为None，这是因为默认情况下函数的返回值为None</span><br><span class="line">我们要想实现将返回值赋予给新的变量，就需要使用return 来实现，而不是print来打印，直接将return替换print即可</span><br></pre></td></tr></table></figure></p>
+<p>重点2：return执行后，函数终止<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">def f():</span><br><span class="line">	return &apos;one&apos;</span><br><span class="line">	return &apos;two&apos;</span><br><span class="line">f()</span><br><span class="line">结果：只有one，也就是说返回one后这个函数就终止了，后面的two并没有执行了。</span><br></pre></td></tr></table></figure></p>
+<p>总结<code>return</code>与<code>print</code>的区别：</p>
+<ol>
+<li>return 可以赋值给变量，print不行（这点来说shell的echo可以同时实现这两个功能）</li>
+<li>return 是不显示在屏幕的（交互模式下显示），print会打印到屏幕上。（可以想像一下shell中的echo $?的返回值的概念）</li>
+<li>return 执行，函数就终止，print 不会终止函数，只是打印输出而已</li>
+</ol>
+<p>建议多使用return，而少用print，除非你在测试时确实要将结果打印到屏幕    </p>
+<h3 id="函数的多类型传值、冗余传值"><a href="#函数的多类型传值、冗余传值" class="headerlink" title="函数的多类型传值、冗余传值"></a>函数的多类型传值、冗余传值</h3><h4 id="多类型传值（也叫参数组）"><a href="#多类型传值（也叫参数组）" class="headerlink" title="多类型传值（也叫参数组）"></a>多类型传值（也叫参数组）</h4><ul>
+<li>将列表、元组、字典中的”元素“对应上函数的形参位置来传值，而不是简单的把列表、元组、字典一整个整体作为一个形参来传值</li>
+<li>多类型传值时，定义函数和定义列表、元组、字典并没什么不同，只是使用函数时，列表、元组加<code>*</code>，字典加<code>**</code>而已，字典还有个小细节就是定义的函数中的形参要与字典的关键字key相对应</li>
+<li><code>*args</code>： <code>*</code>表示多个的意思，<code>args</code>是”变量“参数的意思</li>
+<li><code>**kwords</code>： <code>**</code>表示多个的意思，<code>kwords</code>是”关键字“参数的意思</li>
+</ul>
+<h5 id="传列表：fun-args"><a href="#传列表：fun-args" class="headerlink" title="传列表：fun(*args)"></a>传列表：fun(*args)</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#定义函数</span><br><span class="line">def f(x,y):</span><br><span class="line">	print(&apos;name: %s&apos;%x)</span><br><span class="line">	print(&apos;age: %s&apos;%y)</span><br><span class="line"></span><br><span class="line">#定义列表	</span><br><span class="line">list1=[&apos;luojie&apos;,25]</span><br><span class="line"></span><br><span class="line">#使用函数</span><br><span class="line">f(*list1)		#列表是*号，列表中的值与形参中需要给定的值一一对应上的情况时</span><br></pre></td></tr></table></figure>
+<h5 id="传元组：fun-args"><a href="#传元组：fun-args" class="headerlink" title="传元组：fun(*args)"></a>传元组：fun(*args)</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#定义函数</span><br><span class="line">def f(x,y):</span><br><span class="line">	print(&apos;name: %s&apos;% x)</span><br><span class="line">	print(&apos;age: %s&apos;% y)</span><br><span class="line"></span><br><span class="line">#定义元组</span><br><span class="line">tuple1=(&apos;luojie&apos;,25)</span><br><span class="line"></span><br><span class="line">#使用元组</span><br><span class="line">f(*tuple1)		#元组是*号，元组中的值与形参中需要给定的值一一对应上的情况时</span><br></pre></td></tr></table></figure>
+<h5 id="传字典：fun-kwords"><a href="#传字典：fun-kwords" class="headerlink" title="传字典：fun(**kwords)"></a>传字典：fun(**kwords)</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#定义函数</span><br><span class="line">def f(name,age):      #这里需要注意的是形参的变量名需要跟字典中的key相同，否则无法一一对应上元素值</span><br><span class="line">	print(&apos;name: %s&apos;% name)</span><br><span class="line">	print(&apos;age: %s&apos;% age)</span><br><span class="line"></span><br><span class="line">#定义字典</span><br><span class="line">dict1=&#123;&apos;name&apos;:&apos;luojie&apos;,&apos;age&apos;:30&#125;   </span><br><span class="line"></span><br><span class="line">#使用函数</span><br><span class="line">f(**dict1)	#字典是**号，字典中的值与形参中需要给定的值一一对应上的情况时</span><br></pre></td></tr></table></figure>
+<p>上面说的是多类型传值，将列表、元组、字典这些容器里的元素一一对应上函数的形参</p>
+<p>另外，再加上有默认参数的存在，所以现在可实现：</p>
+<ul>
+<li>不传值–&gt;可以直接使用默认参数</li>
+<li>传单个值–&gt;可以按位置传参或关键字传参直接指定单个实参，另一个则可以使用默认参数</li>
+<li>传完整值–&gt;完全按形参需要的值给予，一一对应的情况时，无论是直接传值、变量传值（或交互式）、或是多类型传值</li>
+<li>传超出值–&gt;冗余传值（接下来说）</li>
+</ul>
+<h4 id="冗余传值"><a href="#冗余传值" class="headerlink" title="冗余传值"></a>冗余传值</h4><p>处理多余的冗余实参，其实只是定义函数时有点小改动，列表、元组加<em>，字典加*</em>来定义其它使用上没啥不同。要想实现传多值即冗余实参的情况下不报错，需要我们在实现函数时以这种方式来定义：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">def fun(*args,**kwords)</span><br></pre></td></tr></table></figure></p>
+<p>说明：</p>
+<ul>
+<li><code>*args</code>： <code>*</code>表示多个的意思，<code>args</code>是<code>变量</code>参数的意思</li>
+<li><code>**kwords</code>： <code>**</code>表示多个的意思，<code>kwords</code>是<code>关键字</code>参数的意思</li>
+</ul>
+<h5 id="以元组形式接收多余值"><a href="#以元组形式接收多余值" class="headerlink" title="以元组形式接收多余值"></a>以元组形式接收多余值</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#定义函数</span><br><span class="line">def f(x,*args):		#注意args名称是可以随意取名的，只是一个变量名而已</span><br><span class="line">	print(x)</span><br><span class="line">	print(args)</span><br><span class="line"></span><br><span class="line">#使用函数</span><br><span class="line">f(1,2,3,4,5,6)</span><br><span class="line"></span><br><span class="line">#结果：（因为这个我们所定义的函数其实只需要一个实参，当我们输入多个实参时，多出的那些就被放到args变量中去了）</span><br><span class="line">1</span><br><span class="line">(2, 3, 4, 5, 6)</span><br></pre></td></tr></table></figure>
+<h5 id="以字典形式接收多余值"><a href="#以字典形式接收多余值" class="headerlink" title="以字典形式接收多余值"></a>以字典形式接收多余值</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">#定义函数</span><br><span class="line">def f(x,**kw):		#注意kw名称是可以随意取名的，只是一个变量名而已</span><br><span class="line">	print(x)</span><br><span class="line">	print(kw)</span><br><span class="line"></span><br><span class="line">#使用函数	 </span><br><span class="line">f(x=123,y=456)    #这种前面x=123是以指定特定形参的方式来给值，而不是使用位置，所以也是正确的。而后面y=456是一种类似于字典的映射，而不像上面的以元组形式接收多余值的传入一个参数，而是传入了两个参数的情况，所以使用的是**kw的形式</span><br><span class="line"></span><br><span class="line">结果：</span><br><span class="line">123</span><br><span class="line">&#123;&apos;y&apos;: 456&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="同时满足列表、元组、字典"><a href="#同时满足列表、元组、字典" class="headerlink" title="同时满足列表、元组、字典"></a>同时满足列表、元组、字典</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">def f(x,*args,**kw):</span><br><span class="line">		print(x)</span><br><span class="line">		print(args)</span><br><span class="line">		print(kw)</span><br><span class="line"></span><br><span class="line">f(1,2,4,5,6,y=789,z=897)</span><br><span class="line">结果：</span><br><span class="line">1</span><br><span class="line">(2, 4, 5, 6)</span><br><span class="line">&#123;&apos;y&apos;: 789, &apos;z&apos;: 897&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="lambda函数（匿名函数）"><a href="#lambda函数（匿名函数）" class="headerlink" title="lambda函数（匿名函数）"></a>lambda函数（匿名函数）</h3><p>不用定义函数名的函数，即<code>匿名函数</code>，不需要像传统定义函数那样定义函数名的函数，<code>lambda</code>函数是一种快速定义单行的最小函数，是从lisp借用来的，可以用在任何需要函数的地方</p>
+<h4 id="传统函数"><a href="#传统函数" class="headerlink" title="传统函数"></a>传统函数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">def f(x,y):			#定义</span><br><span class="line">	return x*y </span><br><span class="line">f(2,3)				#调用</span><br></pre></td></tr></table></figure>
+<h4 id="lambda函数（匿名函数）-1"><a href="#lambda函数（匿名函数）-1" class="headerlink" title="lambda函数（匿名函数）"></a>lambda函数（匿名函数）</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">g=lambda x,y:x*y	#定义后直接赋予变量对象，而且也不用定义函数名</span><br><span class="line">g(2,3)				#调用</span><br></pre></td></tr></table></figure>
+<p>说明：lambda语句中，冒号前是形参，可以有多个，用逗号隔开，冒号右边是返回值(不需要写return语句)    </p>
+<p>使用lambda的好处：</p>
+<ol>
+<li>使用python写一些执行脚本时，使用lambda可以省去定义函数的过程，让代码更加精简</li>
+<li>对于一些抽象的，不会别的地方再复用的函数，有时候给函数起个名字也是个难题，使用lambda不需要考虑命名的问题</li>
+<li>使用lambda在某些时候让代码更容易理解</li>
+</ol>
+<h3 id="递归函数"><a href="#递归函数" class="headerlink" title="递归函数"></a>递归函数</h3><p>就是函数自己调用自己（自我循环）</p>
+<p>递归特性：</p>
+<ul>
+<li>必须有一个明确的结束条件</li>
+<li>每次进入更深一层递归时，问题规模相比上一次递归都应有所减少</li>
+<li>递归效率不高</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/30/技术/python/python3-基础篇-2-类与对象/" rel="next" title="python3-基础篇-2.类与对象">
+                <i class="fa fa-chevron-left"></i> python3-基础篇-2.类与对象
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/30/技术/python/python3-基础篇-4-IO/" rel="prev" title="python3-基础篇-4.IO">
+                python3-基础篇-4.IO <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/08/30/技术/python/python3-基础篇-3-变量与函数/"
+           data-title="python3-基础篇-3.变量与函数" data-url="https://luojieio.github.io/2017/08/30/技术/python/python3-基础篇-3-变量与函数/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/teaser.png"
+               alt="luojieio" />
+          <p class="site-author-name" itemprop="name">luojieio</p>
+           
+              <p class="site-description motion-element" itemprop="description">热爱开源、热爱自由</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/luojieio" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/alex3714/category/770733.html" title="金角大王" target="_blank">金角大王</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.runoob.com/" title="菜鸟教程" target="_blank">菜鸟教程</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://python.jobbole.com/" title="伯乐在线" target="_blank">伯乐在线</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://docs.docker.com/" title="Docker" target="_blank">Docker</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://hexo.io/zh-cn/" title="Hexo" target="_blank">Hexo</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://theme-next.iissnan.com/" title="NexT" target="_blank">NexT</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://fontawesome.io" title="Font Awesome" target="_blank">Font Awesome</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://duoshuo.com/" title="多说" target="_blank">多说</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#变量"><span class="nav-number">1.</span> <span class="nav-text">变量</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#变量说明"><span class="nav-number">1.1.</span> <span class="nav-text">变量说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命名要求"><span class="nav-number">1.2.</span> <span class="nav-text">命名要求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#书写规则：驼峰规则"><span class="nav-number">1.3.</span> <span class="nav-text">书写规则：驼峰规则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义变量"><span class="nav-number">1.4.</span> <span class="nav-text">定义变量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#打印变量"><span class="nav-number">1.5.</span> <span class="nav-text">打印变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">2.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#函数说明"><span class="nav-number">2.1.</span> <span class="nav-text">函数说明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么使用函数？"><span class="nav-number">2.2.</span> <span class="nav-text">为什么使用函数？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#定义函数"><span class="nav-number">2.3.</span> <span class="nav-text">定义函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调用函数"><span class="nav-number">2.4.</span> <span class="nav-text">调用函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#演变过程"><span class="nav-number">2.5.</span> <span class="nav-text">演变过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数的形式参数与实际参数"><span class="nav-number">2.6.</span> <span class="nav-text">函数的形式参数与实际参数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#不带形参"><span class="nav-number">2.6.1.</span> <span class="nav-text">不带形参</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#不带形参-1"><span class="nav-number">2.6.2.</span> <span class="nav-text">不带形参</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#带形参"><span class="nav-number">2.6.3.</span> <span class="nav-text">带形参</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#带形参-1"><span class="nav-number">2.6.4.</span> <span class="nav-text">带形参</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数的默认参数"><span class="nav-number">2.7.</span> <span class="nav-text">函数的默认参数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#情况1-全设置默认参数"><span class="nav-number">2.7.1.</span> <span class="nav-text">情况1.全设置默认参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#情况2-单个设置默认参数"><span class="nav-number">2.7.2.</span> <span class="nav-text">情况2.单个设置默认参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#情况3-指定赋值"><span class="nav-number">2.7.3.</span> <span class="nav-text">情况3.指定赋值</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#内建函数"><span class="nav-number">2.8.</span> <span class="nav-text">内建函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#范围函数range"><span class="nav-number">2.8.1.</span> <span class="nav-text">范围函数range()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#type-函数"><span class="nav-number">2.8.2.</span> <span class="nav-text">type()函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#int-函数"><span class="nav-number">2.8.3.</span> <span class="nav-text">int()函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数的组合嵌套"><span class="nav-number">2.9.</span> <span class="nav-text">函数的组合嵌套</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#示例一：函数返回的结果成为了另一个函数的参数"><span class="nav-number">2.9.1.</span> <span class="nav-text">示例一：函数返回的结果成为了另一个函数的参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#示例二：其他函数在一个函数的“肚子里”（即代码块中）"><span class="nav-number">2.9.2.</span> <span class="nav-text">示例二：其他函数在一个函数的“肚子里”（即代码块中）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数的变量适用域"><span class="nav-number">2.10.</span> <span class="nav-text">函数的变量适用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数的返回值"><span class="nav-number">2.11.</span> <span class="nav-text">函数的返回值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#区分返回值和打印"><span class="nav-number">2.11.1.</span> <span class="nav-text">区分返回值和打印</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函数的多类型传值、冗余传值"><span class="nav-number">2.12.</span> <span class="nav-text">函数的多类型传值、冗余传值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#多类型传值（也叫参数组）"><span class="nav-number">2.12.1.</span> <span class="nav-text">多类型传值（也叫参数组）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#传列表：fun-args"><span class="nav-number">2.12.1.1.</span> <span class="nav-text">传列表：fun(*args)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#传元组：fun-args"><span class="nav-number">2.12.1.2.</span> <span class="nav-text">传元组：fun(*args)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#传字典：fun-kwords"><span class="nav-number">2.12.1.3.</span> <span class="nav-text">传字典：fun(**kwords)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#冗余传值"><span class="nav-number">2.12.2.</span> <span class="nav-text">冗余传值</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#以元组形式接收多余值"><span class="nav-number">2.12.2.1.</span> <span class="nav-text">以元组形式接收多余值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#以字典形式接收多余值"><span class="nav-number">2.12.2.2.</span> <span class="nav-text">以字典形式接收多余值</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#同时满足列表、元组、字典"><span class="nav-number">2.12.2.3.</span> <span class="nav-text">同时满足列表、元组、字典</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lambda函数（匿名函数）"><span class="nav-number">2.13.</span> <span class="nav-text">lambda函数（匿名函数）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#传统函数"><span class="nav-number">2.13.1.</span> <span class="nav-text">传统函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#lambda函数（匿名函数）-1"><span class="nav-number">2.13.2.</span> <span class="nav-text">lambda函数（匿名函数）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#递归函数"><span class="nav-number">2.14.</span> <span class="nav-text">递归函数</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">luojieio</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"luojieio-note"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

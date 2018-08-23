@@ -1,0 +1,1148 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="技术-mysql-1.说明">
+<meta property="og:url" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-1-说明未完/index.html">
+<meta property="og:site_name" content="luojieio">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-02T08:17:39.288Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="技术-mysql-1.说明">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-1-说明未完/"/>
+
+
+
+
+
+  <title> 技术-mysql-1.说明 | luojieio </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">luojieio</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">热爱开源、热爱自由</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-1-说明未完/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="luojieio">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/teaser.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="luojieio">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                技术-mysql-1.说明
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-28T16:33:21+08:00">
+                2018-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/02/28/技术/mysql/技术-mysql-1-说明未完/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/02/28/技术/mysql/技术-mysql-1-说明未完/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+<p><br><br><a id="more"></a></p>
+<h3 id="逻辑架构"><a href="#逻辑架构" class="headerlink" title="逻辑架构"></a>逻辑架构</h3><p>mysql逻辑架构包括：</p>
+<ul>
+<li>服务层</li>
+<li>核心层</li>
+<li>存储引擎层</li>
+</ul>
+<p>（什么是引擎？说白了就是查询管理操作数据的玩意）</p>
+
+<h4 id="服务层"><a href="#服务层" class="headerlink" title="服务层"></a>服务层</h4>
+<h4 id="核心层"><a href="#核心层" class="headerlink" title="核心层"></a>核心层</h4>
+<h4 id="存储引擎层"><a href="#存储引擎层" class="headerlink" title="存储引擎层"></a>存储引擎层</h4>
+
+<ul>
+<li>客户端：mysql客户端并不具体指某个客户端软件，事实上mysql客户端是一种复合概念。包含：不同程序语言编写的前端应用程序，所调用的API接口</li>
+<li>事务：事务是由一组SQL语句组成的逻辑处理单元（视频说明暂不全）<ul>
+<li>原子性：事务是一个原子操作单元，其对数据的修改，要么全都执行，要么全都不执行（比如：汇钱）</li>
+<li>一致性：在事务开始和完成时，数据都必须保持一致状态</li>
+<li>隔离性：数据库系统提供一定的隔离机制，保证事务在不受外部并发操作影响的“独立”环境执行。这意味着事务处理过程中的中间状态对外部是不可见的，反之亦然</li>
+<li>持久性：事务完成之后，它对于数据的修改是永久性的，即使出现系统故障也能够保持</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h3 id="并发控制"><a href="#并发控制" class="headerlink" title="并发控制"></a>并发控制</h3><p>（多事务并发处理是需要并发控制的）<br>1.对并发操作进行正确调度<br>2.保证事物的隔离性<br>3.保证数据的一致性</p>
+<p>多事务的执行方式：</p>
+<ul>
+<li>串行执行：同一时间只有一个事物运行，效率低，无法充分利用资源（银行只开一个窗口）</li>
+<li>交叉并发执行：多事务交叉运行，单处理器的并发方式（类似于时分多差的方式，银行只开一个窗口，利用处理的空档处理其它事务）</li>
+<li>同时并发执行：多处理器系统中使用，每个处理器处理一个事物（银行开多个窗口）</li>
+</ul>
+<p>并发执行导致的问题：</p>
+<ul>
+<li>并发势必面临“同读同写”的问题</li>
+<li>“同读同写”导致破坏事物隔离性和导致数据不一致</li>
+</ul>
+<p>什么是数据不一致？</p>
+<ul>
+<li>丢失修改：指事务1与事务2从数据库中读入同一数据并修改，事务2的提交结果破坏了事务1提交的结果，导致事务1的修改被丢失了</li>
+<li>不可重复性：指事务1读取数据后，事务2执行更新操作，使事务1无法再现前一次读取结果</li>
+<li>读“脏”数据（未被最终确定的数据）：指事务1修改某一数据并写回，然后事物2读取该数据。事务1由于某种原因被撤销，数据恢复原值。导致事物1读取的数据为错误数据，也就是脏数据。</li>
+</ul>
+
+
+
+<p>什么是锁？为什么需要锁？<br>因为为了避免多事物并发处理导致数据不一致，所以多事务之间要隔离，事物对某个数据对象操作前，先向系统发出请求，对其加锁。加锁后，事务则对此数据对象具有一定的控制。在释放锁之前，其他事物不能更新此数据对象。</p>
+<p>基本锁类型</p>
+<ul>
+<li>读锁：又称共享锁。当事物1对某个数据对象加读锁，则其他事物只能对此数据对象加读锁，不能加写锁。直到事务1释放锁（事务2还是可以读取事务1的，但是要真正写入数据库，需要等待事务1执行完成，释放锁才可以）</li>
+<li>写锁：又称排他锁（独占锁）。当事物1对某个数据对象加写锁，则其他事物都不能再对此数据对象加任何锁（这就导致事务2只能等事务1的处理完后，才能处理，这样做其实就像串行执行了，效率不高）</li>
+</ul>
+<p>悲观锁与乐观锁（本质上是对锁机制一种看待角度）<br>（写锁）悲观锁：对数据被外界（包括本系统当前的其他事务，以及来自外部系统的事务处理）修改持保守态度，因此，在整个数据处理过程中，将数据处于锁定状态<br>（读锁）乐观锁：乐观锁假设认为数据般情况下不会造成冲突，所以在数据进行提交更新的时候，才会正式对数据的冲突与否进行检测，如果发现冲突了，则让返回用户错误的信息，让用户决定如何去做。不同的存储引擎支持的锁的类型也是不一样的</p>
+<hr>
+<h3 id="存储引擎"><a href="#存储引擎" class="headerlink" title="存储引擎"></a>存储引擎</h3><ul>
+<li><p>MYISAM：从ISAM发展而来，mysql4之前所使用的是ISAM，mysql5.5.5之前的默认存储引擎是MYISAM</p>
+<ul>
+<li>支持大文件，通常认为是256TB（跟操作系统实现有关）</li>
+<li>适合读多写少的应用场景</li>
+<li>每个MYISM表的最大索引数据是64，可以通过编译改变</li>
+<li>BLOB和TEXT类型可以被索引</li>
+<li>支持全文索引</li>
+<li>仅支持表锁</li>
+<li>非事务性引擎</li>
+<li>.frm文件存储表定义、.MYD数据文件、.MYI索引文件</li>
+</ul>
+</li>
+<li><p>InnoDB:目前mysql的默认存储引擎</p>
+<ul>
+<li>事务性引擎</li>
+<li>支持行锁和外键</li>
+<li>为巨大数据量的最大性能设计</li>
+<li>.ibdata1自动扩展数据文件，ib_logfiel0/1日志文件</li>
+</ul>
+</li>
+<li><p>MEMORY：将数据存储到内存中的存储引擎</p>
+<ul>
+<li>快</li>
+<li>不支持BLOB和TEXT列</li>
+<li>非事务性引擎</li>
+<li>不需要持续性存储，对于读取较频繁的场景</li>
+</ul>
+</li>
+<li><p>NDB：用于Mysql Cluster的集群存储引擎</p>
+<ul>
+<li>提供数据层面上的高可用性</li>
+<li>例如多表查询等复杂性查询性能相对不是优势</li>
+<li>尚在不断完善中</li>
+</ul>
+</li>
+</ul>
+<h4 id="存储引擎的比较"><a href="#存储引擎的比较" class="headerlink" title="存储引擎的比较"></a>存储引擎的比较</h4>
+<hr>
+<h3 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h3><p>不同的分类有不同的处理方式<br>如：<br>    米–&gt;麻袋<br>    水–&gt;水壶<br>    ……</p>
+<p>数据分类的意义</p>
+<ul>
+<li>分配合适的存储空间</li>
+<li>采用不同的操作方法</li>
+<li>对应不同的需求</li>
+</ul>
+<hr>
+<h4 id="数据类型（查看帮助help-int-这种方式）"><a href="#数据类型（查看帮助help-int-这种方式）" class="headerlink" title="数据类型（查看帮助help int 这种方式）"></a>数据类型（查看帮助help int 这种方式）</h4><ol>
+<li>数字 （默认是有符号的方式）<br>整型        整数类型的选择示例<br>tiniint        age<br>smallint    skills/ids<br>mediumint    auto_increment<br>int            money/salary<br>bigint        pupulation</li>
+</ol>
+<p>小数型（浮点数和定点数类型用来存储带小数的数值，定点数，即使用（M,D）的方式设定M精度（或显示的总位数）和D标度（小数的位数））<br>float（3,2）：占用4byte。总共3位，小数点后2位，先给出后2位，再给出先一位，即只允许3.33或3.3，但不可以33,3<br>double（3,2）：占用8byte。总共3位，小数点后2位<br>decimal（3,2）：占用M+2或D+2，取最大值加2。总共3位，小数点后2位</p>
+<p>比如：int(10)，并不是说只能存10个数，默认情况下没什么作用。什么时候起作用呢？当使用zerofill时是指不够10位的以0来填充时才起作用，表示一定要显示多少个数。<br>create table t1 (id int(10) zerofill);</p>
+<p>2.字符</p>
+<pre><code>3.日期和时间
+    类型                格式
+    YEAR(M)                Y
+    TIME
+    DATE
+    DATETIME
+    TIMESTMP
+</code></pre>
+
+<hr>
+<h3 id="表设计"><a href="#表设计" class="headerlink" title="表设计"></a>表设计</h3><p>什么是表？<br>-正如库是存放表的容器，表是存放数据的一种容器<br>-表是由行（记录）和列（字段）组成。在数据库中，我们定义“列”的属性。随着数据一条条的增加，“行”不断的增加<br>-列是结构，行是信息</p>
+<p>表的设计上要满足三范式<br>    1.数据库表中的字段都是单一属性的，不可以再分。即能分就分，分到不能再分为止<br>    2.各管各的，别互相影响。别把所有东西放到一个表里<br>    3.决定某个字段值必须是主键（不要重复值）</p>
+<hr>
+<h3 id="SQL"><a href="#SQL" class="headerlink" title="SQL"></a>SQL</h3><h4 id="SQL是什么？"><a href="#SQL是什么？" class="headerlink" title="SQL是什么？"></a>SQL是什么？</h4><p>SQL：<code>Structured Query Language</code>（结构化查询语言）</p>
+<p>SQL是一个ANSI标准计算机语言，设计用来访问、操作数据库系统<br>几乎所有现今的关系型数据库软件（MySQL，MS Access，DB2，informix，MS SQL Server，Oracle，Sybase等等）都使用SQL进行查询，管理及常用操作。</p>
+<p>不幸的是，存在着很多不同版本的SQL语言，但是为了与ANSI标准相兼容，它们必须以相似的方式共同地来支持一些主要的关键词（比如:SELECT、UPDATE、DELETE、INSERT、WHERE等等）除了SQL标准之外，大部份SQL数据库程序都拥有它自己的私有扩展。因此，可以说<code>SQL语言是数据库的基础标准语言，各自厂商自行开发的语言置于SQL语言之上</code>。</p>
+<h4 id="SQL能做什么？"><a href="#SQL能做什么？" class="headerlink" title="SQL能做什么？"></a>SQL能做什么？</h4><p>数据库与表的增、删、改、查、权限管理、视图、索引等等</p>
+<h4 id="表格的列与行"><a href="#表格的列与行" class="headerlink" title="表格的列与行"></a>表格的列与行</h4><p>数据以表格形式保存</p>
+<ul>
+<li>每一<code>列</code>是一个<code>属性</code>，叫列，也叫<code>字段</code>，每一列（属性）以特定数据类型来保存数据</li>
+<li>每一<code>行</code>是一条<code>记录</code>，叫行，也叫记录</li>
+</ul>
+<h3 id="数据类型-1"><a href="#数据类型-1" class="headerlink" title="数据类型"></a>数据类型</h3><p>常用数据类型，在创建表格时必须要指定列（字段）的数据类型（不同的类型用于存储不同的数据）</p>
+<ul>
+<li>整型      int</li>
+<li>浮点型   decimal</li>
+<li>固定长度字符串   char</li>
+<li>可变长度字符串   varchar</li>
+<li>日期      date</li>
+</ul>
+<h4 id="SQL语句的分类"><a href="#SQL语句的分类" class="headerlink" title="SQL语句的分类"></a>SQL语句的分类</h4><p><strong>Data Definition Language(DDL)    数据定义语言（用于定义数据库与表结构 ）</strong></p>
+<table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CREAT</td>
+<td>创建数据库与表对象</td>
+</tr>
+<tr>
+<td>DROP</td>
+<td>删除数据库与表对象</td>
+</tr>
+<tr>
+<td>ALTER</td>
+<td>修改数据库与表结构</td>
+</tr>
+<tr>
+<td>SHOW</td>
+<td>查看数据库与表对象</td>
+</tr>
+<tr>
+<td>RENAME</td>
+<td>重命名数据库与表对象</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Data Manipulation Language(DML)    数据操作语言（操作数据库中表的内容 ）</strong></p>
+<table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>INSERT</td>
+<td>向一个表格中插入数据</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>删除表格中的数据</td>
+</tr>
+<tr>
+<td>UPDATE</td>
+<td>更新一个表格中已有的数据</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Data Query Language(DQL)    数据操作语言（查询数据库中表内容 ）</strong><br>关键字|功能<br>–|–<br>SELECT|从表格中获取数据</p>
+<p><strong>Data Control Language（DCL）    数据控制语言（控制数据库与表的权限）</strong></p>
+<table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GRANT</td>
+<td>赋予一个用户对数据库或数据表格等指定权限</td>
+</tr>
+<tr>
+<td>REVOKE</td>
+<td>删除一个用户对数据库或数据表格等指定权限</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Transaction Control(TCL)    事务控制（事务特性）</strong></p>
+<table>
+<thead>
+<tr>
+<th>关键字</th>
+<th>功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>COMMIT</td>
+<td>提交保存数据操作</td>
+</tr>
+<tr>
+<td>SAVEPOINT</td>
+<td>为方便rollback标记一个事务点</td>
+</tr>
+<tr>
+<td>ROLLBACK</td>
+<td>从最后一次COMMIT中恢复到提交前状态</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/27/技术/linux/linux-基础篇-同步-rsync/" rel="next" title="linux-基础篇-同步-rsync">
+                <i class="fa fa-chevron-left"></i> linux-基础篇-同步-rsync
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/28/技术/mysql/技术-mysql-2-安装/" rel="prev" title="技术-mysql-2.安装">
+                技术-mysql-2.安装 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/02/28/技术/mysql/技术-mysql-1-说明未完/"
+           data-title="技术-mysql-1.说明" data-url="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-1-说明未完/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/teaser.png"
+               alt="luojieio" />
+          <p class="site-author-name" itemprop="name">luojieio</p>
+           
+              <p class="site-description motion-element" itemprop="description">热爱开源、热爱自由</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/luojieio" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/alex3714/category/770733.html" title="金角大王" target="_blank">金角大王</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.runoob.com/" title="菜鸟教程" target="_blank">菜鸟教程</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://python.jobbole.com/" title="伯乐在线" target="_blank">伯乐在线</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://docs.docker.com/" title="Docker" target="_blank">Docker</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://hexo.io/zh-cn/" title="Hexo" target="_blank">Hexo</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://theme-next.iissnan.com/" title="NexT" target="_blank">NexT</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://fontawesome.io" title="Font Awesome" target="_blank">Font Awesome</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://duoshuo.com/" title="多说" target="_blank">多说</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑架构"><span class="nav-number">1.</span> <span class="nav-text">逻辑架构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#服务层"><span class="nav-number">1.1.</span> <span class="nav-text">服务层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#核心层"><span class="nav-number">1.2.</span> <span class="nav-text">核心层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#存储引擎层"><span class="nav-number">1.3.</span> <span class="nav-text">存储引擎层</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#并发控制"><span class="nav-number">2.</span> <span class="nav-text">并发控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存储引擎"><span class="nav-number">3.</span> <span class="nav-text">存储引擎</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#存储引擎的比较"><span class="nav-number">3.1.</span> <span class="nav-text">存储引擎的比较</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型"><span class="nav-number">4.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#数据类型（查看帮助help-int-这种方式）"><span class="nav-number">4.1.</span> <span class="nav-text">数据类型（查看帮助help int 这种方式）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表设计"><span class="nav-number">5.</span> <span class="nav-text">表设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SQL"><span class="nav-number">6.</span> <span class="nav-text">SQL</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL是什么？"><span class="nav-number">6.1.</span> <span class="nav-text">SQL是什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL能做什么？"><span class="nav-number">6.2.</span> <span class="nav-text">SQL能做什么？</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#表格的列与行"><span class="nav-number">6.3.</span> <span class="nav-text">表格的列与行</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#数据类型-1"><span class="nav-number">7.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#SQL语句的分类"><span class="nav-number">7.1.</span> <span class="nav-text">SQL语句的分类</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">luojieio</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"luojieio-note"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

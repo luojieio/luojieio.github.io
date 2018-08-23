@@ -1,0 +1,1064 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker-1.基础篇-5.数据管理">
+<meta property="og:url" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/index.html">
+<meta property="og:site_name" content="luojieio">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/0.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/1.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/2.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/3.png">
+<meta property="og:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/4.png">
+<meta property="og:updated_time" content="2018-03-14T03:08:27.497Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="docker-1.基础篇-5.数据管理">
+<meta name="twitter:image" content="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/0.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/"/>
+
+
+
+
+
+  <title> docker-1.基础篇-5.数据管理 | luojieio </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">luojieio</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">热爱开源、热爱自由</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="luojieio">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/teaser.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="luojieio">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                docker-1.基础篇-5.数据管理
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-03-15T15:13:05+08:00">
+                2017-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/docker/" itemprop="url" rel="index">
+                    <span itemprop="name">docker</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <img src="/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/0.png">
+<p><br><br><a id="more"></a></p>
+<blockquote>
+<p>基于docker 1.12版本</p>
+</blockquote>
+<p><a href="https://docs.docker.com" target="_blank" rel="noopener">官方参考文档</a></p>
+<p>首先请注意：数据卷与数据卷容器都是用于<code>共享数据</code>而生的</p>
+<p>其次请注意：docker镜像是持久化保存的，但是docker容器是寄存在内存中的，当你关闭、重启docker容器，其中的数据也就随之消失了，但主注意数据卷（即重点在于<code>主机挂载数据卷</code>上，这是把主机上的内容挂载上容器中，以供使用，所以它们内容是同步，但是因为是挂载上容器的，所以容器重启、关闭、删除，是不会导致主机挂载数据卷丢失的，但是如果你在容器中修改了挂载的内容，那么它会同步到主机上。一句话概括就是，这东西就类似于<code>远程挂载</code>。因此，在此还是要说一句就是，镜像就像程序，它是永久性的，而容器就像进程，它只是工作时驻留在内存中，当进程关闭或重启后，数据就不见了，因为进程（即容器）会从内存中释放，所以容器中的数据是<code>转瞬即逝</code>的。</p>
+<p>用户在使用docker的过程中，往往需要能查看容器内应用产生的数据，或需要把容器内的数据进行备份，甚至多个容器之间进行数据的共享，这必须涉及容器的数据管理操作</p>
+<p>如果不挂载，则所有log、用户配置文件都会在docker容器内，如果容器销毁，则所有数据都会丢失。挂载出来方便数据迁移以及管理备份，因为通过挂载可以实现数据的同步，并且由于是挂载形式的，所以哪怕容器被销毁，也仅仅只是把一个远程挂载连接给去掉了，数据本身并不会因为容器被销毁而丢失</p>
+<p>容器中管理数据主要有两种方式：</p>
+<ul>
+<li>数据卷（data volumes）:用于将本地的目录或文件挂载到容器内的数据卷中，同时以实现容器与主机与容器之间的双向数据卷同步（在容器和主机、容器和容器之间共享数据，并实现数据的备份和恢复）。</li>
+</ul>
+<img src="/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/1.png" title="docker数据卷双向同步图解">
+<ul>
+<li>数据卷容器（data volume containers）：当需要挂载的数据卷信息很多时，一条条挂载就有点麻烦了，这时我们可以从专门定义一个普通的容器用于专门挂载数据卷的容器，以后别的容器需要挂载信息时，直接引用这个专门的数据卷容器就可以批量的将挂载信息挂载在别的容器上了，而不需要再一条条的挂载，而且它的作用跟数据卷一样，也是双向同步。</li>
+</ul>
+<img src="/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/2.png" title="docker数据卷容器双向同步图解">
+<hr>
+<h2 id="数据卷（主机挂载数据卷）"><a href="#数据卷（主机挂载数据卷）" class="headerlink" title="数据卷（主机挂载数据卷）"></a>数据卷（主机挂载数据卷）</h2><p>类似于linux下对目录或文件进行的mount挂载操作</p>
+<p>数据卷是一个可供容器使用的<code>特殊目录</code>，它绕过文件系统，可以提供很多有用的特性：</p>
+<ol>
+<li>数据卷可以在容器之间共享和重用</li>
+<li>对数据卷的修改会立马生效</li>
+<li>对数据卷的更新，不会影响镜像</li>
+<li>卷会一直存在，直到没有容器使用</li>
+</ol>
+<p>docker数据卷架构</p>
+<img src="/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/3.png" title="docker数据卷架构">
+<hr>
+<h3 id="命令"><a href="#命令" class="headerlink" title="命令"></a>命令</h3><h4 id="在容器内创建一个数据卷"><a href="#在容器内创建一个数据卷" class="headerlink" title="在容器内创建一个数据卷"></a>在容器内创建一个数据卷</h4><p>也就是在容器里创建一个目录，但这个目录是绕过文件系统的，将来可以通过挂载这个容器而将容器里的数据卷（这个特殊的目录）挂载到其它容器中</p>
+<p>在用docker run 命令的时候，使用-v标记可以在容器内创建一个数据卷。多次使用-v标记可以创建多个数据卷<br>如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -P --name web -v /webapp centos/centos:latest /bin/bash</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-d</td>
+<td>是daemon，守护进程状态</td>
+</tr>
+<tr>
+<td>-P</td>
+<td>是允许外部访问容器需要暴露的端口</td>
+</tr>
+<tr>
+<td>–name</td>
+<td>是为容器指定一个名称</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>是挂载一个数据卷到容器</td>
+</tr>
+</tbody>
+</table>
+<h4 id="挂载一个主机目录作为数据卷"><a href="#挂载一个主机目录作为数据卷" class="headerlink" title="挂载一个主机目录作为数据卷"></a>挂载一个主机目录作为数据卷</h4><p>使用<code>-v</code>标记也可以指定挂载一个本地主机上已有目录到容器中去作为数据卷<br>如：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -P --name web -v /opt:/webapp centos/centos:latest /bin/bash</span><br></pre></td></tr></table></figure>
+<p>指挂载本地主机上的/opt目录到容器的/webapp目录。这个功能在进行测试的时候十分方便，用户可以放置一些程序或数据到本地目录中，然后在通过挂载数据卷的方式挂载到容器内运行和使用。</p>
+<p>注意的是本地目录的路径必须是绝对路径，如果目录不存在，docker会自动创建（本地和容器内的目录如果不存在都会自动创建）</p>
+<h4 id="挂载数据卷指定权限"><a href="#挂载数据卷指定权限" class="headerlink" title="挂载数据卷指定权限"></a>挂载数据卷指定权限</h4><p>docker挂载数据卷的默认权限是读写（rw），用户也可以通过，ro指定为只读<br>如： </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d -P --name web -v /opt:/webapp:ro centos/centos:latest /bin/bash</span><br></pre></td></tr></table></figure>
+<p>加了:ro之后，容器内挂载的数据卷的数据就无法修改了</p>
+<h4 id="挂载一个本地主机文件作为数据卷"><a href="#挂载一个本地主机文件作为数据卷" class="headerlink" title="挂载一个本地主机文件作为数据卷"></a>挂载一个本地主机文件作为数据卷</h4><p><code>-v</code> 选项也可以从主机挂载单个文件到容器中作为数据卷<br>如： </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --rm -ti -v ~/.bash_history:/.bash_history ubuntu /bin/bash</span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–rm</td>
+<td>是指如果存在就删除覆盖原来的</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>是指tty</td>
+</tr>
+<tr>
+<td>-i</td>
+<td>是指交互</td>
+</tr>
+</tbody>
+</table>
+<p>这样当你在容器中输入的命令就会记录到挂载在其上的.bash_history中，我们就可以直接在本地主机上看到执行命令的历史记录</p>
+<p>注意：如果直接挂载一文件到容器，使用文本编辑工具，包括vi或sed的时候，可能会造成文件inode的改变，可能会导致报错信息，所以推荐的方式还是直接挂载文件所在的目录</p>
+<h4 id="挂载多个数据卷（多加几个-v即可）"><a href="#挂载多个数据卷（多加几个-v即可）" class="headerlink" title="挂载多个数据卷（多加几个-v即可）"></a>挂载多个数据卷（多加几个-v即可）</h4><p>如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -tdi --name dbdata -v /dbdata -v /dbdata2 centos</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="数据卷容器"><a href="#数据卷容器" class="headerlink" title="数据卷容器"></a>数据卷容器</h2><p>把所有数据卷挂载信息都保存在数据卷容器中，这样我们使用了数据卷容器就实现了把所有数据卷进行了挂载，就像一个<code>“挂载信息的合集”</code></p>
+<p>如果用户需要在容器之间共享一些持续更新的数据，最简单的方式是使用“数据卷容器”</p>
+<p>数据卷容器其实就是一个“普通的容器”，只不过它是专门用来提供数据卷以供其它容器挂载</p>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><h4 id="创建一个数据卷容器dbdata，并在其中创建一个数据卷挂载到-dbdata"><a href="#创建一个数据卷容器dbdata，并在其中创建一个数据卷挂载到-dbdata" class="headerlink" title="创建一个数据卷容器dbdata，并在其中创建一个数据卷挂载到/dbdata"></a>创建一个数据卷容器dbdata，并在其中创建一个数据卷挂载到/dbdata</h4><p>如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">docker run -ti -v /dbdata --name dbdata ubuntu:latest</span><br><span class="line">查看/dbdata目录</span><br><span class="line">```	</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#### 可以在其它容器中使用--volumes-from 来挂载dbdata容器中的数据卷</span><br><span class="line">如：创建db1和db2两个容器，并从dbdata容器挂载数据卷</span><br><span class="line">```bash</span><br><span class="line">docker run -ti --volumes-from dbdata --name db1 ubuntu:latest</span><br><span class="line">docker run -ti --volumes-from dbdata --name db2 ubuntu:latest</span><br></pre></td></tr></table></figure>
+<p>此时，容器db1和db2都挂载同一个数据卷到相同的/dbdata目录。三个容器任何一方在该目录下的写入，其他容器都可以看到，因为它们是双向同步的。</p>
+<p>跟-v 挂载数据卷相同，可以多次使用–volumes-from参数来从多个数据卷容器中挂载多个数据卷。</p>
+<p>还可以从其他已经挂载了数据卷的容器来挂载数据卷，因为数据卷容器本身就跟普通容器一样，只不过我们不正文的定义一个数据卷容器来专门用于数据卷的挂载合集<br>如：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -tdi --name db3 --volumes-from db1 ubuntu:latest</span><br></pre></td></tr></table></figure></p>
+<p>注意：使用–volumes-from参数所挂载数据卷的容器自身并不需要保持在运行状态</p>
+<p>如果删除了挂载的容器（包括dbdata、db1和db2）,数据卷并不会被自动删除。（此条有待研究）如果要删除一个数据卷，必须在删除最后一个还挂载着它的容器时显式使用docker rm -v 命令来指定同时删除关联的容器</p>
+<h4 id="利用数据卷容器迁移数据（其实就是利用数据卷的双向同步原理）"><a href="#利用数据卷容器迁移数据（其实就是利用数据卷的双向同步原理）" class="headerlink" title="利用数据卷容器迁移数据（其实就是利用数据卷的双向同步原理）"></a>利用数据卷容器迁移数据（其实就是利用数据卷的双向同步原理）</h4><h5 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h5><p>将/dbdata上的数据卷备份到/backup目录下打包成backup.tar文件，再利用双向同步原理将/backup目录下的内容同步到本地宿主机上的目录<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name worker --voluemes-from dbdata -v $(<span class="built_in">pwd</span>):/backup  ubuntu tar cvf /backup/backup.tar /dbdata</span><br></pre></td></tr></table></figure></p>
+<table>
+<thead>
+<tr>
+<th>选项</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>–name worker</td>
+<td>首先利用ubuntu镜像创建一个容器worker</td>
+</tr>
+<tr>
+<td>–voluemes-from dbdata</td>
+<td>然后让worker容器挂载来自dbdata数据卷容器上的数据卷</td>
+</tr>
+<tr>
+<td>-v $(pwd):/backup</td>
+<td>挂载本地的当前目录到worker容器的/backup目录</td>
+</tr>
+</tbody>
+</table>
+<p>worker容器启动后，使用后接的CMD命令，<code>tar cvf /backup/backup.tar /dbdata</code> 命令来将/dbdata下内容备份为容器内的/backup/backup.tar文件，这样一下，由于宿主机已经通过-v 将本地的目录挂载上去了，所以直接同步到/backup目录上的内容下来，这样本地宿主机的当前目录就有了容器中数据卷</p>
+<p>其实这个操作跟我们直接利用数据卷的双向同步的原理一样的，根本不用这么复杂，直接打包好放在数据卷中，然后利用同步原理，自然就同步到本地上了，当然你删除数据卷中的内容，本地的也会删除</p>
+<p>而且其实也可以不用将-v 另外单独写出来，直接将-v也写入到数据卷容器中，通过其它容器引用就行了。</p>
+<p>所以分解过程：<br>可以将-v 本地挂载到容器的一步也可以写在数据卷容器中，当然这样写在一起，可能将来有些其它容器引用时，也会将本地目录的挂载信息引用到其它的容器中，而使得其它容器的数据卷内容也同步到本地。只要记得数据卷容器是批量的数据卷所创建的容器就好<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name dbdata -v $(<span class="built_in">pwd</span>):/backup -v /dbdata ubuntu</span><br></pre></td></tr></table></figure></p>
+<p>然后直接引用数据卷容器，这样挂载信息就都同步到了worker容器，自然也包括了本地目录挂载到容器中目录的挂载信息。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name worker --volume-from dbdata ubuntu tar cvf /backup/backup.tar /dbdata</span><br></pre></td></tr></table></figure></p>
+<p>其实执行的命令tar这一步甚至都可以不用加上，由于是同步原理，所以你在本地的目录上以复制也好，移动也好，打包tar也好，都可以将文件备份</p>
+<p>因为都是双向同步的。说白了，就是利用双向同步来迁移备份出数据卷内容。</p>
+<h5 id="恢复"><a href="#恢复" class="headerlink" title="恢复"></a>恢复</h5><p>将本地的存放着backup.tar备份文件的目录挂载到容器的/backup目录，利用双向同步的原理，也就将本地宿主机上的备份文件同步到了容器的/backup目录，再利用解压命令将同步到容器中的backup.tar文件进行解压，也就解压到了/dbdata目录了，也就实现还原了。</p>
+<p>当然前提是首先创建一个dbdata2的容器，创建数据卷/dbdata<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name dbdata2 -v /dbdata ubuntu /bin/bash</span><br></pre></td></tr></table></figure></p>
+<p>然后创建另一个新的容器，挂载dbdata2的容器，并使用untar解压备份文件到所挂载的容器卷中</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --volumes-from dbdata2 -v $(<span class="built_in">pwd</span>):/backup ubuntu tar xvf /backup/backup.tar</span><br></pre></td></tr></table></figure>
+<p>其实说白了备份与恢复就是利用双向同步的原理，即备份就是将备份文件同步到本地宿主机，恢复就是将本地宿主机上的备份同步到容器的数据卷中用于恢复。其实手段不仅可以tar，还可以cp、mv、等等</p>
+<p>通过这个双向同步机制，即使容器在运行中出现故障，用户也不必担心数据发生丢失，只需要快速地重新创建容器即可</p>
+<p>鉴于它是同步机制，所以推荐定期将主机的本地数据进行备份，或者使用支持容错的存储系统，包括RAID或分布式文件系统，如：Ceph,GPFS，HDFS等。</p>
+<hr>
+<h2 id="总结：docker数据卷与数据卷容器的对比"><a href="#总结：docker数据卷与数据卷容器的对比" class="headerlink" title="总结：docker数据卷与数据卷容器的对比"></a>总结：docker数据卷与数据卷容器的对比</h2><img src="/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/4.png" title="docker数据卷与数据卷容器的对比">
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/15/技术/docker/docker-1-基础篇-4-docker三大概念之-仓库/" rel="next" title="docker-1.基础篇-4.docker三大概念之-仓库">
+                <i class="fa fa-chevron-left"></i> docker-1.基础篇-4.docker三大概念之-仓库
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/15/技术/docker/docker-1-基础篇-6-网络管理/" rel="prev" title="docker-1.基础篇-6.网络管理">
+                docker-1.基础篇-6.网络管理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/"
+           data-title="docker-1.基础篇-5.数据管理" data-url="https://luojieio.github.io/2017/03/15/技术/docker/docker-1-基础篇-5-数据管理/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/teaser.png"
+               alt="luojieio" />
+          <p class="site-author-name" itemprop="name">luojieio</p>
+           
+              <p class="site-description motion-element" itemprop="description">热爱开源、热爱自由</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/luojieio" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/alex3714/category/770733.html" title="金角大王" target="_blank">金角大王</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.runoob.com/" title="菜鸟教程" target="_blank">菜鸟教程</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://python.jobbole.com/" title="伯乐在线" target="_blank">伯乐在线</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://docs.docker.com/" title="Docker" target="_blank">Docker</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://hexo.io/zh-cn/" title="Hexo" target="_blank">Hexo</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://theme-next.iissnan.com/" title="NexT" target="_blank">NexT</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://fontawesome.io" title="Font Awesome" target="_blank">Font Awesome</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://duoshuo.com/" title="多说" target="_blank">多说</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据卷（主机挂载数据卷）"><span class="nav-number">1.</span> <span class="nav-text">数据卷（主机挂载数据卷）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#命令"><span class="nav-number">1.1.</span> <span class="nav-text">命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#在容器内创建一个数据卷"><span class="nav-number">1.1.1.</span> <span class="nav-text">在容器内创建一个数据卷</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#挂载一个主机目录作为数据卷"><span class="nav-number">1.1.2.</span> <span class="nav-text">挂载一个主机目录作为数据卷</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#挂载数据卷指定权限"><span class="nav-number">1.1.3.</span> <span class="nav-text">挂载数据卷指定权限</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#挂载一个本地主机文件作为数据卷"><span class="nav-number">1.1.4.</span> <span class="nav-text">挂载一个本地主机文件作为数据卷</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#挂载多个数据卷（多加几个-v即可）"><span class="nav-number">1.1.5.</span> <span class="nav-text">挂载多个数据卷（多加几个-v即可）</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据卷容器"><span class="nav-number">2.</span> <span class="nav-text">数据卷容器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#步骤"><span class="nav-number">2.1.</span> <span class="nav-text">步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建一个数据卷容器dbdata，并在其中创建一个数据卷挂载到-dbdata"><span class="nav-number">2.1.1.</span> <span class="nav-text">创建一个数据卷容器dbdata，并在其中创建一个数据卷挂载到/dbdata</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#利用数据卷容器迁移数据（其实就是利用数据卷的双向同步原理）"><span class="nav-number">2.1.2.</span> <span class="nav-text">利用数据卷容器迁移数据（其实就是利用数据卷的双向同步原理）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#备份"><span class="nav-number">2.1.2.1.</span> <span class="nav-text">备份</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#恢复"><span class="nav-number">2.1.2.2.</span> <span class="nav-text">恢复</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结：docker数据卷与数据卷容器的对比"><span class="nav-number">3.</span> <span class="nav-text">总结：docker数据卷与数据卷容器的对比</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">luojieio</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"luojieio-note"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>

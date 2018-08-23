@@ -1,0 +1,1112 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta property="og:type" content="article">
+<meta property="og:title" content="技术-mysql-2.安装">
+<meta property="og:url" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/index.html">
+<meta property="og:site_name" content="luojieio">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/mysql.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/1.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/2.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/3.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/4.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/5.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/6.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/7.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/8.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/9.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/10.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/11.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/12.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/13.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/14.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/15.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/16.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/17.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/18.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/19.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/20.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/21.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/22.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/23.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/24.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/25.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/26.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/27.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/28.png">
+<meta property="og:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/29.png">
+<meta property="og:updated_time" content="2018-03-02T09:04:14.289Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="技术-mysql-2.安装">
+<meta name="twitter:image" content="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/mysql.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/"/>
+
+
+
+
+
+  <title> 技术-mysql-2.安装 | luojieio </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">luojieio</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">热爱开源、热爱自由</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocapitalize="off" autocomplete="off" autocorrect="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="luojieio">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/teaser.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="luojieio">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                技术-mysql-2.安装
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-28T17:34:13+08:00">
+                2018-02-28
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/技术/mysql/" itemprop="url" rel="index">
+                    <span itemprop="name">mysql</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2018/02/28/技术/mysql/技术-mysql-2-安装/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/02/28/技术/mysql/技术-mysql-2-安装/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/mysql.png">
+<p><br><br><a id="more"></a></p>
+<h3 id="安装（linux平台-RPM包）"><a href="#安装（linux平台-RPM包）" class="headerlink" title="安装（linux平台-RPM包）"></a>安装（linux平台-RPM包）</h3><p>当前主流的<code>Linux发行版本</code>中都已经集成<code>mysql</code>，可以直接安装使用，但可能<code>版本较旧</code>。因此，可以前往官网下载最新版本的安装介质，有<code>rpm</code>包和<code>tar</code>包，官方不建议我们使用源码包安装，直接使用<code>rpm</code>包安装即可。</p>
+<p>rpm包来源方式分为两类：</p>
+<ul>
+<li>直接从操作系统发行版本中自带的<code>rpm</code>包进行安装</li>
+<li>从官方网站下载<code>rpm</code>包进行安装</li>
+</ul>
+<hr>
+<h4 id="系统自带rpm包安装"><a href="#系统自带rpm包安装" class="headerlink" title="系统自带rpm包安装"></a>系统自带rpm包安装</h4><p>1.借助软件包管理工具如<code>yum</code>或<code>apt-get</code>可以更方便的进行二进制包的安装（帮助自动解决包的依赖关系）<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#查看当前系统自带的mysql rpm包</span></span><br><span class="line">yum list|grep mysql</span><br><span class="line"></span><br><span class="line"><span class="comment">#进行安装</span></span><br><span class="line">yum install mysql mysql-server mysql-devel</span><br></pre></td></tr></table></figure></p>
+<p>如图：<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/1.png"></p>
+<p>2.mysql安装完成后，需要一个初始化的过程，其实只要我们把mysql的服务启动起来，它就会自动完成初始化。如下图所示，前面这部份内容其实就是初始化的过程，它只在第一次启动时需要进行初始化，下一次启动就不会显示这些内容了。<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/2.png"></p>
+<p>3.按提示内容设置密码（没有报错则说明安装成功）<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/3.png"></p>
+<p>4.设置好密码后，测试登录<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/4.png"></p>
+<p>5.将我们的mysql服务设置成开机启动<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/5.png"></p>
+<blockquote>
+<p>注意：从mysql5.1开始mysql的官方下载版本的服务名称改为mysql，将不再是mysqld。而rhel自带的发行版本的mysql名称依然沿用mysqld，这点区别需要特别注意。</p>
+</blockquote>
+<hr>
+<h4 id="官网下载rpm包进行安装"><a href="#官网下载rpm包进行安装" class="headerlink" title="官网下载rpm包进行安装"></a>官网下载rpm包进行安装</h4><p>1.前往官方网站下载<code>rpm</code>安装包，或直接在服务器上通过<code>wget</code>下载官方<code>rpm</code>安装包<br>MySQL官方网站：<a href="http://www.mysql.com/downloads/" target="_blank" rel="noopener">http://www.mysql.com/downloads/</a></p>
+<img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/6.png">
+<p>2.下载后使用<code>rpm -ivh</code> 或<code>yum</code>方式安装即可</p>
+<hr>
+<h3 id="安装（linux平台-yum）"><a href="#安装（linux平台-yum）" class="headerlink" title="安装（linux平台-yum）"></a>安装（linux平台-yum）</h3><p>前往官方网站下载<code>yum</code>源的<code>rpm</code>包，或直接在服务器上使用<code>wget</code>的方式下载该包到服务器上，执行安装该<code>rpm</code>包，安装好该<code>yum</code>源的<code>rpm</code>包后，会自动在<code>/etc/yum.repos.d</code>目录下创建<code>yum</code>仓库的配置文件。再使用<code>yum install mysql</code>的方式进行安装，它就会直接从<code>mysql</code>的官方仓库下载并安装<code>mysql</code></p>
+<hr>
+<h3 id="安装（linux平台-源码包）"><a href="#安装（linux平台-源码包）" class="headerlink" title="安装（linux平台-源码包）"></a>安装（linux平台-源码包）</h3><p>使用源码通常用于<code>开发、调试、测试环境</code>这种需要定制的小范围内使用，通常生产环境这种大规模部署环境不推荐使用源码安装，因为这样做不仅不利于规模化批量部署，版本无法统一，碎片化严重，而且安装时间长难以控制。<br>使用源码安装主要是用于定制编译参数，比如：安装位置，目录位置，功能开关开启或关闭等等。</p>
+<p>用源码安装有两个好处：</p>
+<ul>
+<li>自定义所需要的模块</li>
+<li>自定义安装路径</li>
+</ul>
+<blockquote>
+<p>注意：以源代码包安装mysql时，如果没有写的参数，有默认值的参数会选择采取默认值，没有默认值的参数这部分就被忽略了！</p>
+</blockquote>
+<hr>
+<p>旧的编译三板斧<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure></p>
+<hr>
+<p>新的编译三板斧<br>支持跨平台，从<code>mysql5.6</code>开始以这种方式来编译安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cmake . -DCMAKE_INSTALL_PREFIX=     #.是指当前目录，-D是声明参数的意思</span><br><span class="line">gmake</span><br><span class="line">make install</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h4 id="编译脚本（下一步会用到）"><a href="#编译脚本（下一步会用到）" class="headerlink" title="编译脚本（下一步会用到）"></a>编译脚本（下一步会用到）</h4><p><code>mysql5.7</code>版本因为需要使用<code>boost</code>类库，所以在编译安装时需要带上这段参数：<code>-DDOWNLOAD_BOOST=1 -DWITH_BOOST=/usr/local/src/mysql-5.7.13/boost</code> ，如果不带上的话编译过程中也会报错提示你带上这段参数的，所指向的<code>boost</code>目录是<code>mysql</code>已自带有<code>boost</code>的安装包</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/bash</span><br><span class="line">cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DMYSQL_DATADIR=/var/lib/mysql -DSYSCONFDIR=/etc -DWITH_INNOBASE_STORAGE_ENGINE=1 -DWITH_ARCHIVE_STORAGE_ENGINE=1 -DWITH_BLACKHOLE_STORAGE_ENGINE=1 -DWITH_FEDERATED_STORAGE_ENGINE=1 -DWITH_PARTITION_STORAGE_ENGINE=1 -DMYSQL_UNIX_ADDR=/tmp/mysql.sock -DENABLED_LOCAL_INFILE=1 -DWITH_EXTRA_CHARSETS=all -DDOWNLOAD_BOOST=1 -DWITH_BOOST=/usr/local/src/mysql-5.7.13/boost</span><br></pre></td></tr></table></figure>
+<p>脚本说明：</p>
+<table>
+<thead>
+<tr>
+<th>参数项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>-DCMAKE_INSTALL_PREFIX=/usr/local/mysql</code></td>
+<td>mysql程序安装主目录 </td>
+</tr>
+<tr>
+<td><code>-DMYSQL_DATADIR=/var/lib/mysql</code></td>
+<td>mysql数据目录</td>
+</tr>
+<tr>
+<td><code>-DSYSCONFDIR=/etc</code></td>
+<td>mysql配置文件目录</td>
+</tr>
+<tr>
+<td><code>-DWITH_INNOBASE_STORAGE_ENGINE=1</code></td>
+<td>以下是支持各种引擎，1是开启，0是不开启</td>
+</tr>
+<tr>
+<td><code>-DWITH_ARCHIVE_STORAGE_ENGINE=1</code><br>     <code>-DWITH_BLACKHOLE_STORAGE_ENGINE=1</code> <br><code>-DWITH_FEDERATED_STORAGE_ENGINE=1</code><br><code>-DWITH_PARTITION_STORAGE_ENGINE=1</code> <br></td>
+<td>特别注意分区的引擎</td>
+</tr>
+<tr>
+<td><code>-DMYSQL_UNIX_ADDR=/tmp/mysql.sock</code></td>
+<td></td>
+</tr>
+<tr>
+<td><code>-DENABLED_LOCAL_INFILE=1</code></td>
+<td>实验环境可打开，生产环境建议关闭</td>
+</tr>
+<tr>
+<td><code>-DWITH_EXTRA_CHARSETS=all</code></td>
+<td>扩展的字符集，支持全部</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h4 id="源码编译安装全过程"><a href="#源码编译安装全过程" class="headerlink" title="源码编译安装全过程"></a>源码编译安装全过程</h4><p>1.配置好网络环境和<code>selinux</code>和<code>iptables</code><br>2.安装开发工具包（强烈要求，可以避免后续编译过程中报的很多依赖关系包缺失错误）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum groupinstall &apos;Development tools&apos;</span><br></pre></td></tr></table></figure>
+<p>3.安装cmake</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install cmake</span><br></pre></td></tr></table></figure>
+<p>安装相关包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Debian/Ubuntu：libncurses5-dev</span><br><span class="line">Redhat和derivates：ncurses-devel</span><br></pre></td></tr></table></figure></p>
+<p>4.将mysql源代码安装包解压</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf xxxx.tar.gz</span><br></pre></td></tr></table></figure>
+<p>5.将编译脚本放置在解压的安装包目录下<br>6.创建安装mysql的非可登录用户<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd mysql -s /sbin/nologin</span><br></pre></td></tr></table></figure></p>
+<p>7.运行<code>cmake.sh</code><br>8.根据提示错误信息进行一些包的补充安装（mysql5.7需要有boost类库，所以参数中需要增加此参数项）<br>9.<code>gmake</code>或<code>make install</code>直接一步编译与安装<br>10.安装完成后，进入到安装主目录，即<code>/usr/local/mysql</code>，可查看到相应文件<br>11.进入<code>/usr/local/mysql/support-files</code>目录，将<code>mysql.server</code>复制到<code>/etc/init.d/</code>目录下作为服务，方便以后启停mysql服务<br>12.将<code>/usr/local/mysql/support-files</code>下的<code>my.cnf</code>拷贝到<code>/etc/my.cnf</code>作为<code>mysql</code>的主配置文件（通常发行版本中已经自带了该配置文件，可以直接覆盖替换），并进行相关的配置选项进行修改（实际上你不指定my.cnf配置文件，mysql的服务也可以启动起来，之所以指定my.cnf的原因是我们可以在配置文件中可以调配mysql的运行方式，所以可以根据你的生产环境来自定义调配）</p>
+<p>13.将相关目录的所属用户与组设置为mysql以提供权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /var/lib/mysql</span><br><span class="line">chown -R mysql.mysql /usr/lib/mysql</span><br></pre></td></tr></table></figure></p>
+<p>14.（重要）使用源码安装的mysql，编译安装完成后需要进行初始化，才可以启动服务，切记。<br>到mysql的安装主目录，即<code>/usr/local/mysql</code>目录下执行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">5.6版本：</span><br><span class="line">/usr/local/mysql/scripts目录下</span><br><span class="line">有脚本文件：mysql_install_db  --help  #查看选项帮助</span><br><span class="line">执行脚本：mysql_install_db --basedir=/usr/local/mysql --datadir=/var/lib/mysql --no-defaults --user=mysql 	</span><br><span class="line">		</span><br><span class="line">5.7版本：</span><br><span class="line">/usr/local/mysql/bin目录下</span><br><span class="line">执行脚本：mysql_install_db（同上写法或执行下面的脚本）</span><br><span class="line">执行脚本./mysqld --defaults-file=/etc/my.cnf --user=mysql --initialize --initialize-insecure</span><br></pre></td></tr></table></figure>
+<p>15.启动mysql服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysql start</span><br></pre></td></tr></table></figure></p>
+<p>16.将<code>/usr/local/mysql/bin</code>目录添加到环境变量并使之生效，以使该<code>bin</code>目录下的工具可用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo &apos;export PATH=$PATH:/usr/local/mysql/bin&apos; &gt;&gt; ~/.bash_profile</span><br><span class="line">. ~/.bash_profile</span><br></pre></td></tr></table></figure></p>
+<p>17.安装主机使用客户端连接测试<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure></p>
+<p>18.可以执行<code>/usr/local/mysql/bin</code>目录下的<code>mysql_secure_installation</code>（安全初始化）或<code>mysqladmin</code>（为root设置密码）</p>
+<hr>
+<h3 id="安装（linux平台-SPRM包）"><a href="#安装（linux平台-SPRM包）" class="headerlink" title="安装（linux平台-SPRM包）"></a>安装（linux平台-SPRM包）</h3><p>1.整理好网络与<code>iptables</code>和<code>selinux</code><br>2.安装<code>yum groupinstall &#39;Development tools&#39;</code><br>3.前往官网在源代码部分找到<code>srpm</code>包并下载<br>4.创建用户（默认是以普通用户来构建，<code>root</code>用户也可以，但是需要做一些微调，为了避免不必要的麻烦，因此我们需要先创建一个普通用户）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd mysql</span><br></pre></td></tr></table></figure>
+<p>5.将srpm包放到/home/mysql这个普通用户的家目录里<br>6.因为需要mysql这个普通用户来管理和使用这个包，所以修改包的权限<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown mysql.mysql mysql-community-5.7.13-1.el6.src.rpm</span><br></pre></td></tr></table></figure></p>
+<p>7.确认一下当前环境是否安装了rpm-build<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install rpm-build</span><br></pre></td></tr></table></figure></p>
+<p>8.切换到mysql这个普通用户<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">su - mysql</span><br></pre></td></tr></table></figure></p>
+<p>9.使用rpmbuild来创建出构建目录<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpmbuild ~</span><br></pre></td></tr></table></figure></p>
+<p>10.该rpmbuild目录下有相应生成的文件（如：<code>BUILD</code>  <code>BUILDROOT</code>  <code>RPMS</code>  <code>SOURCES</code>  <code>SPECS</code>  <code>SRPMS</code>），最后执行构建的时候需要这几个文件来存放生成的文件和一些中间文件</p>
+<p>11.环境构建好之后，安装srpm包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -ivh mysql-community-5.7.13-1.el6.src.rpm</span><br></pre></td></tr></table></figure></p>
+<p>12.修改<code>/home/mysql/rpmbuild/SPECS/</code>下的<code>mysql.spec</code>文件，根据自己的需要定制即可</p>
+<p>13.执行命令<code>rpmbuild -bb mysql.spec</code>就会根据<code>spec</code>中的配置构建出<code>rpm</code>包来了，如果有错误提示，根据错误提示安装相应的依赖包即可。查看选项帮助：<code>rpmbuild --help</code> </p>
+<p>通常需要这些依赖库包：</p>
+<ul>
+<li>cmake</li>
+<li>cmake28 （自找安装包）</li>
+<li>libaio-devel</li>
+<li>ncurses-devel</li>
+<li>numactl-devel</li>
+<li>openssl-devel</li>
+</ul>
+<p>14.这个构建的过程会耗费更长的时间，因为它需要构建出<code>源码包</code>、<code>SRPM</code>包、<code>RPM</code>包<br>15.构建完成后，我们可以在<code>/home/mysql/rpmbuild/RPMS</code>这里查看到我们自定义构建生成的<code>RPM</code>包<br>16.然后就可以对使用<code>rpm -ivh</code> 或<code>yum install</code>的方式来安装这些构建的<code>mysql</code>的<code>rpm</code>包了。</p>
+<hr>
+<h3 id="安装（linux平台-glibc包）"><a href="#安装（linux平台-glibc包）" class="headerlink" title="安装（linux平台-glibc包）"></a>安装（linux平台-glibc包）</h3><blockquote>
+<p>官方二进制包，解压即用，方便快速部署</p>
+</blockquote>
+<p>1.整理好网络与<code>iptables</code>和<code>selinux</code><br>2.安装<code>yum groupinstall &#39;Development tools&#39;</code><br>3.将包上传到<code>/usr/local/src</code> ，因为<code>glibc</code>是二进制的文件所以解压即可用。解压包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar zxvf mysql-5.7.13-linux-glibc2.5-x86_64.tar.gz</span><br></pre></td></tr></table></figure></p>
+<p>4.将解压后的二进制包直接“移动”或“复制”也可以“创建软链接”的方式命名为<code>/usr/local/mysql</code>，即作为<code>mysql</code>的主目录<br>方式：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">移动：mv /usr/local/src/mysql-5.7.13-linux-glibc2.5-x86_64 ../mysql</span><br><span class="line">复制：cp -a /usr/local/src/mysql-5.7.13-linux-glibc2.5-x86_64 ../mysql</span><br><span class="line">软链接：ln -s /usr/local/src/mysql-5.7.13-linux-glibc2.5-x86_64 /usr/local/mysql</span><br></pre></td></tr></table></figure></p>
+<p>5.创建一个不允许登录的mysql用户及组<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd -s /sbin/nologin mysql</span><br></pre></td></tr></table></figure></p>
+<p>6.创建datadir及日志存储路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir /var/lib/mysql</span><br><span class="line">mkdir /var/log/mysql</span><br></pre></td></tr></table></figure></p>
+<p>7.授权<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chown -R mysql.mysql /var/lib/mysql</span><br><span class="line">chown -R mysql.mysql /var/log/mysql</span><br></pre></td></tr></table></figure></p>
+<p>8.修改PATH变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">追加全局变量：echo &apos;export PATH=$PATH:/usr/local/mysql/bin&apos; &gt;&gt; ~/.bash_profile</span><br><span class="line">生效：source !$</span><br></pre></td></tr></table></figure></p>
+<p>9.添加使用service快速启动mysql<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/mysql/support-files/</span><br><span class="line">cp mysql.server /etc/init.d/mysql</span><br></pre></td></tr></table></figure></p>
+<p>10.修改my.cnf<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp my-default.cnf /etc/my.cnf</span><br><span class="line">vim /etc/my.cnf</span><br></pre></td></tr></table></figure></p>
+<p>11.初始化mysql<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/mysql/bin </span><br><span class="line">./mysqld --defaults-file=/etc/my.cnf --user=mysql --initialize --initialize-insecure</span><br></pre></td></tr></table></figure></p>
+<p>12.服务开启<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysql start</span><br></pre></td></tr></table></figure></p>
+<p>13.客户端登录测试并设置密码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql</span><br><span class="line">set password = password(&apos;luojie&apos;);</span><br></pre></td></tr></table></figure>
+<p>14.（推荐）可以执行<code>/usr/local/mysql/bin</code>目录下的<code>mysql_secure_installation</code>（安全初始化）或<code>mysqladmin</code>（为root设置密码）</p>
+<hr>
+<h3 id="安装（windows平台）"><a href="#安装（windows平台）" class="headerlink" title="安装（windows平台）"></a>安装（windows平台）</h3><p>在windows平台下有两种安装文件类型：<code>msi</code>和<code>zip</code>包，操作方式都类似，都是双击可执行文件进行安装的。 如果是msi直接双击运行安装即可，如果是zip，双击解压缩，运行“setup.exe”。</p>
+<p>以下说明是基于mysql 5.5之前的界面（包括5.5），5.6开始不是这种安装界面（类似不再赘述）</p>
+<p>1.开始安装，出现如下界面，mysql安装向导启动，按“Next”继续<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/7.png"></p>
+<p>2.选择安装类型，有“Typical（默认）”、“Complete（完全）”、“Custom（用户自定义）”三个选项，我们选择“Custom”，有更多的选项，也方便熟悉安装过程，如果快速安装的话直接选择typical典型安装方式即可<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/8.png"></p>
+<p>3.在“Developer Components（开发者部分）”上左键单击，选择“This feature, and all subfeatures, will be installed on local hard drive.”，即“此部分，及下属子部分内容，全部安装在本地硬盘上”。在上面的“MySQL Server（mysql服务器）”、“Client Programs（mysql客户端程序）”、“Documentation（文档）”也如此操作，以保证安装所有文件。点选“Change…”，手动指定安装目录。<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/9.png"></p>
+<p>4.填上安装目录，我的是“F:\Server\MySQL\MySQL Server 5.0”，也建议不要放在与操作系统同一分区，这样可以防止系统备份还原的时候，数据被清空。按“OK”继续。<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/10.png"></p>
+<p>5.返回刚才的界面，按“Next”继续<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/11.png"></p>
+<p>6.确认一下先前的设置，如果有误，按“Back”返回重做。按“Install”开始安装。<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/12.png"></p>
+<p>7.正在安装中，请稍候，直到出现下面的界面<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/13.png"></p>
+<p>8.这里是询问你是否要注册一个mysql.com的账号，或是使用已有的账号登陆mysql.com，一般不需要了，点选“Skip Sign-Up”，按“Next”略过此步骤。<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/14.png"></p>
+<p>9.现在软件安装完成了，出现上面的界面，这里有一个很好的功能，mysql配置向导，不用向以前一样，自己手动乱七八糟的配置my.ini了，将 “Configure the Mysql Server now”前面的勾打上，点“Finish”结束软件的安装并启动mysql配置向导。<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/15.png"></p>
+<p>10.mysql配置向导启动界面，按“Next”继续<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/16.png"></p>
+<p>11.选择配置方式，“Detailed Configuration（手动精确配置）”、“Standard Configuration（标准配置）”，我们选择“Detailed Configuration”，方便熟悉配置过程。<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/17.png"></p>
+<p>12.选择服务器类型，“Developer Machine（开发测试类，mysql占用很少资源）”、“Server Machine（服务器类型，mysql占用较多资源）”、“Dedicated MySQL Server Machine（专门的数据库服务器，mysql占用所有可用资源）”，大家根据自己的类型选择了，一般选“Server Machine”，不会太少，也不会占满。<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/18.png"></p>
+<p>13.选择mysql数据库的大致用途，“Multifunctional Database（通用多功能型，好）”、“Transactional Database Only（服务器类型，专注于事务处理，一般）”、“Non-Transactional Database Only（非事务处理型，较简单，主要做一些监控、记数用，对MyISAM数据类型的支持仅限于non-transactional），随自己的用途而选择了，我这里选择“Transactional Database Only”，按“Next”继续。<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/19.png"></p>
+<p>14.对InnoDB Tablespace进行配置，就是为InnoDB 数据库文件选择一个存储空间，如果修改了，要记住位置，重装的时候要选择一样的地方，否则可能会造成数据库损坏，当然，对数据库做个备份就没问题了，这里不详述。我这里没有修改，使用用默认位置，直接按“Next”继续<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/20.png"></p>
+<p>15.选择您的网站的一般mysql访问量，同时连接的数目，“Decision Support(DSS)/OLAP（20个左右）”、“Online Transaction Processing(OLTP)（500个左右）”、“Manual Setting（手动设置，自己输一个数）”，我这里选“Online Transaction Processing(OLTP)”，自己的服务器，应该够用了，按“Next”继续<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/21.png"></p>
+<p>16.是否启用TCP/IP连接，设定端口，如果不启用，就只能在自己的机器上访问mysql数据库了，我这里启用，把前面的勾打上，Port Number：3306，在这个页面上，您还可以选择“启用标准模式”（Enable Strict Mode），这样MySQL就不会允许细小的语法错误。如果您还是个新手，我建议您取消标准模式以减少麻烦。但熟悉MySQL以后，尽量使用标准模式，因为它可以降低有害数据进入数据库的可能性。按“Next”继续<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/22.png"></p>
+<p>17.西文编码，第二个是多字节的通用utf8编码，都不是我们通用的编码，这里选择第三个，然后在Character Set那里选择或填入“gbk”，当然也可以用“gb2312”，区别就是gbk的字库容量大，包括了gb2312的所有汉字，并且加上了繁体字、和其它乱七八糟的字——使用mysql的时候，在执行数据操作命令之前运行一次“SET NAMES GBK;”（运行一次就行了，GBK可以替换为其它值，视这里的设置而定），就可以正常的使用汉字（或其它文字）了，否则不能正常显示汉字。按 “Next”继续。</p>
+<img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/23.png">
+<p>18.选择是否将mysql安装为windows服务，还可以指定Service Name（服务标识名称），是否将mysql的bin目录加入到Windows PATH（加入后，就可以直接使用bin下的文件，而不用指出目录名，比如连接，“mysql.exe -uusername -ppassword;”就可以了，不用指出mysql.exe的完整地址，很方便），我这里全部打上了勾，Service Name不变。按“Next”继续。选择是否将mysql安装为windows服务，还可以指定Service Name（服务标识名称），是否将mysql的bin目录加入到Windows PATH（加入后，就可以直接使用bin下的文件，而不用指出目录名，比如连接，“mysql.exe -uusername -ppassword;”就可以了，不用指出mysql.exe的完整地址，很方便），我这里全部打上了勾，Service Name不变。按“Next”继续。<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/24.png"></p>
+<p>19.这一步询问是否要修改默认root用户（超级管理）的密码（默认为空），“New root password”如果要修改，就在此填入新密码（如果是重装，并且之前已经设置了密码，在这里更改密码可能会出错，请留空，并将“Modify Security Settings”前面的勾去掉，安装配置完成后另行修改密码），“Confirm（再输一遍）”内再填一次，防止输错。 “Enable root access from remote machines（是否允许root用户在其它的机器上登陆，如果要安全，就不要勾上，如果要方便，就勾上它）”。最后“Create An Anonymous Account（新建一个匿名用户，匿名用户可以连接数据库，不能操作数据，包括查询）”，一般就不用勾了，设置完毕，按“Next”继续。</p>
+<img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/25.png">
+<p>20.确认设置无误，如果有误，按“Back”返回检查。按“Execute”使设置生效。<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/26.png"></p>
+<p>21.设置完毕，按“Finish”结束mysql的安装与配置——这里有一个比较常见的错误，就是不能“Start service”，一般出现在以前有安装mysql的服务器上，解决的办法，先保证以前安装的mysql服务器彻底卸载掉了；不行的话，检查是否按上面一步所说，之前的密码是否有修改，照上面的操作；如果依然不行，将mysql安装目录下的data文件夹备份，然后删除，在安装完成后，将安装生成的 data文件夹删除，备份的data文件夹移回来，再重启mysql服务就可以了，这种情况下，可能需要将数据库检查一下，然后修复一次，防止数据出错。<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/27.png"></p>
+<p>22.提示：如果你在安装完成后没有勾选开始配置，可以自行到安装目录下，找到bin目录，双击“MySQLInstanceConfig.exe”可以开始配置。<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/28.png"></p>
+<p>另外我们也可以手动修改配置文件：<br><img src="/2018/02/28/技术/mysql/技术-mysql-2-安装/29.png"></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/02/28/技术/mysql/技术-mysql-1-说明未完/" rel="next" title="技术-mysql-1.说明">
+                <i class="fa fa-chevron-left"></i> 技术-mysql-1.说明
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/28/技术/mysql/技术-mysql-3-数据库目录结构、文件路径、编码设置/" rel="prev" title="技术-mysql-3.数据库目录结构、文件路径、编码设置">
+                技术-mysql-3.数据库目录结构、文件路径、编码设置 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2018/02/28/技术/mysql/技术-mysql-2-安装/"
+           data-title="技术-mysql-2.安装" data-url="https://luojieio.github.io/2018/02/28/技术/mysql/技术-mysql-2-安装/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/teaser.png"
+               alt="luojieio" />
+          <p class="site-author-name" itemprop="name">luojieio</p>
+           
+              <p class="site-description motion-element" itemprop="description">热爱开源、热爱自由</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">103</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">20</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/luojieio" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.cnblogs.com/alex3714/category/770733.html" title="金角大王" target="_blank">金角大王</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.runoob.com/" title="菜鸟教程" target="_blank">菜鸟教程</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://python.jobbole.com/" title="伯乐在线" target="_blank">伯乐在线</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://docs.docker.com/" title="Docker" target="_blank">Docker</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="https://hexo.io/zh-cn/" title="Hexo" target="_blank">Hexo</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://theme-next.iissnan.com/" title="NexT" target="_blank">NexT</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://fontawesome.io" title="Font Awesome" target="_blank">Font Awesome</a>
+                </li>
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://duoshuo.com/" title="多说" target="_blank">多说</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装（linux平台-RPM包）"><span class="nav-number">1.</span> <span class="nav-text">安装（linux平台-RPM包）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#系统自带rpm包安装"><span class="nav-number">1.1.</span> <span class="nav-text">系统自带rpm包安装</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#官网下载rpm包进行安装"><span class="nav-number">1.2.</span> <span class="nav-text">官网下载rpm包进行安装</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装（linux平台-yum）"><span class="nav-number">2.</span> <span class="nav-text">安装（linux平台-yum）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装（linux平台-源码包）"><span class="nav-number">3.</span> <span class="nav-text">安装（linux平台-源码包）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#编译脚本（下一步会用到）"><span class="nav-number">3.1.</span> <span class="nav-text">编译脚本（下一步会用到）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#源码编译安装全过程"><span class="nav-number">3.2.</span> <span class="nav-text">源码编译安装全过程</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装（linux平台-SPRM包）"><span class="nav-number">4.</span> <span class="nav-text">安装（linux平台-SPRM包）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装（linux平台-glibc包）"><span class="nav-number">5.</span> <span class="nav-text">安装（linux平台-glibc包）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装（windows平台）"><span class="nav-number">6.</span> <span class="nav-text">安装（windows平台）</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">luojieio</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"luojieio-note"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+    
+    <script src="/lib/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+    <script src="/js/src/hook-duoshuo.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length == 0) {
+      search_path = "search.xml";
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    function proceedsearch() {
+      $("body").append('<div class="local-search-pop-overlay">').css('overflow', 'hidden');
+      $('.popup').toggle();
+    }
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+      $.ajax({
+        url: path,
+        dataType: "xml",
+        async: true,
+        success: function( xmlResponse ) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = $( "entry", xmlResponse ).map(function() {
+            return {
+              title: $( "title", this ).text(),
+              content: $("content",this).text(),
+              url: $( "url" , this).text()
+            };
+          }).get();
+          var $input = document.getElementById(search_id);
+          var $resultContent = document.getElementById(content_id);
+          $input.addEventListener('input', function(){
+            var matchcounts = 0;
+            var str='<ul class=\"search-result-list\">';
+            var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+            $resultContent.innerHTML = "";
+            if (this.value.trim().length > 1) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var content_index = [];
+                var data_title = data.title.trim().toLowerCase();
+                var data_content = data.content.trim().replace(/<[^>]+>/g,"").toLowerCase();
+                var data_url = decodeURIComponent(data.url);
+                var index_title = -1;
+                var index_content = -1;
+                var first_occur = -1;
+                // only match artiles with not empty titles and contents
+                if(data_title != '') {
+                  keywords.forEach(function(keyword, i) {
+                    index_title = data_title.indexOf(keyword);
+                    index_content = data_content.indexOf(keyword);
+                    if( index_title >= 0 || index_content >= 0 ){
+                      isMatch = true;
+                      if (i == 0) {
+                        first_occur = index_content;
+                      }
+                    }
+
+                  });
+                }
+                // show search results
+                if (isMatch) {
+                  matchcounts += 1;
+                  str += "<li><a href='"+ data_url +"' class='search-result-title'>"+ data_title +"</a>";
+                  var content = data.content.trim().replace(/<[^>]+>/g,"");
+                  if (first_occur >= 0) {
+                    // cut out 100 characters
+                    var start = first_occur - 20;
+                    var end = first_occur + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if(start == 0){
+                      end = 50;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    var match_content = content.substring(start, end);
+                    // highlight all keywords
+                    keywords.forEach(function(keyword){
+                      var regS = new RegExp(keyword, "gi");
+                      match_content = match_content.replace(regS, "<b class=\"search-keyword\">"+keyword+"</b>");
+                    });
+
+                    str += "<p class=\"search-result\">" + match_content +"...</p>"
+                  }
+                  str += "</li>";
+                }
+              })};
+            str += "</ul>";
+            if (matchcounts == 0) { str = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>' }
+            if (keywords == "") { str = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>' }
+            $resultContent.innerHTML = str;
+          });
+          proceedsearch();
+        }
+      });}
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched == false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(function(e){
+      $('.popup').hide();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    });
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+  </script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+</body>
+</html>
